@@ -28,7 +28,7 @@
 </script>
 
 <header class="header" bind:this={header}>
-	<button id="menu-icon" type="button" on:click={toggleMenu} aria-label="Toggle navigation">
+	<button id="menu-icon" type="button" on:click|stopPropagation={toggleMenu} aria-label="Toggle navigation">
 		<i class='bx bx-menu'></i>
 		<span class="animate" style="--i:2;"></span>
 	</button>
@@ -131,6 +131,9 @@
 		border-radius: 0.5rem;
 		transition: all 0.3s ease;
 		background: transparent;
+		border: none;
+		outline: none;
+		-webkit-tap-highlight-color: transparent;
 	}
 
 	#menu-icon:hover {
@@ -148,6 +151,8 @@
 			display: block;
 			position: absolute;
 			right: 4%;
+			z-index: 1001;
+			pointer-events: auto;
 		}
 
 		.navbar {
