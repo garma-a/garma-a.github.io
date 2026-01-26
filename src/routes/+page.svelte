@@ -4,7 +4,7 @@
 	let description =
 		"Portfolio of Garma (Girgis Emad), a Full Stack Developer from Egypt specializing in React, Node.js, SvelteKit, Go, Rust and Modern Web Technologies. Hire a skilled developer for your next project.";
 	let url = "https://garmaa.me";
-	let imageUrl = "https://garmaa.me/GIRGIS_EMAD_LOGO.png";
+	let imageUrl = "https://garmaa.me/og-image.jpg";
 
 	// SEO Keywords
 	let keywords =
@@ -66,7 +66,7 @@
 			"name": "Girgis Emad",
 			"alternateName": ["Garma", "garma-a", "GARMA-A"],
 			"url": "https://garmaa.me",
-			"image": "https://garmaa.me/GIRGIS_EMAD_LOGO.png",
+			"image": "https://garmaa.me/og-image.jpg",
 			"jobTitle": "Full Stack Developer",
 			"description": "Full Stack Developer specializing in React, Node.js, SvelteKit, Go, and Rust",
 			"telephone": "+201278203355",

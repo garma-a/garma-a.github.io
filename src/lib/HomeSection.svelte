@@ -11,7 +11,7 @@
 </script>
 
 <section class="home show-animate" id="home">
-	<div class="home-bg"></div>
+	<div class="home-bg" style="background-image: url('{base}/imgs/HEADER.jpeg');"></div>
 	<div class="home-content">
 		<span class="greeting">Hello, I'm</span>
 		<h1><span class="name-gradient">{name}</span></h1>
@@ -63,7 +63,8 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: url('{base}/imgs/HEADER.jpeg') no-repeat center center;
+		background-repeat: no-repeat;
+		background-position: center center;
 		background-size: cover;
 		opacity: 0.15;
 		filter: blur(2px);
