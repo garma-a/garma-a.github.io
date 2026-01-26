@@ -27,11 +27,15 @@
 						<i class='bx bx-envelope'></i>
 						girgisemad74@gmail.com
 					</a>
-					<a href="https://github.com/GARMA-A" target="_blank">
-						<i class='bx bxl-github'></i>
-						GitHub
+					<a href="tel:+201278203355">
+						<i class='bx bx-phone'></i>
+						+20 127 820 3355
 					</a>
-					<a href="https://www.linkedin.com/in/girgis-emad-garma-96943a258/" target="_blank">
+					<a href="https://github.com/GARMA-A" target="_blank" rel="noopener noreferrer">
+						<i class='bx bxl-github'></i>
+						GitHub (garma-a)
+					</a>
+					<a href="https://www.linkedin.com/in/girgis-emad-garma-96943a258/" target="_blank" rel="noopener noreferrer">
 						<i class='bx bxl-linkedin'></i>
 						LinkedIn
 					</a>
