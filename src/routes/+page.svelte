@@ -8,7 +8,7 @@
 
 	// SEO Keywords
 	let keywords =
-		"Garma, garma-a, Girgis Emad, Full Stack Developer, Web Developer, React Developer, Node.js Developer, SvelteKit, Go Developer, Rust Developer, Egypt Developer, Frontend Developer, Backend Developer, Software Engineer, garmaa.me";
+		"Garma, garma-a, Girgis Emad, Full Stack Developer, Web Developer, React Developer, Node.js Developer, SvelteKit, Go Developer, Rust Developer, Egypt Developer, Frontend Developer, Backend Developer, Software Engineer, garmaa.me, Express.js Developer, Nest.je, Developer, python Developer, FastAPI Developer, Flask Developer";
 </script>
 
 <svelte:head>
