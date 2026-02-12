@@ -20,7 +20,7 @@
 	export let githubUrl = "https://github.com/GARMA-A";
 	export let instagramUrl = "https://www.instagram.com/girgisyt/?hl=ar#";
 	export let whatsappUrl = "https://wa.me/qr/I5I632ZU54YCH1";
-	export let aboutImage = `${base}/imgs/me.jpeg`;
+	export let aboutImage = `${base}/myImage.jpg`;
 	export let aboutText =
 		"I'm a Full Stack Web Developer 👨‍💻 with professional experience at Magdi Yacoub Heart Center and NTI/ITIDA in Egypt. I graduated from the Faculty of Computing & Information Technology at Arab Academy Aswan. I'm passionate about building robust web applications and always pushing myself to grow 🔥 My goal is to create impactful solutions that make a difference 🌟";
 </script>
