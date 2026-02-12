@@ -80,32 +80,32 @@
 		--text-color: #94a3b8;
 		--text-muted: #64748b;
 		--white: #f8fafc;
-		--primary: #6366f1;
-		--primary-light: #818cf8;
-		--primary-dark: #4f46e5;
-		--accent: #22d3ee;
+		--primary: #ff0055;
+		--primary-light: #ff3377;
+		--primary-dark: #cc0044;
+		--accent: #7000ff;
 		--accent-secondary: #a855f7;
 		--gradient-primary: linear-gradient(
 			135deg,
-			#6366f1 0%,
+			#ff0055 0%,
 			#a855f7 50%,
-			#22d3ee 100%
+			#7000ff 100%
 		);
 		--gradient-text: linear-gradient(
 			135deg,
-			#6366f1 0%,
-			#22d3ee 100%
+			#ff0055 0%,
+			#7000ff 100%
 		);
 		--gradient-card: linear-gradient(
 			135deg,
-			rgba(99, 102, 241, 0.1) 0%,
-			rgba(34, 211, 238, 0.05) 100%
+			rgba(255, 0, 85, 0.1) 0%,
+			rgba(112, 0, 255, 0.05) 100%
 		);
 		--border-color: rgba(255, 255, 255, 0.08);
 		--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
 		--shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
 		--shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
-		--shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+		--shadow-glow: 0 0 40px rgba(255, 0, 85, 0.3);
 	}
 
 	:global(html) {
@@ -128,17 +128,17 @@
 		height: 100%;
 		background: radial-gradient(
 				ellipse 80% 50% at 50% -20%,
-				rgba(99, 102, 241, 0.15),
+				rgba(255, 0, 85, 0.15),
 				transparent
 			),
 			radial-gradient(
 				ellipse 60% 40% at 100% 50%,
-				rgba(168, 85, 247, 0.1),
+				rgba(112, 0, 255, 0.1),
 				transparent
 			),
 			radial-gradient(
 				ellipse 60% 40% at 0% 80%,
-				rgba(34, 211, 238, 0.08),
+				rgba(168, 85, 247, 0.08),
 				transparent
 			);
 		pointer-events: none;
