@@ -3,18 +3,6 @@
 
 	export let books = [
 		{
-			image: `${base}/imgs/cleanCodeBookImage.png`,
-			title: 'Clean Code: A Handbook of Agile Software Craftsmanship',
-			author: 'Robert C. Martin',
-			description: 'A legendary book that revolutionized how I write code. Uncle Bob teaches the principles of writing clean, readable, and maintainable code that any developer can understand and work with.'
-		},
-		{
-			image: `${base}/imgs/celanArchitectureBookCover(sameauthorOfCleanCodeBook).jpeg`,
-			title: 'Clean Architecture: A Craftsman\'s Guide to Software Structure and Design',
-			author: 'Robert C. Martin',
-			description: 'Essential reading for building scalable systems. This book taught me how to design software architectures that are independent of frameworks, databases, and external agencies, making systems flexible and testable.'
-		},
-		{
 			image: `${base}/imgs/AlexanderShvets-DiveIntoDesignPatterns(2019)BookCover.jpg`,
 			title: 'Dive Into Design Patterns',
 			author: 'Alexander Shvets',

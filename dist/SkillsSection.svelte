@@ -1,95 +1,121 @@
 <script>
 	export let skillCategories = [
 		{
-			title: 'Frontend',
-			icon: 'bx-palette',
+			title: "Frontend",
+			icon: "bx-palette",
 			skills: [
-				{ name: 'HTML', icon: 'bxl-html5' },
-				{ name: 'CSS', icon: 'bxl-css3' },
-				{ name: 'React', icon: 'bxl-react' },
-				{ name: 'Next.js', icon: 'bx-right-arrow-circle' },
-				{ name: 'TailwindCSS', icon: 'bxl-tailwind-css' },
-				{ name: 'MUI', icon: 'bx-square-rounded' },
-				{ name: 'shadcn/ui', icon: 'bx-cube' }
-			]
+				{ name: "HTML", icon: "bxl-html5" },
+				{ name: "CSS", icon: "bxl-css3" },
+				{ name: "React", icon: "bxl-react" },
+				{
+					name: "Next.js",
+					icon: "bx-right-arrow-circle",
+				},
+				{
+					name: "TailwindCSS",
+					icon: "bxl-tailwind-css",
+				},
+				{ name: "MUI", icon: "bx-square-rounded" },
+				{ name: "shadcn/ui", icon: "bx-cube" },
+			],
 		},
 		{
-			title: 'Backend',
-			icon: 'bx-server',
+			title: "Backend",
+			icon: "bx-server",
 			skills: [
-				{ name: 'Node.js', icon: 'bxl-nodejs' },
-				{ name: 'Express', icon: 'bx-network-chart' },
-				{ name: 'NestJS', icon: 'bx-layer' },
-				{ name: 'Python', icon: 'bxl-python' },
-				{ name: 'Flask', icon: 'bxs-flask' }
-			]
+				{ name: "Node.js", icon: "bxl-nodejs" },
+				{ name: "Express", icon: "bx-network-chart" },
+				{ name: "NestJS", icon: "bx-layer" },
+				{ name: "Go", icon: "bxl-go" },
+			],
 		},
 		{
-			title: 'Databases',
-			icon: 'bx-data',
+			title: "Databases",
+			icon: "bx-data",
 			skills: [
-				{ name: 'PostgreSQL', icon: 'bxl-postgresql' },
-				{ name: 'MySQL', icon: 'bx-table' },
-				{ name: 'MongoDB', icon: 'bxl-mongodb' },
-				{ name: 'Redis', icon: 'bx-memory-card' },
-				{ name: 'Prisma', icon: 'bx-diamond' },
-				{ name: 'Drizzle', icon: 'bx-droplet' }
-			]
+				{ name: "PostgreSQL", icon: "bxl-postgresql" },
+				{ name: "MongoDB", icon: "bxl-mongodb" },
+				{ name: "Redis", icon: "bx-memory-card" },
+				{ name: "Prisma", icon: "bx-diamond" },
+				{ name: "Drizzle", icon: "bx-droplet" },
+			],
 		},
 		{
-			title: 'DevOps & Tools',
-			icon: 'bx-cog',
+			title: "DevOps & Tools",
+			icon: "bx-cog",
 			skills: [
-				{ name: 'Docker', icon: 'bxl-docker' },
-				{ name: 'Linux', icon: 'bx-terminal' },
-				{ name: 'Bash', icon: 'bx-code-block' },
-				{ name: 'Nginx', icon: 'bx-server' },
-				{ name: 'Git', icon: 'bxl-git' },
-				{ name: 'Vim', icon: 'bx-edit' }
-			]
+				{ name: "Docker", icon: "bxl-docker" },
+				{ name: "Linux", icon: "bx-terminal" },
+				{ name: "Bash", icon: "bx-code-block" },
+				{ name: "Nginx", icon: "bx-server" },
+				{ name: "Git", icon: "bxl-git" },
+				{ name: "Vim", icon: "bx-edit" },
+			],
 		},
 		{
-			title: 'Architecture & Design',
-			icon: 'bx-sitemap',
+			title: "Architecture & Design",
+			icon: "bx-sitemap",
 			skills: [
-				{ name: 'Design Patterns', icon: 'bx-shape-polygon' },
-				{ name: 'System Design', icon: 'bx-git-repo-forked' },
-				{ name: 'Load Balancer', icon: 'bx-transfer-alt' },
-				{ name: 'API Design', icon: 'bx-plug' }
-			]
+				{
+					name: "Design Patterns",
+					icon: "bx-shape-polygon",
+				},
+				{
+					name: "System Design",
+					icon: "bx-git-repo-forked",
+				},
+				{
+					name: "Load Balancer",
+					icon: "bx-transfer-alt",
+				},
+				{ name: "API Design", icon: "bx-plug" },
+			],
 		},
 		{
-			title: 'Networking & Security',
-			icon: 'bx-shield-quarter',
+			title: "Networking & Security",
+			icon: "bx-shield-quarter",
 			skills: [
-				{ name: 'Networking', icon: 'bx-globe' },
-				{ name: 'Security', icon: 'bx-lock-alt' },
-				{ name: 'HTTPS/SSL', icon: 'bx-certification' },
-				{ name: 'Authentication', icon: 'bx-key' }
-			]
-		}
+				{ name: "Networking", icon: "bx-globe" },
+				{ name: "Security", icon: "bx-lock-alt" },
+				{ name: "HTTPS/SSL", icon: "bx-certification" },
+				{ name: "Authentication", icon: "bx-key" },
+			],
+		},
 	];
 </script>
 
 <section class="skills" id="skills">
 	<div class="container">
 		<h2 class="heading">My <span>Skills</span></h2>
-		<p class="section-subtitle">Technologies and tools I work with</p>
+		<p class="section-subtitle">
+			Technologies and tools I work with
+		</p>
 
 		<div class="skills-grid">
 			{#each skillCategories as category}
 				<div class="skill-category">
 					<div class="category-header">
-						<i class='bx {category.icon}'></i>
+						<i class="bx {category.icon}"
+						></i>
 						<h3>{category.title}</h3>
 					</div>
 					<div class="skills-icons">
 						{#each category.skills as skill}
-							<div class="skill-item" title={skill.name}>
-								<div class="skill-icon">
-									<i class='bx {skill.icon}'></i>
+							<div
+								class="skill-item"
+								title={skill.name}
+							>
+								<div
+									class="skill-icon"
+								>
+									<i
+										class="bx {skill.icon}"
+									></i>
 								</div>
-								<span class="skill-name">{skill.name}</span>
+								<span
+									class="skill-name"
+									>{skill.name}</span
+								>
 							</div>
 						{/each}
 					</div>
@@ -107,15 +133,22 @@
 	}
 
 	.skills::before {
-		content: '';
+		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: 
-			radial-gradient(ellipse 50% 40% at 10% 50%, rgba(168, 85, 247, 0.08), transparent),
-			radial-gradient(ellipse 60% 50% at 90% 30%, rgba(34, 211, 238, 0.06), transparent);
+		background: radial-gradient(
+				ellipse 50% 40% at 10% 50%,
+				rgba(168, 85, 247, 0.08),
+				transparent
+			),
+			radial-gradient(
+				ellipse 60% 50% at 90% 30%,
+				rgba(34, 211, 238, 0.06),
+				transparent
+			);
 		pointer-events: none;
 	}
 
@@ -255,19 +288,19 @@
 	}
 
 	/* Mobile responsiveness */
-	@media(max-width: 1200px) {
+	@media (max-width: 1200px) {
 		.skills-grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 
-	@media(max-width: 991px) {
+	@media (max-width: 991px) {
 		.skills {
 			padding: 8rem 4%;
 		}
 	}
 
-	@media(max-width: 768px) {
+	@media (max-width: 768px) {
 		.heading {
 			font-size: 3.5rem;
 		}
@@ -282,7 +315,10 @@
 		}
 
 		.skills-icons {
-			grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+			grid-template-columns: repeat(
+				auto-fill,
+				minmax(6rem, 1fr)
+			);
 			gap: 1rem;
 		}
 
@@ -300,7 +336,7 @@
 		}
 	}
 
-	@media(max-width: 520px) {
+	@media (max-width: 520px) {
 		.heading {
 			font-size: 3rem;
 		}

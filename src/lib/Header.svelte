@@ -1,14 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
 
-	let menuActive = false;
-	let header;
+	let isSticky = false;
 
 	onMount(() => {
 		const handleScroll = () => {
-			if (header) {
-				header.classList.toggle('sticky', window.scrollY > 100);
-			}
+			isSticky = window.scrollY > 100;
 		};
 
 		window.addEventListener('scroll', handleScroll);
@@ -18,21 +15,10 @@
 		};
 	});
 
-	function toggleMenu() {
-		menuActive = !menuActive;
-	}
-
-	function closeMenu() {
-		menuActive = false;
-	}
 </script>
 
-<header class="header" bind:this={header}>
-	<button id="menu-icon" type="button" on:click|stopPropagation={toggleMenu} aria-label="Toggle navigation">
-		<i class='bx bx-menu'></i>
-		<span class="animate" style="--i:2;"></span>
-	</button>
-	<a href="#home" class="logo">
+<header class="header" class:sticky={isSticky}>
+	<a href="#home" class="logo" aria-label="Home">
 		<svg class="brand-logo" viewBox="0 0 750 160" xmlns="http://www.w3.org/2000/svg">
 			<defs>
 				<linearGradient id="terminalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -87,8 +73,7 @@
 		</svg>
 		<span class="animate" style="--i:1;"></span>
 	</a>
-	<nav class="navbar" class:active={menuActive} on:click={closeMenu}>
-		<a href="#home" class="active">Home</a>
+	<nav id="primary-navigation" class="navbar">
 		<a href="#about">About</a>
 		<a href="#education">Journey</a>
 		<a href="#skills">Skills</a>
@@ -134,7 +119,7 @@
 	.brand-logo {
 		height: 100%;
 		width: auto;
-		max-width: 200px;
+		max-width: 150px;
 		transition: transform 0.3s ease;
 	}
 
@@ -272,22 +257,9 @@
 		width: 60%;
 	}
 
-	#menu-icon {
-		font-size: 3.5rem;
-		color: var(--primary-light);
-		cursor: pointer;
-		display: none;
-		padding: 0.5rem;
-		border-radius: 0.5rem;
-		transition: all 0.3s ease;
-		background: transparent;
-		border: none;
-		outline: none;
-		-webkit-tap-highlight-color: transparent;
-	}
-
-	#menu-icon:hover {
-		background: rgba(255, 0, 85, 0.1);
+	.logo .animate,
+	.navbar .animate {
+		pointer-events: none;
 	}
 
 	/* Mobile responsiveness */
@@ -295,43 +267,16 @@
 		.header {
 			background: rgba(10, 10, 15, 0.95);
 			backdrop-filter: blur(20px);
+			justify-content: center;
 		}
 
 		.brand-logo {
-			max-width: 140px;
-			height: 35px;
-		}
-
-		#menu-icon {
-			display: block;
-			position: absolute;
-			right: 4%;
-			z-index: 1001;
-			pointer-events: auto;
+			max-width: 120px;
+			height: 32px;
 		}
 
 		.navbar {
-			position: absolute;
-			top: 100%;
-			left: 0;
-			width: 100%;
-			padding: 2rem 4%;
-			background: rgba(10, 10, 15, 0.98);
-			backdrop-filter: blur(20px);
-			border-bottom: 1px solid var(--border-color);
-			box-shadow: var(--shadow-lg);
-			flex-direction: column;
-			gap: 0;
-			transform: translateY(-10px);
-			opacity: 0;
-			visibility: hidden;
-			transition: all 0.3s ease;
-		}
-
-		.navbar.active {
-			transform: translateY(0);
-			opacity: 1;
-			visibility: visible;
+			display: none;
 		}
 
 		.navbar a {

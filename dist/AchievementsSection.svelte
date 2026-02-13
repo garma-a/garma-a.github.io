@@ -1,99 +1,117 @@
 <script>
-	import { base } from '$app/paths';
+	import { base } from "$app/paths";
 
 	export let achievements = [
 		{
 			image: `${base}/imgs/magdiYacoubCertificate.png`,
-			title: 'Full Stack Developer - Magdi Yacoub Heart Foundation',
-			description: 'Completed professional training and development work at Magdi Yacoub Heart Foundation, one of Egypt\'s leading healthcare institutions. Contributed to building web applications for healthcare management systems.',
-			year: '2024'
+			title: "Full Stack Developer - Magdi Yacoub Heart Foundation",
+			description:
+				"Completed professional training and development work at Magdi Yacoub Heart Foundation, one of Egypt's leading healthcare institutions. Contributed to building web applications for healthcare management systems.",
+			year: "2024",
 		},
 		{
 			image: `${base}/imgs/ITIDA_NTI_certificate.png`,
-			title: 'Full Stack Web Development - NTI & ITIDA',
-			description: 'Intensive full-stack web development program by the National Telecommunication Institute (NTI) and Information Technology Industry Development Agency (ITIDA). Mastered modern web technologies including React, Next.js, Node.js, NestJS, and database management.',
-			year: '2025'
+			title: "Full Stack Web Development - NTI & ITIDA",
+			description:
+				"Intensive full-stack web development program by the National Telecommunication Institute (NTI) and Information Technology Industry Development Agency (ITIDA). Mastered modern web technologies including React, Next.js, Node.js, NestJS, and database management.",
+			year: "2025",
 		},
 		{
 			image: `${base}/imgs/ApiDesignv4Certificate.png`,
-			title: 'API Design Professional Certificate',
-			description: 'Earned professional certification in RESTful API design, covering best practices for building scalable, secure, and well-documented APIs. Learned industry standards for API versioning, authentication, and documentation.',
-			year: '2025'
+			title: "API Design Professional Certificate",
+			description:
+				"Earned professional certification in RESTful API design, covering best practices for building scalable, secure, and well-documented APIs. Learned industry standards for API versioning, authentication, and documentation.",
+			year: "2025",
 		},
 		{
 			image: `${base}/imgs/GoogleUIUXCertificate1.png`,
-			title: 'Google UX Design Professional Certificate',
-			description: 'Completed Google\'s comprehensive UX Design course on Coursera. Learned the foundations of UX design, including user research, wireframing, prototyping, and usability testing. Mastered industry-standard tools like Figma.',
-			year: '2021'
+			title: "Google UX Design Professional Certificate",
+			description:
+				"Completed Google's comprehensive UX Design course on Coursera. Learned the foundations of UX design, including user research, wireframing, prototyping, and usability testing. Mastered industry-standard tools like Figma.",
+			year: "2021",
 		},
 		{
 			image: `${base}/imgs/GoogleUIUXCertificate2.png`,
-			title: 'Google UI Design Specialization',
-			description: 'Advanced UI design certification from Google covering visual design principles, design systems, responsive design, and creating high-fidelity mockups. Applied design thinking methodologies to real-world projects.',
-			year: '2021'
+			title: "Google UI Design Specialization",
+			description:
+				"Advanced UI design certification from Google covering visual design principles, design systems, responsive design, and creating high-fidelity mockups. Applied design thinking methodologies to real-world projects.",
+			year: "2021",
 		},
 		{
 			image: `${base}/imgs/GDSGCertificate.png`,
-			title: 'Google Developer Student Club',
-			description: 'Active member and contributor at Google Developer Student Club (GDSC). Participated in workshops, hackathons, and collaborative projects focusing on Google technologies and modern development practices.',
-			year: '2024'
+			title: "Google Developer Student Club",
+			description:
+				"Active member and contributor at Google Developer Student Club (GDSC). Participated in workshops, hackathons, and collaborative projects focusing on Google technologies and modern development practices.",
+			year: "2024",
 		},
 		{
 			image: `${base}/imgs/ICPCCertificate.png`,
-			title: 'ICPC Competitive Programming',
-			description: 'Participated in the International Collegiate Programming Contest (ICPC), one of the most prestigious programming competitions worldwide. Demonstrated strong problem-solving skills and algorithmic thinking.',
-			year: '2024'
-		}
+			title: "ICPC Competitive Programming",
+			description:
+				"Participated in the International Collegiate Programming Contest (ICPC), one of the most prestigious programming competitions worldwide. Demonstrated strong problem-solving skills and algorithmic thinking.",
+			year: "2024",
+		},
 	];
 
 	export let stats = [
 		{
-			icon: 'bx-code-alt',
-			number: '500+',
-			label: 'Problems Solved',
-			description: 'LeetCode & Codeforces'
+			icon: "bx-code-alt",
+			number: "700+",
+			label: "Problems Solved",
+			description: "LeetCode & Codeforces",
 		},
 		{
-			icon: 'bx-git-branch',
-			number: '10+',
-			label: 'Projects Built',
-			description: 'Full Stack Applications'
+			icon: "bx-git-branch",
+			number: "10+",
+			label: "Projects Built",
+			description: "Full Stack Applications",
 		},
 		{
-			icon: 'bx-server',
-			number: '15+',
-			label: 'APIs Designed',
-			description: 'RESTful Services'
+			icon: "bx-server",
+			number: "15+",
+			label: "APIs Designed",
+			description: "RESTful Services",
 		},
 		{
-			icon: 'bx-trophy',
-			number: '7+',
-			label: 'Certificates',
-			description: 'Professional Training'
-		}
+			icon: "bx-trophy",
+			number: "7+",
+			label: "Certificates",
+			description: "Professional Training",
+		},
 	];
 
-	export let allCertificatesUrl = 'https://docs.google.com/document/d/1UFKDcUgKgdAGvXF_iDyX_5ImvwMhxF0QYllSwsUHT8o/edit?usp=sharing';
-	export let codeforcesUrl = 'https://codeforces.com/profile/GIRGIS_EMAD_';
-	export let leetcodeUrl = 'https://leetcode.com/u/Hard-Work/';
+	export let allCertificatesUrl =
+		"https://docs.google.com/document/d/1UFKDcUgKgdAGvXF_iDyX_5ImvwMhxF0QYllSwsUHT8o/edit?usp=sharing";
+	export let codeforcesUrl =
+		"https://codeforces.com/profile/GIRGIS_EMAD_";
+	export let leetcodeUrl = "https://leetcode.com/u/Hard-Work/";
 </script>
 
 <section class="achievements" id="achievements">
 	<div class="container">
 		<h2 class="heading">My <span>Achievements</span></h2>
-		<p class="section-subtitle">Certifications, competitions, and milestones in my journey</p>
+		<p class="section-subtitle">
+			Certifications, competitions, and milestones in my
+			journey
+		</p>
 
 		<!-- Stats Grid -->
 		<div class="stats-grid">
 			{#each stats as stat}
 				<div class="stat-card">
 					<div class="stat-icon">
-						<i class='bx {stat.icon}'></i>
+						<i class="bx {stat.icon}"></i>
 					</div>
 					<div class="stat-info">
-						<span class="stat-number">{stat.number}</span>
-						<span class="stat-label">{stat.label}</span>
-						<span class="stat-desc">{stat.description}</span>
+						<span class="stat-number"
+							>{stat.number}</span
+						>
+						<span class="stat-label"
+							>{stat.label}</span
+						>
+						<span class="stat-desc"
+							>{stat.description}</span
+						>
 					</div>
 				</div>
 			{/each}
@@ -101,25 +119,39 @@
 
 		<!-- Certificates Grid -->
 		<h3 class="sub-heading">
-			<i class='bx bx-medal'></i>
+			<i class="bx bx-medal"></i>
 			Certificates & Recognition
 		</h3>
-		
+
 		<div class="certificates-grid">
 			{#each achievements as achievement, index}
-				<div class="certificate-card" style="--delay: {index * 0.1}s">
+				<div
+					class="certificate-card"
+					style="--delay: {index * 0.1}s"
+				>
 					<div class="certificate-image">
-						<img src={achievement.image} alt={achievement.title}>
+						<img
+							src={achievement.image}
+							alt={achievement.title}
+						/>
 						<div class="image-overlay">
-							<a href={achievement.image} target="_blank" class="view-btn">
-								<i class='bx bx-expand'></i>
+							<a
+								href={achievement.image}
+								target="_blank"
+								class="view-btn"
+							>
+								<i
+									class="bx bx-expand"
+								></i>
 								View Certificate
 							</a>
 						</div>
 					</div>
 					<div class="certificate-content">
 						<span class="certificate-year">
-							<i class='bx bx-calendar'></i>
+							<i
+								class="bx bx-calendar"
+							></i>
 							{achievement.year}
 						</span>
 						<h4>{achievement.title}</h4>
@@ -131,28 +163,57 @@
 
 		<!-- View All Certificates Button -->
 		<div class="view-all-section">
-			<a href={allCertificatesUrl} target="_blank" class="view-all-btn">
-				<i class='bx bx-link-external'></i>
+			<a
+				href={allCertificatesUrl}
+				target="_blank"
+				class="view-all-btn"
+			>
+				<i class="bx bx-link-external"></i>
 				View All Certificates in High Quality
 			</a>
-			<p class="view-all-desc">See all my certificates with detailed descriptions on Google Docs</p>
+			<p class="view-all-desc">
+				See all my certificates with detailed
+				descriptions on Google Docs
+			</p>
 		</div>
 
 		<!-- Competitive Programming Section -->
 		<div class="competitive-section">
 			<div class="competitive-content">
 				<div class="competitive-icon">
-					<i class='bx bx-code-block'></i>
+					<i class="bx bx-code-block"></i>
 				</div>
 				<div class="competitive-text">
 					<h3>Competitive Programming</h3>
-					<p>Solved <strong>500+ problems</strong> on platforms like <strong>Codeforces</strong> and <strong>LeetCode</strong>. Continuously improving algorithmic thinking, data structures knowledge, and problem-solving speed.</p>
+					<p>
+						Solved <strong
+							>700+ problems</strong
+						>
+						on platforms like
+						<strong>Codeforces</strong>
+						and <strong>LeetCode</strong>.
+						Continuously improving
+						algorithmic thinking, data
+						structures knowledge, and
+						problem-solving speed.
+					</p>
 					<div class="platform-badges">
-						<a href={codeforcesUrl} target="_blank" class="platform-badge">
-							<i class='bx bx-code'></i> Codeforces
+						<a
+							href={codeforcesUrl}
+							target="_blank"
+							class="platform-badge"
+						>
+							<i class="bx bx-code"
+							></i> Codeforces
 						</a>
-						<a href={leetcodeUrl} target="_blank" class="platform-badge">
-							<i class='bx bx-code-curly'></i> LeetCode
+						<a
+							href={leetcodeUrl}
+							target="_blank"
+							class="platform-badge"
+						>
+							<i
+								class="bx bx-code-curly"
+							></i> LeetCode
 						</a>
 					</div>
 				</div>
@@ -169,15 +230,22 @@
 	}
 
 	.achievements::before {
-		content: '';
+		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: 
-			radial-gradient(ellipse 50% 40% at 80% 20%, rgba(99, 102, 241, 0.08), transparent),
-			radial-gradient(ellipse 60% 50% at 20% 80%, rgba(34, 211, 238, 0.06), transparent);
+		background: radial-gradient(
+				ellipse 50% 40% at 80% 20%,
+				rgba(99, 102, 241, 0.08),
+				transparent
+			),
+			radial-gradient(
+				ellipse 60% 50% at 20% 80%,
+				rgba(34, 211, 238, 0.06),
+				transparent
+			);
 		pointer-events: none;
 	}
 
@@ -545,7 +613,7 @@
 	}
 
 	/* Mobile Responsiveness */
-	@media(max-width: 991px) {
+	@media (max-width: 991px) {
 		.achievements {
 			padding: 8rem 4%;
 		}
@@ -576,7 +644,7 @@
 		}
 	}
 
-	@media(max-width: 768px) {
+	@media (max-width: 768px) {
 		.heading {
 			font-size: 3.5rem;
 		}
@@ -616,7 +684,7 @@
 		}
 	}
 
-	@media(max-width: 520px) {
+	@media (max-width: 520px) {
 		.heading {
 			font-size: 3rem;
 		}

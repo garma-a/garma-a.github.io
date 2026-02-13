@@ -1,9 +1,10 @@
 <script>
-	import { base } from '$app/paths';
+	import { base } from "$app/paths";
 
-	export let aboutImage = `${base}/imgs/me.jpeg`;
-	export let title = 'Full Stack Web Developer';
-	export let aboutText = "I'm a Full Stack Web Developer 👨‍💻 with professional experience at Magdi Yacoub Heart Center and NTI/ITIDA in Egypt. I graduated from the Faculty of Computing & Information Technology at Arab Academy Aswan. I'm passionate about building robust web applications and always pushing myself to grow 🔥 My goal is to create impactful solutions that make a difference 🌟";
+	export let aboutImage = `${base}/imgs/myImage.jpg`;
+	export let title = "Full Stack Web Developer";
+	export let aboutText =
+		"I'm a Full Stack Web Developer 👨‍💻 with professional experience at Magdi Yacoub Heart Center and NTI/ITIDA in Egypt. I graduated from the Faculty of Computing & Information Technology at Arab Academy Aswan. I'm passionate about building robust web applications and always pushing myself to grow 🔥 My goal is to create impactful solutions that make a difference 🌟";
 </script>
 
 <section class="about" id="about">
@@ -12,7 +13,7 @@
 		<div class="about-wrapper">
 			<div class="about-img">
 				<div class="img-container">
-					<img src={aboutImage} alt="About me">
+					<img src={aboutImage} alt="About me" />
 					<div class="img-border"></div>
 					<div class="img-glow"></div>
 				</div>
@@ -20,22 +21,34 @@
 
 			<div class="about-content">
 				<div class="about-badge">
-					<i class='bx bx-code-alt'></i>
+					<i class="bx bx-code-alt"></i>
 					<span>{title}</span>
 				</div>
 				<p>{aboutText}</p>
 				<div class="about-stats">
 					<div class="stat-item">
-						<span class="stat-number">2+</span>
-						<span class="stat-label">Years Experience</span>
+						<span class="stat-number"
+							>2+</span
+						>
+						<span class="stat-label"
+							>Years Experience</span
+						>
 					</div>
 					<div class="stat-item">
-						<span class="stat-number">10+</span>
-						<span class="stat-label">Projects Completed</span>
+						<span class="stat-number"
+							>10+</span
+						>
+						<span class="stat-label"
+							>Projects Completed</span
+						>
 					</div>
 					<div class="stat-item">
-						<span class="stat-number">3</span>
-						<span class="stat-label">Companies Worked</span>
+						<span class="stat-number"
+							>2</span
+						>
+						<span class="stat-label"
+							>Companies Worked</span
+						>
 					</div>
 				</div>
 			</div>
@@ -54,15 +67,22 @@
 	}
 
 	.about::before {
-		content: '';
+		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: 
-			radial-gradient(ellipse 50% 50% at 20% 20%, rgba(99, 102, 241, 0.08), transparent),
-			radial-gradient(ellipse 40% 40% at 80% 80%, rgba(168, 85, 247, 0.06), transparent);
+		background: radial-gradient(
+				ellipse 50% 50% at 20% 20%,
+				rgba(99, 102, 241, 0.08),
+				transparent
+			),
+			radial-gradient(
+				ellipse 40% 40% at 80% 80%,
+				rgba(168, 85, 247, 0.06),
+				transparent
+			);
 		pointer-events: none;
 	}
 
@@ -221,7 +241,7 @@
 	}
 
 	/* Mobile responsiveness */
-	@media(max-width: 991px) {
+	@media (max-width: 991px) {
 		.about {
 			padding: 8rem 4%;
 		}
@@ -245,7 +265,7 @@
 		}
 	}
 
-	@media(max-width: 768px) {
+	@media (max-width: 768px) {
 		.heading {
 			font-size: 3.5rem;
 		}
@@ -261,7 +281,7 @@
 		}
 	}
 
-	@media(max-width: 520px) {
+	@media (max-width: 520px) {
 		.heading {
 			font-size: 3rem;
 		}

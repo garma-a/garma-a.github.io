@@ -1,17 +1,21 @@
 <script>
-	import { base } from '$app/paths';
-	export let name = 'Girgis Emad';
-	export let title = 'Full Stack Web Developer';
-	export let motto = 'THE ONLY WAY IS UP';
-	export let resumeUrl = 'https://docs.google.com/document/d/1AawrzdNbA_1DKIG23O6Oz-1l65rEIPDx9BJ7hm_y6Eg/edit?usp=sharing';
-	export let linkedinUrl = '#';
-	export let githubUrl = '#';
-	export let instagramUrl = '#';
-	export let whatsappUrl = '#';
+	import { base } from "$app/paths";
+	export let name = "Girgis Emad";
+	export let title = "Full Stack Web Developer";
+	export let motto = "THE ONLY WAY IS UP";
+	export let resumeUrl =
+		"https://drive.google.com/file/d/1Mz-Q39gGaI_WwB5oiTdP5hRElMGkfJgC/view?usp=sharing";
+	export let linkedinUrl = "#";
+	export let githubUrl = "#";
+	export let instagramUrl = "#";
+	export let whatsappUrl = "#";
 </script>
 
 <section class="home show-animate" id="home">
-	<div class="home-bg" style="background-image: url('{base}/imgs/HEADER.jpeg');"></div>
+	<div
+		class="home-bg"
+		style="background-image: url('{base}/imgs/HEADER.jpeg');"
+	></div>
 	<div class="home-content">
 		<span class="greeting">Hello, I'm</span>
 		<h1><span class="name-gradient">{name}</span></h1>
@@ -20,24 +24,50 @@
 		</div>
 		<p class="motto">{motto}</p>
 		<div class="btn-box">
-			<a href={resumeUrl} class="btn btn-primary" target="_blank">
-				<i class='bx bx-download'></i> Resume
+			<a
+				href={resumeUrl}
+				class="btn btn-primary"
+				target="_blank"
+			>
+				<i class="bx bx-download"></i> Resume
 			</a>
-			<a href={linkedinUrl} class="btn btn-outline" target="_blank">
-				<i class='bx bxl-linkedin'></i> LinkedIn
+			<a
+				href={linkedinUrl}
+				class="btn btn-outline"
+				target="_blank"
+			>
+				<i class="bx bxl-linkedin"></i> LinkedIn
 			</a>
 		</div>
 		<div class="home-sci-mobile">
-			<a href={githubUrl} target="_blank" aria-label="GitHub"><i class='bx bxl-github'></i></a>
-			<a href={instagramUrl} target="_blank" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
-			<a href={whatsappUrl} target="_blank" aria-label="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+			<a href={githubUrl} target="_blank" aria-label="GitHub"
+				><i class="bx bxl-github"></i></a
+			>
+			<a
+				href={instagramUrl}
+				target="_blank"
+				aria-label="Instagram"
+				><i class="bx bxl-instagram"></i></a
+			>
+			<a
+				href={whatsappUrl}
+				target="_blank"
+				aria-label="WhatsApp"
+				><i class="bx bxl-whatsapp"></i></a
+			>
 		</div>
 	</div>
 
 	<div class="home-sci">
-		<a href={githubUrl} target="_blank" aria-label="GitHub"><i class='bx bxl-github'></i></a>
-		<a href={instagramUrl} target="_blank" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
-		<a href={whatsappUrl} target="_blank" aria-label="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+		<a href={githubUrl} target="_blank" aria-label="GitHub"
+			><i class="bx bxl-github"></i></a
+		>
+		<a href={instagramUrl} target="_blank" aria-label="Instagram"
+			><i class="bx bxl-instagram"></i></a
+		>
+		<a href={whatsappUrl} target="_blank" aria-label="WhatsApp"
+			><i class="bx bxl-whatsapp"></i></a
+		>
 	</div>
 
 	<div class="scroll-indicator">
@@ -54,7 +84,11 @@
 		padding: 0 9%;
 		position: relative;
 		overflow: hidden;
-		background: linear-gradient(135deg, var(--bg-color) 0%, #0f0f1a 100%);
+		background: linear-gradient(
+			135deg,
+			var(--bg-color) 0%,
+			#0f0f1a 100%
+		);
 	}
 
 	.home-bg {
@@ -71,13 +105,17 @@
 	}
 
 	.home-bg::after {
-		content: '';
+		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(180deg, transparent 0%, var(--bg-color) 100%);
+		background: linear-gradient(
+			180deg,
+			transparent 0%,
+			var(--bg-color) 100%
+		);
 	}
 
 	.home-content {
@@ -257,7 +295,7 @@
 	}
 
 	.scroll-indicator span::before {
-		content: '';
+		content: "";
 		position: absolute;
 		top: 0.8rem;
 		left: 50%;
@@ -277,18 +315,34 @@
 	}
 
 	@keyframes bounce {
-		0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-		40% { transform: translateX(-50%) translateY(-10px); }
-		60% { transform: translateX(-50%) translateY(-5px); }
+		0%,
+		20%,
+		50%,
+		80%,
+		100% {
+			transform: translateX(-50%) translateY(0);
+		}
+		40% {
+			transform: translateX(-50%) translateY(-10px);
+		}
+		60% {
+			transform: translateX(-50%) translateY(-5px);
+		}
 	}
 
 	@keyframes scroll-dot {
-		0% { opacity: 1; top: 0.8rem; }
-		100% { opacity: 0; top: 2rem; }
+		0% {
+			opacity: 1;
+			top: 0.8rem;
+		}
+		100% {
+			opacity: 0;
+			top: 2rem;
+		}
 	}
 
 	/* Mobile responsiveness */
-	@media(max-width: 991px) {
+	@media (max-width: 991px) {
 		.home-sci {
 			display: none;
 		}
@@ -302,7 +356,7 @@
 		}
 	}
 
-	@media(max-width: 768px) {
+	@media (max-width: 768px) {
 		.home-content h1 {
 			font-size: 5rem;
 		}
@@ -316,7 +370,7 @@
 		}
 	}
 
-	@media(max-width: 520px) {
+	@media (max-width: 520px) {
 		.home-content h1 {
 			font-size: 4rem;
 		}
@@ -332,7 +386,7 @@
 		}
 	}
 
-	@media(max-width: 420px) {
+	@media (max-width: 420px) {
 		.home {
 			padding: 0 5%;
 		}
