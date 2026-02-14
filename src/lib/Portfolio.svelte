@@ -14,7 +14,7 @@
 	export let title = "Full Stack Web Developer";
 	export let motto = "THE ONLY WAY IS UP";
 	export let resumeUrl =
-		"https://drive.google.com/file/d/1Mz-Q39gGaI_WwB5oiTdP5hRElMGkfJgC/view?usp=sharing";
+		"https://drive.google.com/file/d/1LCC_zAmOp0bQ9BzS1mdbP-4MHNGbBMSD/view?usp=sharing";
 	export let linkedinUrl =
 		"https://www.linkedin.com/in/girgis-emad-garma-96943a258/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BxoJJYBM%2BTSuJAh3pxNX2AA%3D%3D";
 	export let githubUrl = "https://github.com/GARMA-A";

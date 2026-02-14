@@ -1,14 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
 
-	let menuActive = false;
-	let header;
+	let isSticky = false;
 
 	onMount(() => {
 		const handleScroll = () => {
-			if (header) {
-				header.classList.toggle('sticky', window.scrollY > 100);
-			}
+			isSticky = window.scrollY > 100;
 		};
 
 		window.addEventListener('scroll', handleScroll);
@@ -18,26 +15,10 @@
 		};
 	});
 
-	function toggleMenu() {
-		menuActive = !menuActive;
-	}
-
-	function closeMenu() {
-		menuActive = false;
-	}
 </script>
 
-<!-- Mobile menu backdrop -->
-{#if menuActive}
-	<div class="menu-backdrop" on:click={closeMenu} role="button" tabindex="-1"></div>
-{/if}
-
-<header class="header" bind:this={header}>
-	<button id="menu-icon" type="button" on:click|stopPropagation={toggleMenu} aria-label="Toggle navigation">
-		<i class={menuActive ? 'bx bx-x' : 'bx bx-menu'}></i>
-		<span class="animate" style="--i:2;"></span>
-	</button>
-	<a href="#home" class="logo">
+<header class="header" class:sticky={isSticky}>
+	<a href="#home" class="logo" aria-label="Home">
 		<svg class="brand-logo" viewBox="0 0 750 160" xmlns="http://www.w3.org/2000/svg">
 			<defs>
 				<linearGradient id="terminalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -92,14 +73,13 @@
 		</svg>
 		<span class="animate" style="--i:1;"></span>
 	</a>
-	<nav class="navbar" class:active={menuActive}>
-		<a href="#home" class="active" on:click={closeMenu}>Home</a>
-		<a href="#about" on:click={closeMenu}>About</a>
-		<a href="#education" on:click={closeMenu}>Journey</a>
-		<a href="#skills" on:click={closeMenu}>Skills</a>
-		<a href="#achievements" on:click={closeMenu}>Achievements</a>
-		<a href="#books" on:click={closeMenu}>Books</a>
-		<a href="#contact" on:click={closeMenu}>Contact</a>
+	<nav id="primary-navigation" class="navbar">
+		<a href="#about">About</a>
+		<a href="#education">Journey</a>
+		<a href="#skills">Skills</a>
+		<a href="#achievements">Achievements</a>
+		<a href="#books">Books</a>
+		<a href="#contact">Contact</a>
 
 		<span class="active-nav"></span>
 		<span class="animate" style="--i:2;"></span>
@@ -107,10 +87,6 @@
 </header>
 
 <style>
-	.menu-backdrop {
-		display: none;
-	}
-
 	.header {
 		position: fixed;
 		top: 0;
@@ -143,7 +119,7 @@
 	.brand-logo {
 		height: 100%;
 		width: auto;
-		max-width: 200px;
+		max-width: 150px;
 		transition: transform 0.3s ease;
 	}
 
@@ -281,88 +257,26 @@
 		width: 60%;
 	}
 
-	#menu-icon {
-		font-size: 3.5rem;
-		color: var(--primary-light);
-		cursor: pointer;
-		display: none;
-		padding: 0.5rem;
-		border-radius: 0.5rem;
-		transition: all 0.3s ease;
-		background: transparent;
-		border: none;
-		outline: none;
-		-webkit-tap-highlight-color: transparent;
-	}
-
-	#menu-icon:hover {
-		background: rgba(255, 0, 85, 0.1);
+	.logo .animate,
+	.navbar .animate {
+		pointer-events: none;
 	}
 
 	/* Mobile responsiveness */
 	@media(max-width: 768px) {
-		.menu-backdrop {
-			display: block;
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100vh;
-			background: rgba(0, 0, 0, 0.5);
-			backdrop-filter: blur(4px);
-			z-index: 999;
-			animation: fadeIn 0.3s ease;
-		}
-
-		@keyframes fadeIn {
-			from {
-				opacity: 0;
-			}
-			to {
-				opacity: 1;
-			}
-		}
-
 		.header {
 			background: rgba(10, 10, 15, 0.95);
 			backdrop-filter: blur(20px);
+			justify-content: center;
 		}
 
 		.brand-logo {
-			max-width: 140px;
-			height: 35px;
-		}
-
-		#menu-icon {
-			display: block;
-			position: absolute;
-			right: 4%;
-			z-index: 1001;
-			pointer-events: auto;
+			max-width: 120px;
+			height: 32px;
 		}
 
 		.navbar {
-			position: absolute;
-			top: 100%;
-			left: 0;
-			width: 100%;
-			padding: 2rem 4%;
-			background: rgba(10, 10, 15, 0.98);
-			backdrop-filter: blur(20px);
-			border-bottom: 1px solid var(--border-color);
-			box-shadow: var(--shadow-lg);
-			flex-direction: column;
-			gap: 0;
-			transform: translateY(-10px);
-			opacity: 0;
-			visibility: hidden;
-			transition: all 0.3s ease;
-		}
-
-		.navbar.active {
-			transform: translateY(0);
-			opacity: 1;
-			visibility: visible;
+			display: none;
 		}
 
 		.navbar a {
