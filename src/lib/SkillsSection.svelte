@@ -84,7 +84,7 @@
 	];
 </script>
 
-<section class="skills" id="skills">
+<section class="skills scroll-reveal" id="skills">
 	<div class="container">
 		<h2 class="heading">My <span>Skills</span></h2>
 		<p class="section-subtitle">
@@ -93,7 +93,7 @@
 
 		<div class="skills-grid">
 			{#each skillCategories as category}
-				<div class="skill-category">
+				<div class="skill-category scroll-reveal-child">
 					<div class="category-header">
 						<i class="bx {category.icon}"
 						></i>

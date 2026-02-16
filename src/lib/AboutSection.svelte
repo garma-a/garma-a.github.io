@@ -7,11 +7,11 @@
 		"I'm a Full Stack Web Developer 👨‍💻 with professional experience at Magdi Yacoub Heart Center and NTI/ITIDA in Egypt. I graduated from the Faculty of Computing & Information Technology at Arab Academy Aswan. I'm passionate about building robust web applications and always pushing myself to grow 🔥 My goal is to create impactful solutions that make a difference 🌟";
 </script>
 
-<section class="about" id="about">
+<section class="about scroll-reveal" id="about">
 	<div class="container">
 		<h2 class="heading">About <span>Me</span></h2>
 		<div class="about-wrapper">
-			<div class="about-img">
+			<div class="about-img scroll-reveal-child">
 				<div class="img-container">
 					<img src={aboutImage} alt="About me" />
 					<div class="img-border"></div>
@@ -19,7 +19,7 @@
 				</div>
 			</div>
 
-			<div class="about-content">
+			<div class="about-content scroll-reveal-child">
 				<div class="about-badge">
 					<i class="bx bx-code-alt"></i>
 					<span>{title}</span>

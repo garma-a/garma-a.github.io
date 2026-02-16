@@ -29,14 +29,14 @@
 	];
 </script>
 
-<section class="books" id="books">
+<section class="books scroll-reveal" id="books">
 	<div class="container">
 		<h2 class="heading">Books I <span>Recommend</span></h2>
 		<p class="section-subtitle">Essential reads that shaped my development journey</p>
 
 		<div class="books-grid">
 			{#each books as book, index}
-				<div class="book-card" style="--delay: {index * 0.15}s">
+				<div class="book-card scroll-reveal-child" style="--delay: {index * 0.15}s">
 					<div class="book-cover">
 						<img src={book.image} alt={book.title}>
 						<div class="book-overlay">
@@ -122,8 +122,6 @@
 		border-radius: 1.5rem;
 		padding: 2.5rem;
 		transition: all 0.4s ease;
-		animation: fadeInUp 0.6s ease forwards;
-		animation-delay: var(--delay);
 	}
 
 	.book-card:hover {
@@ -207,17 +205,6 @@
 		font-size: 1.5rem;
 		color: var(--text-color);
 		line-height: 1.8;
-	}
-
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
 	}
 
 	/* Mobile Responsiveness */

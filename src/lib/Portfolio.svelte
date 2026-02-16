@@ -1,5 +1,6 @@
 <script>
 	import { base } from "$app/paths";
+	import { onMount } from "svelte";
 	import Header from "./Header.svelte";
 	import HomeSection from "./HomeSection.svelte";
 	import AboutSection from "./AboutSection.svelte";
@@ -23,6 +24,35 @@
 	export let aboutImage = `${base}/myImage.jpg`;
 	export let aboutText =
 		"I'm a Full Stack Web Developer 👨‍💻 with professional experience at Magdi Yacoub Heart Center and NTI/ITIDA in Egypt. I graduated from the Faculty of Computing & Information Technology at Arab Academy Aswan. I'm passionate about building robust web applications and always pushing myself to grow 🔥 My goal is to create impactful solutions that make a difference 🌟";
+
+	onMount(() => {
+		const revealElements = document.querySelectorAll('.scroll-reveal');
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('revealed');
+						// Also reveal child elements with staggered delay
+						const children = entry.target.querySelectorAll('.scroll-reveal-child');
+						children.forEach((child, index) => {
+							child.style.transitionDelay = `${index * 0.1}s`;
+							child.classList.add('revealed');
+						});
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{
+				threshold: 0.15,
+				rootMargin: '0px 0px -50px 0px'
+			}
+		);
+
+		revealElements.forEach((el) => observer.observe(el));
+
+		return () => observer.disconnect();
+	});
 </script>
 
 <svelte:head>
@@ -171,5 +201,40 @@
 
 	:global(::-webkit-scrollbar-thumb:hover) {
 		background: var(--primary-light);
+	}
+
+	/* Scroll Reveal Animation */
+	:global(.scroll-reveal) {
+		opacity: 0;
+		transform: translateY(60px);
+		transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+			transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	:global(.scroll-reveal.revealed) {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	:global(.scroll-reveal-child) {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+			transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	:global(.scroll-reveal-child.revealed) {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* Reduce motion for accessibility */
+	@media (prefers-reduced-motion: reduce) {
+		:global(.scroll-reveal),
+		:global(.scroll-reveal-child) {
+			transition: none;
+			opacity: 1;
+			transform: none;
+		}
 	}
 </style>

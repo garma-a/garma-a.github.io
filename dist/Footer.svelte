@@ -2,7 +2,7 @@
 	export let copyrightText = '© 2026 Girgis Emad. All Rights Reserved.';
 </script>
 
-<footer class="footer" id="contact">
+<footer class="footer scroll-reveal" id="contact">
 	<div class="footer-container">
 		<div class="footer-content">
 			<div class="footer-brand">

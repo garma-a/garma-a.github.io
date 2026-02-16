@@ -36,7 +36,7 @@
 	];
 </script>
 
-<section class="education" id="education">
+<section class="education scroll-reveal" id="education">
 	<div class="container">
 		<h2 class="heading">My <span>Journey</span></h2>
 
@@ -49,7 +49,7 @@
 
 				<div class="timeline">
 					{#each educationData as item, index}
-						<div class="timeline-item" style="--delay: {index * 0.1}s">
+						<div class="timeline-item scroll-reveal-child" style="--delay: {index * 0.1}s">
 							<div class="timeline-dot"></div>
 							<div class="timeline-content">
 								<span class="year">
@@ -72,7 +72,7 @@
 
 				<div class="timeline">
 					{#each experienceData as item, index}
-						<div class="timeline-item" style="--delay: {index * 0.1}s">
+						<div class="timeline-item scroll-reveal-child" style="--delay: {index * 0.1}s">
 							<div class="timeline-dot"></div>
 							<div class="timeline-content">
 								<span class="year">
@@ -187,8 +187,6 @@
 	.timeline-item {
 		position: relative;
 		margin-bottom: 3rem;
-		animation: fadeInUp 0.6s ease forwards;
-		animation-delay: var(--delay);
 	}
 
 	.timeline-dot {
@@ -252,17 +250,6 @@
 		font-size: 1.5rem;
 		color: var(--text-color);
 		line-height: 1.7;
-	}
-
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
 	}
 
 	/* Mobile responsiveness */

@@ -87,7 +87,7 @@
 	export let leetcodeUrl = "https://leetcode.com/u/Hard-Work/";
 </script>
 
-<section class="achievements" id="achievements">
+<section class="achievements scroll-reveal" id="achievements">
 	<div class="container">
 		<h2 class="heading">My <span>Achievements</span></h2>
 		<p class="section-subtitle">
@@ -98,7 +98,7 @@
 		<!-- Stats Grid -->
 		<div class="stats-grid">
 			{#each stats as stat}
-				<div class="stat-card">
+				<div class="stat-card scroll-reveal-child">
 					<div class="stat-icon">
 						<i class="bx {stat.icon}"></i>
 					</div>
@@ -126,7 +126,7 @@
 		<div class="certificates-grid">
 			{#each achievements as achievement, index}
 				<div
-					class="certificate-card"
+					class="certificate-card scroll-reveal-child"
 					style="--delay: {index * 0.1}s"
 				>
 					<div class="certificate-image">
@@ -378,8 +378,6 @@
 		border-radius: 1.5rem;
 		overflow: hidden;
 		transition: all 0.4s ease;
-		animation: fadeInUp 0.6s ease forwards;
-		animation-delay: var(--delay);
 	}
 
 	.certificate-card:hover {
@@ -599,17 +597,6 @@
 	.platform-badge i {
 		font-size: 1.8rem;
 		color: var(--accent);
-	}
-
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
 	}
 
 	/* Mobile Responsiveness */
