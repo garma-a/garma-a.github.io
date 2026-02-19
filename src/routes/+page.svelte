@@ -1,14 +1,14 @@
 <script>
 	import { Portfolio } from "$lib";
-	let title = "Garma | Girgis Emad - Full Stack Developer";
+	let title = "Garma | Girgis Emad - Backend Software Engineer";
 	let description =
-		"Portfolio of Garma (Girgis Emad), a Full Stack Developer from Egypt specializing in React, Node.js, SvelteKit, Go, Rust and Modern Web Technologies. Hire a skilled developer for your next project.";
+		"Portfolio of Garma (Girgis Emad), a Backend Software Engineer from Egypt specializing in NestJS, Express.js, PostgreSQL, Docker, Go, CI/CD, and API Design. Hire a skilled backend engineer for your next project.";
 	let url = "https://garmaa.me";
 	let imageUrl = "https://garmaa.me/fullLogo.svg";
 
 	// SEO Keywords
 	let keywords =
-		"Garma, garma-a, Girgis Emad, Full Stack Developer, Web Developer, React Developer, Node.js Developer, SvelteKit, Go Developer, Rust Developer, Egypt Developer, Frontend Developer, Backend Developer, Software Engineer, garmaa.me, Express.js Developer, Nest.je, Developer, python Developer, FastAPI Developer, Flask Developer";
+		"Garma, garma-a, Girgis Emad, Backend Software Engineer, Backend Developer, NestJS Developer, Express.js Developer, PostgreSQL, Docker, Go Developer, CI/CD, API Design, Node.js Developer, Software Engineer, Egypt Developer, System Design, garmaa.me";
 </script>
 
 <svelte:head>
@@ -20,7 +20,7 @@
 	<meta name="googlebot" content="index, follow" />
 
 	<!-- Additional SEO meta tags -->
-	<meta name="subject" content="Full Stack Web Development Portfolio" />
+	<meta name="subject" content="Backend Software Engineering Portfolio" />
 	<meta name="copyright" content="Girgis Emad" />
 	<meta name="language" content="EN" />
 	<meta name="rating" content="General" />
@@ -37,7 +37,7 @@
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content={imageUrl} />
-	<meta property="og:image:alt" content="Garma - Full Stack Developer" />
+	<meta property="og:image:alt" content="Garma - Backend Software Engineer" />
 	<meta property="og:site_name" content="Garma Portfolio" />
 	<meta property="og:locale" content="en_US" />
 
@@ -47,7 +47,7 @@
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={imageUrl} />
-	<meta name="twitter:image:alt" content="Garma - Full Stack Developer" />
+	<meta name="twitter:image:alt" content="Garma - Backend Software Engineer" />
 	<meta name="twitter:creator" content="@garma" />
 
 	<!-- Canonical URL -->
@@ -67,8 +67,8 @@
 			"alternateName": ["Garma", "garma-a", "GARMA-A"],
 			"url": "https://garmaa.me",
 			"image": "https://garmaa.me/og-image.jpg",
-			"jobTitle": "Full Stack Developer",
-			"description": "Full Stack Developer specializing in React, Node.js, SvelteKit, Go, and Rust",
+			"jobTitle": "Backend Software Engineer",
+			"description": "Backend Software Engineer specializing in NestJS, Express.js, PostgreSQL, Docker, Go, and API Design",
 			"telephone": "+201278203355",
 			"email": "girgisemad74@gmail.com",
 			"address": {
@@ -82,19 +82,19 @@
 				"https://www.instagram.com/girgisyt/"
 			],
 			"knowsAbout": [
-				"JavaScript",
-				"TypeScript",
-				"React",
-				"SvelteKit",
-				"Node.js",
+				"NestJS",
+				"Express.js",
+				"PostgreSQL",
+				"Docker",
 				"Go",
-				"Rust",
-				"Full Stack Development",
-				"Web Development",
-				"Frontend Development",
-				"Backend Development",
+				"CI/CD",
+				"Node.js",
 				"API Design",
-				"UI/UX Design"
+				"System Design",
+				"Backend Development",
+				"MongoDB",
+				"Redis",
+				"Prisma"
 			],
 			"alumniOf": {
 				"@type": "EducationalOrganization",
@@ -140,8 +140,8 @@
 			"@type": "ProfilePage",
 			"@id": "https://garmaa.me/#profilepage",
 			"url": "https://garmaa.me",
-			"name": "Garma | Full Stack Developer Portfolio",
-			"description": "Professional portfolio showcasing Full Stack Development work",
+			"name": "Garma | Backend Software Engineer Portfolio",
+			"description": "Professional portfolio showcasing Backend Software Engineering work",
 			"mainEntity": {
 				"@id": "https://garmaa.me/#person"
 			}
