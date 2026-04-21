@@ -1,0 +1,196 @@
+
+<h2 class="sr-only">Interactive tech skill dependency graph — hover nodes to explore connections and prerequisites</h2>
+
+<div id="root" style="background:#08101E;border-radius:14px;overflow:hidden;font-family:var(--font-mono);position:relative">
+
+  <div style="padding:16px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.05)">
+    <div>
+      <p style="font-size:9px;letter-spacing:0.2em;color:#2E4060;text-transform:uppercase;margin:0 0 3px">Software Engineer</p>
+      <p style="color:#A8C4E8;font-size:15px;font-weight:500;margin:0">Tech Stack Graph</p>
+    </div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <span style="display:flex;align-items:center;gap:5px;font-size:9px;color:#3E5878;letter-spacing:0.05em"><span style="width:7px;height:7px;border-radius:50%;background:#BF8A0A;display:inline-block"></span>Foundation</span>
+      <span style="display:flex;align-items:center;gap:5px;font-size:9px;color:#3E5878;letter-spacing:0.05em"><span style="width:7px;height:7px;border-radius:50%;background:#2878C8;display:inline-block"></span>Libraries</span>
+      <span style="display:flex;align-items:center;gap:5px;font-size:9px;color:#3E5878;letter-spacing:0.05em"><span style="width:7px;height:7px;border-radius:50%;background:#6858C8;display:inline-block"></span>Frameworks</span>
+      <span style="display:flex;align-items:center;gap:5px;font-size:9px;color:#3E5878;letter-spacing:0.05em"><span style="width:7px;height:7px;border-radius:50%;background:#158868;display:inline-block"></span>DevOps</span>
+    </div>
+  </div>
+
+  <canvas id="sc" style="display:block;width:100%;cursor:crosshair"></canvas>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.05);padding:14px 20px 16px;min-height:88px">
+    <p id="msg" style="color:#1E3050;font-size:11px;text-align:center;padding:12px 0;margin:0">hover a node to explore connections</p>
+    <div id="det" style="display:none">
+      <div style="display:flex;gap:20px;align-items:flex-start">
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+            <span id="dN" style="font-size:15px;font-weight:500;color:#C8DCFA"></span>
+            <span id="dC" style="font-size:9px;padding:2px 9px;border-radius:99px;font-weight:500;letter-spacing:0.05em"></span>
+          </div>
+          <p id="dD" style="font-size:11px;color:#4A6888;margin:0 0 10px;line-height:1.65;font-family:var(--font-sans)"></p>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="flex:1;height:2px;background:rgba(255,255,255,0.05);border-radius:1px;overflow:hidden">
+              <div id="dB" style="height:2px;border-radius:1px;transition:width 0.45s ease"></div>
+            </div>
+            <span id="dP" style="font-size:10px;color:#3E5878;min-width:30px;text-align:right"></span>
+          </div>
+        </div>
+        <div style="width:170px;flex-shrink:0">
+          <p style="font-size:9px;color:#1E3050;margin:0 0 5px;text-transform:uppercase;letter-spacing:0.1em">Requires</p>
+          <div id="dR" style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:9px"></div>
+          <p style="font-size:9px;color:#1E3050;margin:0 0 5px;text-transform:uppercase;letter-spacing:0.1em">Unlocks</p>
+          <div id="dU" style="display:flex;flex-wrap:wrap;gap:3px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+const N=[
+  {id:'css',      name:'CSS',         ab:['CSS'],        lv:0, x:.19, y:.85, c:'#BF8A0A', cat:'Foundation', p:95, d:'The visual language of the web — layouts, animations, and design systems all start here.'},
+  {id:'js',       name:'JavaScript',  ab:['JS'],         lv:0, x:.56, y:.85, c:'#BF8A0A', cat:'Foundation', p:97, d:'Core web programming language powering both browser and server-side logic.'},
+  {id:'tailwind', name:'Tailwind CSS',ab:['Tailwind'],   lv:1, x:.11, y:.60, c:'#2878C8', cat:'Styling',    p:92, d:'Utility-first CSS framework enabling rapid, consistent UI development without leaving HTML.'},
+  {id:'ts',       name:'TypeScript',  ab:['TS'],         lv:1, x:.37, y:.60, c:'#2878C8', cat:'Language',   p:88, d:'Typed superset of JavaScript for maintainable, scalable codebases with IDE superpowers.'},
+  {id:'react',    name:'React',       ab:['React'],      lv:1, x:.61, y:.60, c:'#2878C8', cat:'Library',    p:95, d:'Component-based UI library with hooks, context, and a massive ecosystem.'},
+  {id:'node',     name:'Node.js',     ab:['Node.js'],    lv:1, x:.83, y:.60, c:'#2878C8', cat:'Runtime',    p:80, d:'JavaScript runtime enabling server-side development, build tooling, and APIs.'},
+  {id:'shadcn',   name:'shadcn/ui',   ab:['shadcn'],     lv:2, x:.21, y:.35, c:'#6858C8', cat:'Components', p:90, d:'Copy-paste accessible components built on Radix UI + Tailwind — own your design system.'},
+  {id:'nextjs',   name:'Next.js',     ab:['Next.js'],    lv:2, x:.51, y:.33, c:'#6858C8', cat:'Framework',  p:88, d:'Full-stack React framework with file-based routing, SSR, RSC, and edge functions.'},
+  {id:'graphql',  name:'GraphQL',     ab:['GraphQL'],    lv:2, x:.79, y:.38, c:'#6858C8', cat:'API',        p:72, d:'Declarative query language for APIs — fetch exactly what you need, nothing more.'},
+  {id:'prisma',   name:'Prisma',      ab:['Prisma'],     lv:3, x:.35, y:.11, c:'#158868', cat:'ORM',        p:78, d:'Type-safe ORM with intuitive schema, migrations, and first-class TypeScript support.'},
+  {id:'docker',   name:'Docker',      ab:['Docker'],     lv:3, x:.64, y:.11, c:'#158868', cat:'DevOps',     p:70, d:'Container platform for consistent, reproducible environments from dev to production.'},
+];
+const L=[
+  {f:'css',t:'tailwind'},{f:'css',t:'shadcn'},
+  {f:'js',t:'ts'},{f:'js',t:'react'},{f:'js',t:'node'},
+  {f:'tailwind',t:'shadcn'},{f:'ts',t:'react'},{f:'ts',t:'nextjs'},{f:'ts',t:'prisma'},
+  {f:'react',t:'nextjs'},{f:'react',t:'shadcn'},{f:'shadcn',t:'nextjs'},
+  {f:'node',t:'graphql'},{f:'node',t:'docker'},
+  {f:'nextjs',t:'prisma'},{f:'nextjs',t:'docker'},
+];
+
+const cv=document.getElementById('sc');
+let W,H,dpr,hov=null,rf;
+
+function setup(){
+  dpr=window.devicePixelRatio||1;
+  W=cv.parentElement.getBoundingClientRect().width;
+  H=Math.min(380,Math.max(280,W*0.52));
+  cv.style.width=W+'px'; cv.style.height=H+'px';
+  cv.width=W*dpr; cv.height=H*dpr;
+  cv.getContext('2d').scale(dpr,dpr);
+}
+
+function qp(x1,y1,cx,cy,x2,y2,t){const m=1-t;return{x:m*m*x1+2*m*t*cx+t*t*x2,y:m*m*y1+2*m*t*cy+t*t*y2};}
+
+function draw(){
+  const ctx=cv.getContext('2d');
+  const t=Date.now()*0.001;
+  ctx.clearRect(0,0,W,H);
+
+  L.forEach((lk,i)=>{
+    const fn=N.find(n=>n.id===lk.f),tn=N.find(n=>n.id===lk.t);
+    if(!fn||!tn)return;
+    const x1=fn.x*W,y1=fn.y*H,x2=tn.x*W,y2=tn.y*H;
+    const cx=(x1+x2)/2,cy=Math.min(y1,y2)-18;
+    const hl=hov===lk.f||hov===lk.t;
+
+    ctx.beginPath();ctx.moveTo(x1,y1);ctx.quadraticCurveTo(cx,cy,x2,y2);
+    ctx.strokeStyle=hl?fn.c+'AA':'rgba(60,90,140,0.1)';
+    ctx.lineWidth=hl?1.6:0.7;ctx.stroke();
+
+    const ap=qp(x1,y1,cx,cy,x2,y2,0.91);
+    const ap2=qp(x1,y1,cx,cy,x2,y2,0.86);
+    const ang=Math.atan2(ap.y-ap2.y,ap.x-ap2.x);
+    const as=hl?8:5;
+    ctx.beginPath();ctx.moveTo(ap.x,ap.y);
+    ctx.lineTo(ap.x-as*Math.cos(ang-.42),ap.y-as*Math.sin(ang-.42));
+    ctx.lineTo(ap.x-as*Math.cos(ang+.42),ap.y-as*Math.sin(ang+.42));
+    ctx.closePath();ctx.fillStyle=hl?fn.c+'88':'rgba(60,90,140,0.18)';ctx.fill();
+
+    const tp=((t*0.18+i*0.21)%1);
+    const dp=qp(x1,y1,cx,cy,x2,y2,tp);
+    ctx.beginPath();ctx.arc(dp.x,dp.y,hl?3:1.6,0,Math.PI*2);
+    ctx.fillStyle=hl?fn.c:'rgba(60,110,200,0.18)';ctx.fill();
+    if(hl){ctx.beginPath();ctx.arc(dp.x,dp.y,6,0,Math.PI*2);ctx.fillStyle=fn.c+'22';ctx.fill();}
+  });
+
+  N.forEach(nd=>{
+    const x=nd.x*W,y=nd.y*H;
+    const r=24,hl=hov===nd.id;
+
+    if(hl){
+      const grad=ctx.createRadialGradient(x,y,0,x,y,r+10);
+      grad.addColorStop(0,nd.c+'28');grad.addColorStop(1,nd.c+'00');
+      ctx.beginPath();ctx.arc(x,y,r+10,0,Math.PI*2);ctx.fillStyle=grad;ctx.fill();
+    }
+
+    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.fillStyle=hl?nd.c+'2A':nd.c+'10';ctx.fill();
+    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.strokeStyle=hl?nd.c+'CC':nd.c+'38';ctx.lineWidth=hl?1.5:0.7;ctx.stroke();
+
+    ctx.fillStyle=hl?'#D8EAFF':nd.c+'CC';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.font=`${hl?'500 ':'400 '}10.5px "Courier New",monospace`;
+
+    const lines=nd.ab;
+    const lh=11;
+    const off=(lines.length-1)*lh/2;
+    lines.forEach((l,i)=>ctx.fillText(l,x,y-off+i*lh));
+
+    if(hl){
+      const bw=34,bx=x-bw/2,by=y+r+5;
+      ctx.fillStyle='rgba(255,255,255,0.05)';
+      ctx.fillRect(bx,by,bw,2);
+      ctx.fillStyle=nd.c;
+      ctx.fillRect(bx,by,bw*(nd.p/100),2);
+    }
+  });
+
+  rf=requestAnimationFrame(draw);
+}
+
+function find(mx,my){
+  for(const nd of N){if(Math.hypot(mx-nd.x*W,my-nd.y*H)<28)return nd.id;}return null;
+}
+
+function panel(nid){
+  const nd=N.find(n=>n.id===nid);
+  document.getElementById('msg').style.display=nd?'none':'block';
+  document.getElementById('det').style.display=nd?'block':'none';
+  if(!nd)return;
+  document.getElementById('dN').textContent=nd.name;
+  document.getElementById('dD').textContent=nd.d;
+  document.getElementById('dP').textContent=nd.p+'%';
+  document.getElementById('dB').style.width=nd.p+'%';
+  document.getElementById('dB').style.background=nd.c;
+  const ce=document.getElementById('dC');
+  ce.textContent=nd.cat;
+  ce.style.cssText=`font-size:9px;padding:2px 9px;border-radius:99px;font-weight:500;letter-spacing:0.05em;font-family:var(--font-mono);background:${nd.c}1A;color:${nd.c};border:1px solid ${nd.c}38;`;
+  ['dR','dU'].forEach((id,idx)=>{
+    const ids=idx===0?L.filter(l=>l.t===nid).map(l=>l.f):L.filter(l=>l.f===nid).map(l=>l.t);
+    const el=document.getElementById(id);el.innerHTML='';
+    if(!ids.length){const s=document.createElement('span');s.textContent='—';s.style.cssText='font-size:9px;color:#1E3050;';el.appendChild(s);return;}
+    ids.forEach(cid=>{
+      const cn=N.find(n=>n.id===cid);if(!cn)return;
+      const tag=document.createElement('span');
+      tag.textContent=cn.name;
+      tag.style.cssText=`font-size:9px;padding:2px 7px;border-radius:99px;border:1px solid ${cn.c}38;color:${cn.c};font-family:var(--font-mono);background:${cn.c}0E;cursor:default;`;
+      el.appendChild(tag);
+    });
+  });
+}
+
+cv.addEventListener('mousemove',e=>{
+  const r=cv.getBoundingClientRect();
+  hov=find(e.clientX-r.left,e.clientY-r.top);
+  cv.style.cursor=hov?'pointer':'crosshair';
+  panel(hov);
+});
+cv.addEventListener('mouseleave',()=>{hov=null;panel(null);});
+window.addEventListener('resize',()=>{cancelAnimationFrame(rf);setup();draw();});
+setup();draw();
+})();
+</script>

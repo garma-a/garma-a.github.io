@@ -36,20 +36,22 @@
 			image: `${base}/imgs/projects/smart-safety-demo.png`,
 		},
 		{
-			slug: "redisgo",
-			title: "RedisGo",
+			slug: "qc-project",
+			title: "Quality Control (QC) System",
 			description:
-				"A complete, production-ready Redis-compatible in-memory database built entirely from scratch using Go. Explores low-level TCP networking and the RESP wire protocol.",
-			stack: ["Go", "TCP", "RESP Protocol", "Goroutines"],
-			image: `${base}/imgs/RedisGo/architecture.png`,
+				"A comprehensive Quality Control and Machine Monitoring system built to track industrial processes, manage quality alerts, and oversee user roles. Features real-time monitoring and detailed reporting.",
+			stack: ["Node.js", "PostgreSQL", "Express.js", "Svelte"],
+			image: `${base}/imgs/Qc_project_imges/002_admin_dashboard.png`,
+			featured: true,
 		},
 		{
-			slug: "qc",
-			title: "QC Monitor Dashboard",
+			slug: "redisgo",
+			title: "RedisGo — Redis from Scratch",
 			description:
-				"A customized dashboard designed to monitor real-time machine stats and quality control test results visually. Built to streamline lab technicians' workflows.",
-			stack: ["React", "TypeScript", "TailwindCSS"],
-			image: `${base}/imgs/projects/qc-demo.png`,
+				"A Redis-compatible in-memory database server built from scratch in Go. Implements RESP protocol parsing, string/list/stream data types, and channel-based blocking operations.",
+			stack: ["Go", "TCP", "RESP", "Concurrency"],
+			image: `${base}/imgs/RedisGo/architecture.png`,
+			featured: true,
 		},
 	];
 

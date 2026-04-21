@@ -18,9 +18,9 @@
 			author: 'Donovan & Kernighan',
 		},
 		{
-			image: `${base}/imgs/theRustProgramminLanguageBookCover.jpg`,
-			title: 'The Rust Programming Language',
-			author: 'Klabnik & Nichols',
+			image: `${base}/imgs/DesignDataInensiveApplications.png`,
+			title: 'Designing Data-Intensive Applications',
+			author: 'Martin Kleppmann',
 		}
 	];
 </script>
