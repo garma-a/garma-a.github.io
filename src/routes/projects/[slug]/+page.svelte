@@ -740,7 +740,7 @@
 </div>
 
 <style>
-	:global(html), :global(body) {
+	:global(body) {
 		margin: 0;
 		padding: 0;
 		background-color: #0a0a0f;
@@ -756,7 +756,6 @@
 
 	:global(html) {
 		font-size: 62.5%;
-		overflow-x: hidden;
 	}
 
 	:global(body.lightbox-open) {
