@@ -6,25 +6,21 @@
 			image: `${base}/imgs/AlexanderShvets-DiveIntoDesignPatterns(2019)BookCover.jpg`,
 			title: 'Dive Into Design Patterns',
 			author: 'Alexander Shvets',
-			description: 'A comprehensive guide to software design patterns. This book helped me understand how to write more maintainable, scalable, and elegant code by applying proven solutions to common programming challenges.'
 		},
 		{
 			image: `${base}/imgs/unitTestsBookCover.jpeg`,
-			title: 'Unit Testing: Principles, Practices, and Patterns',
+			title: 'Unit Testing',
 			author: 'Vladimir Khorikov',
-			description: 'An essential resource for writing effective unit tests. This book transformed my approach to testing, teaching me how to write tests that provide real value and improve code quality.'
 		},
 		{
 			image: `${base}/imgs/theGoProgrammingLanguageBook_.jpg`,
 			title: 'The Go Programming Language',
-			author: 'Alan A. A. Donovan & Brian W. Kernighan',
-			description: 'The definitive guide to Go programming. This book taught me the fundamentals of Go, from its unique approach to concurrency to building robust and efficient applications.'
+			author: 'Donovan & Kernighan',
 		},
 		{
 			image: `${base}/imgs/theRustProgramminLanguageBookCover.jpg`,
 			title: 'The Rust Programming Language',
-			author: 'Steve Klabnik & Carol Nichols',
-			description: 'The official guide to Rust, covering everything from basic concepts to advanced features. This book taught me how to write safe, concurrent, and performant systems programming code.'
+			author: 'Klabnik & Nichols',
 		}
 	];
 </script>
@@ -32,24 +28,19 @@
 <section class="books scroll-reveal" id="books">
 	<div class="container">
 		<h2 class="heading">Books I <span>Recommend</span></h2>
-		<p class="section-subtitle">Essential reads that shaped my development journey</p>
 
 		<div class="books-grid">
 			{#each books as book, index}
-				<div class="book-card scroll-reveal-child" style="--delay: {index * 0.15}s">
+				<div class="book-card scroll-reveal-child" style="--delay: {index * 0.1}s">
 					<div class="book-cover">
-						<img src={book.image} alt={book.title}>
+						<img src={book.image} alt={book.title} loading="lazy">
 						<div class="book-overlay">
 							<i class='bx bx-book-open'></i>
 						</div>
 					</div>
-					<div class="book-content">
+					<div class="book-info">
 						<h3 class="book-title">{book.title}</h3>
-						<span class="book-author">
-							<i class='bx bx-user'></i>
-							{book.author}
-						</span>
-						<p class="book-description">{book.description}</p>
+						<span class="book-author">{book.author}</span>
 					</div>
 				</div>
 			{/each}
@@ -62,6 +53,8 @@
 		background: var(--sec-bg-color);
 		position: relative;
 		overflow: hidden;
+		min-height: auto;
+		padding: 6rem 9% 6rem;
 	}
 
 	.books::before {
@@ -78,7 +71,7 @@
 	}
 
 	.container {
-		max-width: 120rem;
+		max-width: 80rem;
 		width: 100%;
 		margin: 0 auto;
 		position: relative;
@@ -86,10 +79,10 @@
 	}
 
 	.heading {
-		font-size: 4.5rem;
+		font-size: 3.5rem;
 		font-weight: 700;
 		text-align: center;
-		margin-bottom: 1.5rem;
+		margin-bottom: 3rem;
 		color: var(--white);
 	}
 
@@ -100,44 +93,38 @@
 		background-clip: text;
 	}
 
-	.section-subtitle {
-		text-align: center;
-		font-size: 1.6rem;
-		color: var(--text-muted);
-		margin-bottom: 5rem;
-	}
-
+	/* 2x2 Grid */
 	.books-grid {
-		display: flex;
-		flex-direction: column;
-		gap: 3rem;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 2rem;
 	}
 
 	.book-card {
-		display: grid;
-		grid-template-columns: auto 1fr;
-		gap: 3rem;
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
 		background: rgba(255, 255, 255, 0.02);
 		border: 1px solid var(--border-color);
-		border-radius: 1.5rem;
-		padding: 2.5rem;
+		border-radius: 1.2rem;
+		padding: 1.5rem;
 		transition: all 0.4s ease;
 	}
 
 	.book-card:hover {
 		background: rgba(99, 102, 241, 0.05);
 		border-color: rgba(99, 102, 241, 0.3);
-		transform: translateY(-5px);
-		box-shadow: var(--shadow-lg);
+		transform: translateY(-3px);
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 	}
 
 	.book-cover {
 		position: relative;
-		width: 18rem;
+		width: 8rem;
 		flex-shrink: 0;
-		border-radius: 1rem;
+		border-radius: 0.8rem;
 		overflow: hidden;
-		box-shadow: var(--shadow-md);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 	}
 
 	.book-cover img {
@@ -153,10 +140,7 @@
 
 	.book-overlay {
 		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
+		inset: 0;
 		background: rgba(99, 102, 241, 0.6);
 		display: flex;
 		align-items: center;
@@ -170,92 +154,54 @@
 	}
 
 	.book-overlay i {
-		font-size: 4rem;
+		font-size: 2.5rem;
 		color: var(--white);
 	}
 
-	.book-content {
+	.book-info {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		gap: 0.4rem;
+		min-width: 0;
 	}
 
 	.book-title {
-		font-size: 2.2rem;
+		font-size: 1.4rem;
 		font-weight: 600;
 		color: var(--white);
-		margin-bottom: 1rem;
 		line-height: 1.3;
 	}
 
 	.book-author {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.8rem;
-		font-size: 1.4rem;
-		color: var(--primary-light);
-		margin-bottom: 1.5rem;
+		font-size: 1.2rem;
+		color: var(--text-muted);
 	}
 
-	.book-author i {
-		font-size: 1.6rem;
-	}
-
-	.book-description {
-		font-size: 1.5rem;
-		color: var(--text-color);
-		line-height: 1.8;
-	}
-
-	/* Mobile Responsiveness */
-	@media(max-width: 991px) {
-		.books {
-			padding: 8rem 4%;
-		}
-	}
-
+	/* Responsive */
 	@media(max-width: 768px) {
+		.books {
+			padding: 5rem 4%;
+		}
+
 		.heading {
-			font-size: 3.5rem;
+			font-size: 3rem;
 		}
 
-		.book-card {
+		.books-grid {
 			grid-template-columns: 1fr;
-			text-align: center;
-		}
-
-		.book-cover {
-			width: 16rem;
-			margin: 0 auto;
-		}
-
-		.book-author {
-			justify-content: center;
-		}
-
-		.book-description {
-			font-size: 1.4rem;
 		}
 	}
 
 	@media(max-width: 520px) {
 		.heading {
-			font-size: 3rem;
-		}
-
-		.book-card {
-			padding: 2rem;
+			font-size: 2.5rem;
 		}
 
 		.book-cover {
-			width: 14rem;
+			width: 6.5rem;
 		}
 
 		.book-title {
-			font-size: 1.8rem;
-		}
-
-		.book-description {
 			font-size: 1.3rem;
 		}
 	}

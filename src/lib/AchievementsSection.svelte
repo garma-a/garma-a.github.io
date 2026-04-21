@@ -1,235 +1,96 @@
 <script>
 	import { base } from "$app/paths";
 
-	export let achievements = [
-		{
-			image: `${base}/imgs/magdiYacoubCertificate.png`,
-			title: "Full Stack Developer - Magdi Yacoub Heart Foundation",
-			description:
-				"Completed professional training and development work at Magdi Yacoub Heart Foundation, one of Egypt's leading healthcare institutions. Contributed to building web applications for healthcare management systems.",
-			year: "2024",
-		},
+	export let journeyItems = [
 		{
 			image: `${base}/imgs/ITIDA_NTI_certificate.png`,
-			title: "Full Stack Web Development - NTI & ITIDA",
+			title: "Full Stack Web Development — NTI & ITIDA",
 			description:
 				"Intensive full-stack web development program by the National Telecommunication Institute (NTI) and Information Technology Industry Development Agency (ITIDA). Mastered modern web technologies including React, Next.js, Node.js, NestJS, and database management.",
 			year: "2025",
+			tags: ["NTI Certified", "ITIDA Funded", "Full Stack"],
 		},
 		{
-			image: `${base}/imgs/ApiDesignv4Certificate.png`,
-			title: "API Design Professional Certificate",
+			image: `${base}/imgs/magdiYacoubCertificate.png`,
+			title: "Software Developer — Magdi Yacoub Heart Foundation",
 			description:
-				"Earned professional certification in RESTful API design, covering best practices for building scalable, secure, and well-documented APIs. Learned industry standards for API versioning, authentication, and documentation.",
-			year: "2025",
-		},
-		{
-			image: `${base}/imgs/GoogleUIUXCertificate1.png`,
-			title: "Google UX Design Professional Certificate",
-			description:
-				"Completed Google's comprehensive UX Design course on Coursera. Learned the foundations of UX design, including user research, wireframing, prototyping, and usability testing. Mastered industry-standard tools like Figma.",
-			year: "2021",
-		},
-		{
-			image: `${base}/imgs/GoogleUIUXCertificate2.png`,
-			title: "Google UI Design Specialization",
-			description:
-				"Advanced UI design certification from Google covering visual design principles, design systems, responsive design, and creating high-fidelity mockups. Applied design thinking methodologies to real-world projects.",
-			year: "2021",
-		},
-		{
-			image: `${base}/imgs/GDSGCertificate.png`,
-			title: "Google Developer Student Club",
-			description:
-				"Active member and contributor at Google Developer Student Club (GDSC). Participated in workshops, hackathons, and collaborative projects focusing on Google technologies and modern development practices.",
+				"Completed professional training and development work at Magdi Yacoub Heart Foundation, one of Egypt's leading healthcare institutions. Contributed to building web applications for healthcare management systems.",
 			year: "2024",
+			tags: ["Healthcare", "Real-World Impact", "Backend Dev"],
 		},
 		{
-			image: `${base}/imgs/ICPCCertificate.png`,
-			title: "ICPC Competitive Programming",
+			image: `${base}/imgs/arab_academy_GPA_Above_3.5_certificte.jpg`,
+			title: "Academic Excellence — Arab Academy for Science & Technology",
 			description:
-				"Participated in the International Collegiate Programming Contest (ICPC), one of the most prestigious programming competitions worldwide. Demonstrated strong problem-solving skills and algorithmic thinking.",
+				"Achieved a GPA above 3.5 across multiple semesters in Computing & Information Technology at Arab Academy for Science, Technology and Maritime Transport — Aswan Branch. Recognized for consistent academic distinction.",
 			year: "2024",
+			tags: ["GPA Above 3.5", "CS Student", "AAST"],
 		},
 	];
-
-	export let stats = [
-		{
-			icon: "bx-code-alt",
-			number: "700+",
-			label: "Problems Solved",
-			description: "LeetCode & Codeforces",
-		},
-		{
-			icon: "bx-git-branch",
-			number: "10+",
-			label: "Projects Built",
-			description: "Full Stack Applications",
-		},
-		{
-			icon: "bx-server",
-			number: "15+",
-			label: "APIs Designed",
-			description: "RESTful Services",
-		},
-		{
-			icon: "bx-trophy",
-			number: "7+",
-			label: "Certificates",
-			description: "Professional Training",
-		},
-	];
-
-	export let allCertificatesUrl =
-		"https://docs.google.com/document/d/1UFKDcUgKgdAGvXF_iDyX_5ImvwMhxF0QYllSwsUHT8o/edit?usp=sharing";
-	export let codeforcesUrl =
-		"https://codeforces.com/profile/GIRGIS_EMAD_";
-	export let leetcodeUrl = "https://leetcode.com/u/Hard-Work/";
 </script>
 
-<section class="achievements scroll-reveal" id="achievements">
+<section class="journey scroll-reveal" id="achievements">
 	<div class="container">
-		<h2 class="heading">My <span>Achievements</span></h2>
+		<h2 class="heading">My <span>Journey</span></h2>
 		<p class="section-subtitle">
-			Certifications, competitions, and milestones in my
-			journey
+			Milestones and certifications along my path
 		</p>
 
-		<!-- Stats Grid -->
-		<div class="stats-grid">
-			{#each stats as stat}
-				<div class="stat-card scroll-reveal-child">
-					<div class="stat-icon">
-						<i class="bx {stat.icon}"></i>
-					</div>
-					<div class="stat-info">
-						<span class="stat-number"
-							>{stat.number}</span
-						>
-						<span class="stat-label"
-							>{stat.label}</span
-						>
-						<span class="stat-desc"
-							>{stat.description}</span
-						>
-					</div>
-				</div>
-			{/each}
-		</div>
-
-		<!-- Certificates Grid -->
-		<h3 class="sub-heading">
-			<i class="bx bx-medal"></i>
-			Certificates & Recognition
-		</h3>
-
-		<div class="certificates-grid">
-			{#each achievements as achievement, index}
+		<div class="journey-timeline">
+			{#each journeyItems as item, index}
 				<div
-					class="certificate-card scroll-reveal-child"
-					style="--delay: {index * 0.1}s"
+					class="journey-card scroll-reveal-child"
+					style="--delay: {index * 0.15}s"
 				>
-					<div class="certificate-image">
-						<img
-							src={achievement.image}
-							alt={achievement.title}
-						/>
-						<div class="image-overlay">
-							<a
-								href={achievement.image}
-								target="_blank"
-								class="view-btn"
-							>
-								<i
-									class="bx bx-expand"
-								></i>
-								View Certificate
-							</a>
+					<div class="card-accent"></div>
+					<div class="card-body">
+						<div class="card-info">
+							<span class="card-year">
+								<i class="bx bx-calendar"></i>
+								{item.year}
+							</span>
+							<h3 class="card-title">{item.title}</h3>
+							<p class="card-description">
+								{item.description}
+							</p>
+							<div class="card-tags">
+								{#each item.tags as tag}
+									<span class="tag">{tag}</span>
+								{/each}
+							</div>
+						</div>
+						<div class="card-image">
+							<img
+								src={item.image}
+								alt={item.title}
+								loading="lazy"
+							/>
+							<div class="image-hover">
+								<a
+									href={item.image}
+									target="_blank"
+									class="view-link"
+								>
+									<i class="bx bx-expand"></i>
+									View
+								</a>
+							</div>
 						</div>
 					</div>
-					<div class="certificate-content">
-						<span class="certificate-year">
-							<i
-								class="bx bx-calendar"
-							></i>
-							{achievement.year}
-						</span>
-						<h4>{achievement.title}</h4>
-						<p>{achievement.description}</p>
-					</div>
 				</div>
 			{/each}
-		</div>
-
-		<!-- View All Certificates Button -->
-		<div class="view-all-section">
-			<a
-				href={allCertificatesUrl}
-				target="_blank"
-				class="view-all-btn"
-			>
-				<i class="bx bx-link-external"></i>
-				View All Certificates in High Quality
-			</a>
-			<p class="view-all-desc">
-				See all my certificates with detailed
-				descriptions on Google Docs
-			</p>
-		</div>
-
-		<!-- Competitive Programming Section -->
-		<div class="competitive-section">
-			<div class="competitive-content">
-				<div class="competitive-icon">
-					<i class="bx bx-code-block"></i>
-				</div>
-				<div class="competitive-text">
-					<h3>Competitive Programming</h3>
-					<p>
-						Solved <strong
-							>700+ problems</strong
-						>
-						on platforms like
-						<strong>Codeforces</strong>
-						and <strong>LeetCode</strong>.
-						Continuously improving
-						algorithmic thinking, data
-						structures knowledge, and
-						problem-solving speed.
-					</p>
-					<div class="platform-badges">
-						<a
-							href={codeforcesUrl}
-							target="_blank"
-							class="platform-badge"
-						>
-							<i class="bx bx-code"
-							></i> Codeforces
-						</a>
-						<a
-							href={leetcodeUrl}
-							target="_blank"
-							class="platform-badge"
-						>
-							<i
-								class="bx bx-code-curly"
-							></i> LeetCode
-						</a>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </section>
 
 <style>
-	.achievements {
+	.journey {
 		background: var(--bg-color);
 		position: relative;
 		overflow: hidden;
 	}
 
-	.achievements::before {
+	.journey::before {
 		content: "";
 		position: absolute;
 		top: 0;
@@ -250,7 +111,7 @@
 	}
 
 	.container {
-		max-width: 120rem;
+		max-width: 100rem;
 		width: 100%;
 		margin: 0 auto;
 		position: relative;
@@ -279,137 +140,166 @@
 		margin-bottom: 5rem;
 	}
 
-	/* Stats Grid */
-	.stats-grid {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap: 2rem;
-		margin-bottom: 6rem;
-	}
-
-	.stat-card {
-		background: rgba(255, 255, 255, 0.02);
-		border: 1px solid var(--border-color);
-		border-radius: 1.5rem;
-		padding: 2.5rem;
-		text-align: center;
-		transition: all 0.4s ease;
-	}
-
-	.stat-card:hover {
-		background: rgba(99, 102, 241, 0.05);
-		border-color: var(--primary);
-		transform: translateY(-5px);
-		box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
-	}
-
-	.stat-icon {
-		width: 6rem;
-		height: 6rem;
-		margin: 0 auto 1.5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: rgba(99, 102, 241, 0.1);
-		border-radius: 50%;
-	}
-
-	.stat-icon i {
-		font-size: 3rem;
-		color: var(--primary-light);
-	}
-
-	.stat-info {
+	/* Timeline */
+	.journey-timeline {
 		display: flex;
 		flex-direction: column;
-		gap: 0.3rem;
-	}
-
-	.stat-number {
-		font-size: 3rem;
-		font-weight: 700;
-		background: var(--gradient-primary);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-
-	.stat-label {
-		font-size: 1.5rem;
-		font-weight: 600;
-		color: var(--white);
-	}
-
-	.stat-desc {
-		font-size: 1.2rem;
-		color: var(--text-muted);
-	}
-
-	/* Sub Heading */
-	.sub-heading {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 1rem;
-		font-size: 2.4rem;
-		font-weight: 600;
-		color: var(--white);
-		margin-bottom: 4rem;
-	}
-
-	.sub-heading i {
-		font-size: 3rem;
-		color: var(--accent);
-	}
-
-	/* Certificates Grid */
-	.certificates-grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
 		gap: 3rem;
-		margin-bottom: 5rem;
+		position: relative;
+		padding-left: 4rem;
 	}
 
-	.certificate-card {
-		display: grid;
-		grid-template-columns: 1fr 1.2fr;
+	.journey-timeline::before {
+		content: "";
+		position: absolute;
+		left: 1rem;
+		top: 0;
+		width: 2px;
+		height: 100%;
+		background: linear-gradient(
+			180deg,
+			var(--primary) 0%,
+			var(--accent) 50%,
+			transparent 100%
+		);
+		border-radius: 2px;
+	}
+
+	/* Card */
+	.journey-card {
+		position: relative;
 		background: rgba(255, 255, 255, 0.02);
 		border: 1px solid var(--border-color);
 		border-radius: 1.5rem;
 		overflow: hidden;
-		transition: all 0.4s ease;
+		transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	.certificate-card:hover {
-		border-color: rgba(99, 102, 241, 0.3);
-		transform: translateY(-5px);
-		box-shadow: var(--shadow-lg);
+	.journey-card::before {
+		content: "";
+		position: absolute;
+		left: -3.5rem;
+		top: 2.5rem;
+		width: 1.4rem;
+		height: 1.4rem;
+		background: var(--primary);
+		border-radius: 50%;
+		box-shadow: 0 0 0 4px rgba(255, 0, 85, 0.2),
+			0 0 20px rgba(255, 0, 85, 0.3);
+		z-index: 2;
+		transition: all 0.3s ease;
 	}
 
-	.certificate-image {
+	.journey-card:hover::before {
+		transform: scale(1.4);
+		box-shadow: 0 0 0 6px rgba(255, 0, 85, 0.3),
+			0 0 30px rgba(255, 0, 85, 0.4);
+	}
+
+	.journey-card:hover {
+		border-color: rgba(255, 0, 85, 0.3);
+		transform: translateX(8px);
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3),
+			0 0 60px rgba(255, 0, 85, 0.08);
+	}
+
+	.card-accent {
+		height: 3px;
+		background: var(--gradient-primary);
+	}
+
+	.card-body {
+		display: flex;
+		align-items: stretch;
+		gap: 3rem;
+		padding: 2.5rem;
+	}
+
+	.card-info {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-width: 0;
+	}
+
+	.card-year {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		font-size: 1.3rem;
+		font-weight: 600;
+		color: var(--primary-light);
+		background: rgba(255, 0, 85, 0.1);
+		padding: 0.5rem 1.4rem;
+		border-radius: 5rem;
+		margin-bottom: 1.5rem;
+		width: fit-content;
+	}
+
+	.card-year i {
+		font-size: 1.4rem;
+	}
+
+	.card-title {
+		font-size: 2rem;
+		font-weight: 700;
+		color: var(--white);
+		margin-bottom: 1rem;
+		line-height: 1.4;
+	}
+
+	.card-description {
+		font-size: 1.4rem;
+		color: var(--text-color);
+		line-height: 1.8;
+		margin-bottom: 1.5rem;
+	}
+
+	.card-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+	}
+
+	.tag {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: var(--accent-secondary);
+		background: rgba(168, 85, 247, 0.12);
+		padding: 0.4rem 1.2rem;
+		border-radius: 5rem;
+		border: 1px solid rgba(168, 85, 247, 0.2);
+		letter-spacing: 0.02em;
+	}
+
+	/* Image */
+	.card-image {
 		position: relative;
+		width: 22rem;
+		min-height: 16rem;
+		flex-shrink: 0;
+		border-radius: 1rem;
 		overflow: hidden;
-		aspect-ratio: 4/3;
+		border: 1px solid var(--border-color);
 	}
 
-	.certificate-image img {
+	.card-image img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		transition: transform 0.4s ease;
+		transition: transform 0.5s ease;
 	}
 
-	.certificate-card:hover .certificate-image img {
+	.journey-card:hover .card-image img {
 		transform: scale(1.05);
 	}
 
-	.image-overlay {
+	.image-hover {
 		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(0, 0, 0, 0.7);
+		inset: 0;
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(4px);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -417,217 +307,35 @@
 		transition: opacity 0.3s ease;
 	}
 
-	.certificate-card:hover .image-overlay {
+	.card-image:hover .image-hover {
 		opacity: 1;
 	}
 
-	.view-btn {
+	.view-link {
 		display: flex;
 		align-items: center;
-		gap: 0.8rem;
-		padding: 1rem 2rem;
-		background: var(--primary);
-		color: var(--white);
-		border-radius: 5rem;
-		font-size: 1.4rem;
-		font-weight: 500;
-		transition: all 0.3s ease;
-	}
-
-	.view-btn:hover {
-		background: var(--primary-light);
-		transform: scale(1.05);
-	}
-
-	.view-btn i {
-		font-size: 1.8rem;
-	}
-
-	.certificate-content {
-		padding: 2.5rem;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-
-	.certificate-year {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		font-size: 1.3rem;
-		color: var(--primary-light);
-		background: rgba(99, 102, 241, 0.1);
-		padding: 0.5rem 1.2rem;
-		border-radius: 5rem;
-		margin-bottom: 1.5rem;
-		width: fit-content;
-	}
-
-	.certificate-year i {
-		font-size: 1.4rem;
-	}
-
-	.certificate-content h4 {
-		font-size: 1.8rem;
-		font-weight: 600;
-		color: var(--white);
-		margin-bottom: 1rem;
-		line-height: 1.4;
-	}
-
-	.certificate-content p {
-		font-size: 1.4rem;
-		color: var(--text-color);
-		line-height: 1.7;
-	}
-
-	/* View All Certificates Section */
-	.view-all-section {
-		text-align: center;
-		margin-bottom: 5rem;
-		padding: 3rem;
-		background: rgba(99, 102, 241, 0.05);
-		border: 1px dashed rgba(99, 102, 241, 0.3);
-		border-radius: 1.5rem;
-	}
-
-	.view-all-btn {
-		display: inline-flex;
-		align-items: center;
-		gap: 1rem;
-		padding: 1.5rem 3.5rem;
+		gap: 0.6rem;
+		padding: 0.8rem 1.8rem;
 		background: var(--gradient-primary);
 		color: var(--white);
 		border-radius: 5rem;
-		font-size: 1.6rem;
+		font-size: 1.3rem;
 		font-weight: 600;
-		transition: all 0.4s ease;
-		box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+		transition: transform 0.3s ease;
 	}
 
-	.view-all-btn:hover {
-		transform: translateY(-3px);
-		box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+	.view-link:hover {
+		transform: scale(1.08);
 	}
 
-	.view-all-btn i {
-		font-size: 2rem;
-	}
-
-	.view-all-desc {
-		margin-top: 1.5rem;
-		font-size: 1.4rem;
-		color: var(--text-muted);
-	}
-
-	/* Competitive Programming Section */
-	.competitive-section {
-		background: var(--gradient-card);
-		border: 1px solid var(--border-color);
-		border-radius: 2rem;
-		padding: 4rem;
-		margin-top: 2rem;
-	}
-
-	.competitive-content {
-		display: flex;
-		align-items: center;
-		gap: 3rem;
-	}
-
-	.competitive-icon {
-		width: 10rem;
-		height: 10rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: rgba(99, 102, 241, 0.15);
-		border-radius: 50%;
-		flex-shrink: 0;
-	}
-
-	.competitive-icon i {
-		font-size: 5rem;
-		color: var(--primary-light);
-	}
-
-	.competitive-text h3 {
-		font-size: 2.4rem;
-		font-weight: 600;
-		color: var(--white);
-		margin-bottom: 1.5rem;
-	}
-
-	.competitive-text p {
+	.view-link i {
 		font-size: 1.6rem;
-		color: var(--text-color);
-		line-height: 1.8;
-		margin-bottom: 2rem;
 	}
 
-	.competitive-text p strong {
-		color: var(--primary-light);
-	}
-
-	.platform-badges {
-		display: flex;
-		gap: 1.5rem;
-		flex-wrap: wrap;
-	}
-
-	.platform-badge {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.8rem;
-		padding: 1rem 2rem;
-		background: rgba(255, 255, 255, 0.05);
-		border: 1px solid var(--border-color);
-		border-radius: 5rem;
-		font-size: 1.4rem;
-		color: var(--white);
-		transition: all 0.3s ease;
-	}
-
-	.platform-badge:hover {
-		background: rgba(99, 102, 241, 0.1);
-		border-color: var(--primary);
-		transform: translateY(-3px);
-	}
-
-	.platform-badge i {
-		font-size: 1.8rem;
-		color: var(--accent);
-	}
-
-	/* Mobile Responsiveness */
+	/* Responsive */
 	@media (max-width: 991px) {
-		.achievements {
+		.journey {
 			padding: 8rem 4%;
-		}
-
-		.stats-grid {
-			grid-template-columns: repeat(2, 1fr);
-		}
-
-		.certificates-grid {
-			grid-template-columns: 1fr;
-		}
-
-		.certificate-card {
-			grid-template-columns: 1fr;
-		}
-
-		.certificate-image {
-			aspect-ratio: 16/9;
-		}
-
-		.competitive-content {
-			flex-direction: column;
-			text-align: center;
-		}
-
-		.platform-badges {
-			justify-content: center;
 		}
 	}
 
@@ -636,38 +344,27 @@
 			font-size: 3.5rem;
 		}
 
-		.stats-grid {
-			gap: 1.5rem;
+		.card-body {
+			flex-direction: column;
 		}
 
-		.stat-card {
-			padding: 2rem;
+		.card-image {
+			width: 100%;
+			min-height: 20rem;
 		}
 
-		.stat-number {
-			font-size: 2.4rem;
+		.card-title {
+			font-size: 1.8rem;
 		}
 
-		.stat-icon {
-			width: 5rem;
-			height: 5rem;
+		.journey-timeline {
+			padding-left: 3rem;
 		}
 
-		.stat-icon i {
-			font-size: 2.4rem;
-		}
-
-		.competitive-section {
-			padding: 3rem 2rem;
-		}
-
-		.competitive-icon {
-			width: 8rem;
-			height: 8rem;
-		}
-
-		.competitive-icon i {
-			font-size: 4rem;
+		.journey-card::before {
+			left: -2.5rem;
+			width: 1.2rem;
+			height: 1.2rem;
 		}
 	}
 
@@ -676,30 +373,34 @@
 			font-size: 3rem;
 		}
 
-		.stats-grid {
-			grid-template-columns: 1fr;
-			max-width: 30rem;
-			margin: 0 auto 5rem;
+		.card-body {
+			padding: 2rem;
 		}
 
-		.sub-heading {
-			font-size: 2rem;
+		.card-image {
+			min-height: 16rem;
 		}
 
-		.certificate-content h4 {
+		.card-title {
 			font-size: 1.6rem;
 		}
 
-		.certificate-content p {
+		.card-description {
 			font-size: 1.3rem;
 		}
 
-		.competitive-text h3 {
-			font-size: 2rem;
+		.journey-timeline {
+			padding-left: 2.5rem;
 		}
 
-		.competitive-text p {
-			font-size: 1.4rem;
+		.journey-timeline::before {
+			left: 0.8rem;
+		}
+
+		.journey-card::before {
+			left: -2.2rem;
+			width: 1rem;
+			height: 1rem;
 		}
 	}
 </style>
