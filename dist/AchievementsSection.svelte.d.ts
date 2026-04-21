@@ -1,41 +1,25 @@
 export default AchievementsSection;
 type AchievementsSection = SvelteComponent<{
-    achievements?: {
+    journeyItems?: {
         image: string;
         title: string;
         description: string;
         year: string;
+        tags: string[];
     }[];
-    stats?: {
-        icon: string;
-        number: string;
-        label: string;
-        description: string;
-    }[];
-    allCertificatesUrl?: string;
-    codeforcesUrl?: string;
-    leetcodeUrl?: string;
 }, {
     [evt: string]: CustomEvent<any>;
 }, {}> & {
     $$bindings?: string;
 };
 declare const AchievementsSection: $$__sveltets_2_IsomorphicComponent<{
-    achievements?: {
+    journeyItems?: {
         image: string;
         title: string;
         description: string;
         year: string;
+        tags: string[];
     }[];
-    stats?: {
-        icon: string;
-        number: string;
-        label: string;
-        description: string;
-    }[];
-    allCertificatesUrl?: string;
-    codeforcesUrl?: string;
-    leetcodeUrl?: string;
 }, {
     [evt: string]: CustomEvent<any>;
 }, {}, {}, string>;

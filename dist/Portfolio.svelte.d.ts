@@ -3,11 +3,11 @@ type Portfolio = SvelteComponent<{
     aboutImage?: string;
     title?: string;
     aboutText?: string;
+    resumeUrl?: string;
+    githubUrl?: string;
+    linkedinUrl?: string;
     name?: string;
     motto?: string;
-    resumeUrl?: string;
-    linkedinUrl?: string;
-    githubUrl?: string;
     instagramUrl?: string;
     whatsappUrl?: string;
 }, {
@@ -19,11 +19,11 @@ declare const Portfolio: $$__sveltets_2_IsomorphicComponent<{
     aboutImage?: string;
     title?: string;
     aboutText?: string;
+    resumeUrl?: string;
+    githubUrl?: string;
+    linkedinUrl?: string;
     name?: string;
     motto?: string;
-    resumeUrl?: string;
-    linkedinUrl?: string;
-    githubUrl?: string;
     instagramUrl?: string;
     whatsappUrl?: string;
 }, {

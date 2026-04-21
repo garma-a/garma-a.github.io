@@ -15,7 +15,7 @@
 				<nav>
 					<a href="#home">Home</a>
 					<a href="#about">About</a>
-					<a href="#education">Journey</a>
+					<a href="#achievements">Journey</a>
 					<a href="#skills">Skills</a>
 				</nav>
 			</div>

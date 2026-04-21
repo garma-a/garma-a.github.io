@@ -4,7 +4,6 @@ type BooksSection = SvelteComponent<{
         image: string;
         title: string;
         author: string;
-        description: string;
     }[];
 }, {
     [evt: string]: CustomEvent<any>;
@@ -16,7 +15,6 @@ declare const BooksSection: $$__sveltets_2_IsomorphicComponent<{
         image: string;
         title: string;
         author: string;
-        description: string;
     }[];
 }, {
     [evt: string]: CustomEvent<any>;

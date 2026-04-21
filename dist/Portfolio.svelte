@@ -4,15 +4,15 @@
 	import Header from "./Header.svelte";
 	import HomeSection from "./HomeSection.svelte";
 	import AboutSection from "./AboutSection.svelte";
-	import EducationSection from "./EducationSection.svelte";
 	import SkillsSection from "./SkillsSection.svelte";
+	import ProjectsSection from "./ProjectsSection.svelte";
 	import AchievementsSection from "./AchievementsSection.svelte";
 	import BooksSection from "./BooksSection.svelte";
 	import Footer from "./Footer.svelte";
 
 	// Props for customization
 	export let name = "Girgis Emad";
-	export let title = "Full Stack Web Developer";
+	export let title = "Backend Software Engineer";
 	export let motto = "THE ONLY WAY IS UP";
 	export let resumeUrl =
 		"https://drive.google.com/file/d/1LCC_zAmOp0bQ9BzS1mdbP-4MHNGbBMSD/view?usp=sharing";
@@ -23,7 +23,7 @@
 	export let whatsappUrl = "https://wa.me/qr/I5I632ZU54YCH1";
 	export let aboutImage = `${base}/myImage.jpg`;
 	export let aboutText =
-		"I'm a Full Stack Web Developer 👨‍💻 with professional experience at Magdi Yacoub Heart Center and NTI/ITIDA in Egypt. I graduated from the Faculty of Computing & Information Technology at Arab Academy Aswan. I'm passionate about building robust web applications and always pushing myself to grow 🔥 My goal is to create impactful solutions that make a difference 🌟";
+		"I'm a Backend Software Engineer 👨‍💻 with professional experience at Magdi Yacoub Heart Center and NTI/ITIDA in Egypt. I specialize in designing and building robust backend systems, APIs, and infrastructure using Node.js, NestJS, Go, PostgreSQL, and Docker. I'm passionate about clean architecture, system design, and solving complex problems 🔥 My goal is to engineer reliable, scalable backend solutions that make a real impact 🌟";
 
 	onMount(() => {
 		const revealElements = document.querySelectorAll('.scroll-reveal');
@@ -66,7 +66,7 @@
 	/>
 </svelte:head>
 
-<Header />
+<Header {resumeUrl} {githubUrl} {linkedinUrl} />
 
 <HomeSection
 	{name}
@@ -79,11 +79,11 @@
 	{whatsappUrl}
 />
 
-<AboutSection {aboutImage} {aboutText} title="Full Stack Web Developer" />
-
-<EducationSection />
+<AboutSection {aboutImage} {aboutText} title="Backend Software Engineer" />
 
 <SkillsSection />
+
+<ProjectsSection />
 
 <AchievementsSection />
 
@@ -138,6 +138,78 @@
 		--shadow-glow: 0 0 40px rgba(255, 0, 85, 0.3);
 	}
 
+	:global([data-theme="light"]) {
+		--bg-color: #fafaf9;
+		--sec-bg-color: #f5f3ef;
+		--card-bg: rgba(255, 255, 255, 0.8);
+		--text-color: #334155;
+		--text-muted: #64748b;
+		--white: #1e293b;
+		--primary: #e60050;
+		--primary-light: #ff1a6c;
+		--primary-dark: #b8003f;
+		--accent: #5b00d4;
+		--accent-secondary: #8b5cf6;
+		--gradient-primary: linear-gradient(
+			135deg,
+			#e60050 0%,
+			#8b5cf6 50%,
+			#5b00d4 100%
+		);
+		--gradient-text: linear-gradient(
+			135deg,
+			#e60050 0%,
+			#5b00d4 100%
+		);
+		--gradient-card: linear-gradient(
+			135deg,
+			rgba(230, 0, 80, 0.06) 0%,
+			rgba(91, 0, 212, 0.03) 100%
+		);
+		--border-color: rgba(0, 0, 0, 0.08);
+		--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+		--shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+		--shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
+		--shadow-glow: 0 0 30px rgba(230, 0, 80, 0.12);
+	}
+
+	/* Light mode: body background overlay */
+	:global([data-theme="light"] body::before) {
+		background: radial-gradient(
+				ellipse 80% 50% at 50% -10%,
+				rgba(230, 0, 80, 0.04),
+				transparent
+			),
+			radial-gradient(
+				ellipse 60% 40% at 100% 50%,
+				rgba(91, 0, 212, 0.03),
+				transparent
+			),
+			radial-gradient(
+				ellipse 60% 40% at 0% 80%,
+				rgba(139, 92, 246, 0.02),
+				transparent
+			);
+	}
+
+	/* Light mode: sticky header glass */
+	:global([data-theme="light"] .header.sticky) {
+		background: rgba(250, 250, 249, 0.88) !important;
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+	}
+
+	/* Light mode: icons and buttons */
+	:global([data-theme="light"] .icon-btn:hover),
+	:global([data-theme="light"] .theme-toggle:hover),
+	:global([data-theme="light"] .nav-link:hover) {
+		background: rgba(0, 0, 0, 0.05);
+	}
+
+	/* Light mode: card backgrounds */
+	:global([data-theme="light"]) .scroll-reveal {
+		transition: background-color 0.3s ease;
+	}
+
 	:global(html) {
 		font-size: 62.5%;
 		overflow-x: hidden;
@@ -147,6 +219,7 @@
 		background-color: var(--bg-color);
 		color: var(--white);
 		line-height: 1.6;
+		transition: background-color 0.3s ease, color 0.3s ease;
 	}
 
 	:global(body::before) {

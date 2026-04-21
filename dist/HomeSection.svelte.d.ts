@@ -1,11 +1,11 @@
 export default HomeSection;
 type HomeSection = SvelteComponent<{
     title?: string;
+    resumeUrl?: string;
+    githubUrl?: string;
+    linkedinUrl?: string;
     name?: string;
     motto?: string;
-    resumeUrl?: string;
-    linkedinUrl?: string;
-    githubUrl?: string;
     instagramUrl?: string;
     whatsappUrl?: string;
 }, {
@@ -15,11 +15,11 @@ type HomeSection = SvelteComponent<{
 };
 declare const HomeSection: $$__sveltets_2_IsomorphicComponent<{
     title?: string;
+    resumeUrl?: string;
+    githubUrl?: string;
+    linkedinUrl?: string;
     name?: string;
     motto?: string;
-    resumeUrl?: string;
-    linkedinUrl?: string;
-    githubUrl?: string;
     instagramUrl?: string;
     whatsappUrl?: string;
 }, {

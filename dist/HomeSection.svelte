@@ -38,37 +38,9 @@
 			>
 				<i class="bx bxl-linkedin"></i> LinkedIn
 			</a>
-		</div>
-		<div class="home-sci-mobile">
-			<a href={githubUrl} target="_blank" aria-label="GitHub"
-				><i class="bx bxl-github"></i></a
-			>
-			<a
-				href={instagramUrl}
-				target="_blank"
-				aria-label="Instagram"
-				><i class="bx bxl-instagram"></i></a
-			>
-			<a
-				href={whatsappUrl}
-				target="_blank"
-				aria-label="WhatsApp"
-				><i class="bx bxl-whatsapp"></i></a
-			>
-		</div>
 	</div>
 
-	<div class="home-sci">
-		<a href={githubUrl} target="_blank" aria-label="GitHub"
-			><i class="bx bxl-github"></i></a
-		>
-		<a href={instagramUrl} target="_blank" aria-label="Instagram"
-			><i class="bx bxl-instagram"></i></a
-		>
-		<a href={whatsappUrl} target="_blank" aria-label="WhatsApp"
-			><i class="bx bxl-whatsapp"></i></a
-		>
-	</div>
+
 
 	<div class="scroll-indicator">
 		<span></span>

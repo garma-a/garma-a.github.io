@@ -1,27 +1,51 @@
 export default SkillsSection;
 type SkillsSection = SvelteComponent<{
-    skillCategories?: {
+    codeforcesUrl?: string;
+    leetcodeUrl?: string;
+    neetcodeUrl?: string;
+    skillCategories?: ({
+        title: string;
+        icon: string;
+        highlight: boolean;
+        skills: {
+            name: string;
+            icon: string;
+        }[];
+    } | {
         title: string;
         icon: string;
         skills: {
             name: string;
             icon: string;
         }[];
-    }[];
+        highlight?: undefined;
+    })[];
 }, {
     [evt: string]: CustomEvent<any>;
 }, {}> & {
     $$bindings?: string;
 };
 declare const SkillsSection: $$__sveltets_2_IsomorphicComponent<{
-    skillCategories?: {
+    codeforcesUrl?: string;
+    leetcodeUrl?: string;
+    neetcodeUrl?: string;
+    skillCategories?: ({
+        title: string;
+        icon: string;
+        highlight: boolean;
+        skills: {
+            name: string;
+            icon: string;
+        }[];
+    } | {
         title: string;
         icon: string;
         skills: {
             name: string;
             icon: string;
         }[];
-    }[];
+        highlight?: undefined;
+    })[];
 }, {
     [evt: string]: CustomEvent<any>;
 }, {}, {}, string>;

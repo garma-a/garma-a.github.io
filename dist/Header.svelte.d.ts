@@ -1,13 +1,19 @@
 export default Header;
 type Header = SvelteComponent<{
-    [x: string]: never;
+    resumeUrl?: string;
+    githubUrl?: string;
+    linkedinUrl?: string;
+    email?: string;
 }, {
     [evt: string]: CustomEvent<any>;
 }, {}> & {
     $$bindings?: string;
 };
 declare const Header: $$__sveltets_2_IsomorphicComponent<{
-    [x: string]: never;
+    resumeUrl?: string;
+    githubUrl?: string;
+    linkedinUrl?: string;
+    email?: string;
 }, {
     [evt: string]: CustomEvent<any>;
 }, {}, {}, string>;
@@ -15,7 +21,7 @@ interface $$__sveltets_2_IsomorphicComponent<Props extends Record<string, any> =
     new (options: import("svelte").ComponentConstructorOptions<Props>): import("svelte").SvelteComponent<Props, Events, Slots> & {
         $$bindings?: Bindings;
     } & Exports;
-    (internal: unknown, props: {
+    (internal: unknown, props: Props & {
         $$events?: Events;
         $$slots?: Slots;
     }): Exports & {
