@@ -1,52 +1,15 @@
 <script>
 	import { base } from "$app/paths";
+	import { onMount } from "svelte";
 
-	export let codeforcesUrl =
-		"https://codeforces.com/profile/GIRGIS_EMAD_";
+	export let codeforcesUrl = "https://codeforces.com/profile/GIRGIS_EMAD_";
 	export let leetcodeUrl = "https://leetcode.com/u/Hard-Work/";
 	export let neetcodeUrl = "https://neetcode.io/practice";
-
-	export let skillCategories = [
-		{
-			title: "Backend",
-			icon: "bx-server",
-			highlight: true,
-			skills: [
-				{ name: "Node.js", icon: "bxl-nodejs" },
-				{ name: "Express", icon: "bx-network-chart" },
-				{ name: "NestJS", icon: "bx-layer" },
-				{ name: "Go", icon: "bxl-go-lang" },
-			],
-		},
-		{
-			title: "Databases",
-			icon: "bx-data",
-			skills: [
-				{ name: "PostgreSQL", icon: "bxl-postgresql" },
-				{ name: "MongoDB", icon: "bxl-mongodb" },
-				{ name: "Redis", icon: "bx-memory-card" },
-				{ name: "Prisma", icon: "bx-diamond" },
-				{ name: "Drizzle", icon: "bx-droplet" },
-			],
-		},
-		{
-			title: "DevOps & Tools",
-			icon: "bx-cog",
-			skills: [
-				{ name: "Docker", icon: "bxl-docker" },
-				{ name: "CI/CD", icon: "bx-git-merge" },
-				{ name: "Linux", icon: "bx-terminal" },
-				{ name: "Bash", icon: "bx-code-block" },
-				{ name: "Nginx", icon: "bx-server" },
-				{ name: "Git", icon: "bxl-git" },
-			],
-		},
-	];
 
 	let cpStats = [
 		{
 			platform: "Codeforces",
-			count: "443",
+			count: "443+",
 			label: "problems solved",
 			url: codeforcesUrl,
 			color: "#22d3ee",
@@ -54,7 +17,7 @@
 		},
 		{
 			platform: "LeetCode",
-			count: "131",
+			count: "250+",
 			label: "problems solved",
 			url: leetcodeUrl,
 			color: "#fbbf24",
@@ -69,6 +32,209 @@
 			icon: "bx-brain",
 		},
 	];
+
+	// Graph State
+	let canvasElement;
+	let graphContainer;
+	let hoveredNode = null;
+	
+	// Graph Data aligned with the CV
+	const N = [
+		// Languages
+		{id:'js',       name:'JavaScript',  ab:['JS'],         x:.15, y:.85, c:'#eab308', cat:'Language',   d:'Built REST APIs and full-stack apps with vanilla JS and Node.js.',                   d2:'Primary language for backend services and server-side logic.'},
+		{id:'ts',       name:'TypeScript',  ab:['TS'],         x:.30, y:.85, c:'#eab308', cat:'Language',   d:'Used TypeScript across NestJS and Next.js projects for type safety.',                 d2:'Enforced strict typing in DTOs, service layers, and API contracts.'},
+		{id:'go',       name:'Golang',      ab:['Go'],         x:.45, y:.85, c:'#eab308', cat:'Language',   d:'Built a full Redis clone from scratch — TCP server, RESP parser, in-memory store.',   d2:'Leveraged goroutines, channels, and sync.RWMutex for concurrency.'},
+		{id:'sql',      name:'SQL',         ab:['SQL'],        x:.60, y:.85, c:'#eab308', cat:'Language',   d:'Wrote complex queries for QC reporting, analytics, and data aggregation.',            d2:'Designed relational schemas with constraints, indexes, and migrations.'},
+		{id:'linux',    name:'Linux',       ab:['Linux'],      x:.75, y:.85, c:'#eab308', cat:'OS/Tool',    d:'Daily driver for development — scripting, server admin, and Docker hosting.',         d2:'Configured Ubuntu servers for production deployments on EC2.'},
+		{id:'git',      name:'Git/GitHub',  ab:['Git'],        x:.90, y:.85, c:'#eab308', cat:'Tool',       d:'Version control for all projects with branching, PRs, and CI/CD pipelines.',          d2:'Maintained clean commit history and collaborative workflows.'},
+
+		// Backend
+		{id:'node',     name:'Node.js',     ab:['Node.js'],    x:.22, y:.60, c:'#a855f7', cat:'Backend',    d:'Core runtime for all backend services — Express, NestJS, and custom servers.',        d2:'Built production APIs handling auth, RBAC, and real-time features.'},
+		{id:'express',  name:'Express.js',  ab:['Express'],    x:.10, y:.40, c:'#a855f7', cat:'Backend',    d:'Built the QC System backend with middleware chains and route handlers.',              d2:'Implemented JWT auth, error handling, and file upload pipelines.'},
+		{id:'nest',     name:'NestJS',      ab:['NestJS'],     x:.30, y:.40, c:'#a855f7', cat:'Backend',    d:'Enterprise-grade APIs with modules, guards, interceptors, and Swagger docs.',         d2:'Used decorators and dependency injection for clean architecture.'},
+
+		// Databases & ORM
+		{id:'mongo',    name:'MongoDB',     ab:['MongoDB'],    x:.40, y:.60, c:'#3b82f6', cat:'Database',   d:'Used for flexible document storage in early projects and prototyping.',                d2:'Designed schemas with Mongoose for user profiles and sessions.'},
+		{id:'pg',       name:'PostgreSQL',  ab:['Postgres'],   x:.60, y:.60, c:'#3b82f6', cat:'Database',   d:'Primary database for QC System — complex joins, views, and constraints.',             d2:'Handled multi-table relations with foreign keys and indexes.'},
+		{id:'redis',    name:'Redis',       ab:['Redis'],      x:.45, y:.40, c:'#3b82f6', cat:'Database',   d:'Built RedisGo clone from scratch; used Redis for caching in production APIs.',        d2:'Implemented SET/GET with TTL, lists with BLPOP, and streams.'},
+		{id:'prisma',   name:'Prisma',      ab:['Prisma'],     x:.20, y:.20, c:'#3b82f6', cat:'ORM',        d:'Type-safe database access in NestJS and Express projects.',                           d2:'Used schema-first approach with migrations and generated types.'},
+		{id:'drizzle',  name:'Drizzle ORM', ab:['Drizzle'],    x:.35, y:.20, c:'#3b82f6', cat:'ORM',        d:'Lightweight ORM for Next.js full-stack apps with edge compatibility.',                 d2:'Preferred for serverless deployments due to small bundle size.'},
+
+		// Frontend
+		{id:'react',    name:'React.js',    ab:['React'],      x:.80, y:.60, c:'#06b6d4', cat:'Frontend',   d:'Built interactive dashboards and admin panels with component architecture.',          d2:'Used hooks, context, and state management for complex UIs.'},
+		{id:'nextjs',   name:'Next.js',     ab:['Next.js'],    x:.80, y:.40, c:'#06b6d4', cat:'Frontend',   d:'Full-stack React framework for SSR, API routes, and static generation.',              d2:'Built SprintSync AI dashboard with real-time Kanban boards.'},
+		{id:'tailwind', name:'Tailwind',    ab:['Tailwind'],   x:.92, y:.60, c:'#06b6d4', cat:'Frontend',   d:'Utility-first styling for rapid UI development across React projects.',               d2:'Used for responsive layouts and dark mode implementations.'},
+
+		// DevOps & Cloud
+		{id:'docker',   name:'Docker',      ab:['Docker'],     x:.55, y:.20, c:'#f43f5e', cat:'DevOps',     d:'Containerized Node.js and Go services with multi-stage builds.',                      d2:'Created docker-compose setups for local dev with Postgres + Redis.'},
+		{id:'aws',      name:'AWS EC2',     ab:['AWS', 'EC2'], x:.70, y:.20, c:'#f43f5e', cat:'Cloud',      d:'Deployed production APIs on EC2 with Nginx reverse proxy and SSL.',                   d2:'Managed security groups, SSH access, and instance scaling.'},
+		{id:'supabase', name:'Supabase',    ab:['Supabase'],   x:.85, y:.20, c:'#f43f5e', cat:'BaaS',       d:'Backend-as-a-service for auth, real-time DB, and row-level security.',                 d2:'Used for the AASTMT Booking System with role-based access.'},
+	];
+
+	const L = [
+		{f:'js', t:'node'}, {f:'js', t:'react'}, {f:'ts', t:'node'}, {f:'ts', t:'react'}, 
+		{f:'node', t:'express'}, {f:'node', t:'nest'}, {f:'ts', t:'nest'},
+		{f:'node', t:'mongo'}, {f:'node', t:'redis'}, {f:'go', t:'redis'},
+		{f:'sql', t:'pg'}, {f:'pg', t:'prisma'}, {f:'pg', t:'drizzle'},
+		{f:'express', t:'prisma'}, {f:'nest', t:'prisma'}, {f:'nest', t:'drizzle'},
+		{f:'react', t:'nextjs'}, {f:'tailwind', t:'nextjs'},
+		{f:'pg', t:'supabase'}, {f:'node', t:'docker'}, {f:'go', t:'docker'}, 
+		{f:'linux', t:'docker'}, {f:'docker', t:'aws'}, {f:'git', t:'aws'}
+	];
+
+	onMount(() => {
+		let W, H, dpr, reqFrame;
+		let currentHover = null;
+		
+		function setup() {
+			if (!canvasElement || !graphContainer) return;
+			dpr = window.devicePixelRatio || 1;
+			W = graphContainer.getBoundingClientRect().width;
+			H = Math.min(500, Math.max(350, W * 0.55));
+			canvasElement.style.width = W + 'px';
+			canvasElement.style.height = H + 'px';
+			canvasElement.width = W * dpr;
+			canvasElement.height = H * dpr;
+			canvasElement.getContext('2d').scale(dpr, dpr);
+		}
+
+		function qp(x1, y1, cx, cy, x2, y2, t) {
+			const m = 1 - t;
+			return {
+				x: m * m * x1 + 2 * m * t * cx + t * t * x2,
+				y: m * m * y1 + 2 * m * t * cy + t * t * y2
+			};
+		}
+
+		function draw() {
+			if (!canvasElement) return;
+			const ctx = canvasElement.getContext('2d');
+			const t = Date.now() * 0.001;
+			ctx.clearRect(0, 0, W, H);
+
+			L.forEach((lk, i) => {
+				const fn = N.find(n => n.id === lk.f);
+				const tn = N.find(n => n.id === lk.t);
+				if (!fn || !tn) return;
+				
+				const x1 = fn.x * W, y1 = fn.y * H, x2 = tn.x * W, y2 = tn.y * H;
+				const cx = (x1 + x2) / 2, cy = Math.min(y1, y2) - 30;
+				const hl = currentHover === lk.f || currentHover === lk.t;
+
+				ctx.beginPath();
+				ctx.moveTo(x1, y1);
+				ctx.quadraticCurveTo(cx, cy, x2, y2);
+				ctx.strokeStyle = hl ? fn.c + 'AA' : 'rgba(168, 85, 247, 0.15)';
+				ctx.lineWidth = hl ? 2 : 0.8;
+				ctx.stroke();
+
+				// Particles along the paths
+				const tp = ((t * 0.2 + i * 0.21) % 1);
+				const dp = qp(x1, y1, cx, cy, x2, y2, tp);
+				ctx.beginPath();
+				ctx.arc(dp.x, dp.y, hl ? 3.5 : 1.5, 0, Math.PI * 2);
+				ctx.fillStyle = hl ? fn.c : 'rgba(168, 85, 247, 0.4)';
+				ctx.fill();
+				if (hl) {
+					ctx.beginPath();
+					ctx.arc(dp.x, dp.y, 8, 0, Math.PI * 2);
+					ctx.fillStyle = fn.c + '33';
+					ctx.fill();
+				}
+			});
+
+			N.forEach(nd => {
+				const x = nd.x * W, y = nd.y * H;
+				const r = W < 600 ? 18 : 24;
+				const hl = currentHover === nd.id;
+
+				if (hl) {
+					const grad = ctx.createRadialGradient(x, y, 0, x, y, r + 15);
+					grad.addColorStop(0, nd.c + '44');
+					grad.addColorStop(1, nd.c + '00');
+					ctx.beginPath();
+					ctx.arc(x, y, r + 15, 0, Math.PI * 2);
+					ctx.fillStyle = grad;
+					ctx.fill();
+				}
+
+				ctx.beginPath();
+				ctx.arc(x, y, r, 0, Math.PI * 2);
+				ctx.fillStyle = hl ? nd.c + '22' : 'rgba(15, 23, 42, 0.8)';
+				ctx.fill();
+				
+				ctx.beginPath();
+				ctx.arc(x, y, r, 0, Math.PI * 2);
+				ctx.strokeStyle = hl ? nd.c : 'rgba(255, 255, 255, 0.1)';
+				ctx.lineWidth = hl ? 2 : 1;
+				ctx.stroke();
+
+				ctx.fillStyle = hl ? '#ffffff' : 'rgba(255, 255, 255, 0.8)';
+				ctx.textAlign = 'center';
+				ctx.textBaseline = 'middle';
+				ctx.font = `${hl ? '600' : '400'} ${W < 600 ? 9 : 11}px "Segoe UI", sans-serif`;
+
+				const lines = nd.ab;
+				const lh = W < 600 ? 10 : 13;
+				const off = (lines.length - 1) * lh / 2;
+				lines.forEach((l, i) => ctx.fillText(l, x, y - off + i * lh));
+
+				if (hl) {
+					ctx.fillStyle = nd.c + '99';
+					ctx.font = `400 ${W < 600 ? 7 : 9}px "Segoe UI", sans-serif`;
+					ctx.fillText('●', x, y + r + 8);
+				}
+			});
+
+			reqFrame = requestAnimationFrame(draw);
+		}
+
+		function handleMouseMove(e) {
+			const rect = canvasElement.getBoundingClientRect();
+			const mx = e.clientX - rect.left;
+			const my = e.clientY - rect.top;
+			const rNode = W < 600 ? 18 : 24;
+			
+			let found = null;
+			for (const nd of N) {
+				if (Math.hypot(mx - nd.x * W, my - nd.y * H) < rNode + 5) {
+					found = nd;
+					break;
+				}
+			}
+			
+			currentHover = found ? found.id : null;
+			hoveredNode = found;
+			canvasElement.style.cursor = found ? 'pointer' : 'crosshair';
+		}
+
+		function handleMouseLeave() {
+			currentHover = null;
+			hoveredNode = null;
+		}
+
+		setup();
+		draw();
+
+		canvasElement.addEventListener('mousemove', handleMouseMove);
+		canvasElement.addEventListener('mouseleave', handleMouseLeave);
+		window.addEventListener('resize', () => {
+			setup();
+		});
+
+		return () => {
+			cancelAnimationFrame(reqFrame);
+			if (canvasElement) {
+				canvasElement.removeEventListener('mousemove', handleMouseMove);
+				canvasElement.removeEventListener('mouseleave', handleMouseLeave);
+			}
+			window.removeEventListener('resize', setup);
+		};
+	});
+
+	$: requiresNodes = hoveredNode ? L.filter(l => l.t === hoveredNode.id).map(l => N.find(n => n.id === l.f)) : [];
+	$: unlocksNodes = hoveredNode ? L.filter(l => l.f === hoveredNode.id).map(l => N.find(n => n.id === l.t)) : [];
+
 </script>
 
 <section class="skills scroll-reveal" id="skills">
@@ -89,7 +255,7 @@
 					<p>
 						Completed the <strong>NeetCode 150</strong> more
 						than <strong>5 times</strong> to manually master
-						every algorithm and data structure pattern.
+						every algorithm and data structure pattern. Over <strong>700+</strong> problems solved.
 					</p>
 				</div>
 			</div>
@@ -132,50 +298,77 @@
 					lifecycle.
 				</p>
 				<div class="api-tech-grid">
-					{#each ["Express.js", "NestJS", "Prisma", "MongoDB", "PostgreSQL", "JWT", "Authorization", "Docker", "CI/CD", "Redis"] as tech}
+					{#each ["Node.js", "Express.js", "NestJS", "Golang", "Prisma", "MongoDB", "PostgreSQL", "JWT/RBAC", "Docker", "AWS EC2"] as tech}
 						<span class="api-tech">{tech}</span>
 					{/each}
 				</div>
 			</div>
 		</div>
 
-		<!-- ═══ Tech Stack Grid ═══ -->
-		<div class="skills-grid">
-			{#each skillCategories as category}
-				<div
-					class="skill-category scroll-reveal-child"
-					class:highlighted={category.highlight}
-					class:secondary={category.secondary}
-				>
-					<div class="category-header">
-						<i class="bx {category.icon}"></i>
-						<h3>{category.title}</h3>
-						{#if category.highlight}
-							<span class="primary-badge"
-								>Primary</span
-							>
-						{/if}
-					</div>
-					<div class="skills-icons">
-						{#each category.skills as skill}
-							<div
-								class="skill-item"
-								title={skill.name}
-							>
-								<div class="skill-icon">
-									<i
-										class="bx {skill.icon}"
-									></i>
-								</div>
-								<span class="skill-name"
-									>{skill.name}</span
-								>
-							</div>
-						{/each}
-					</div>
+		<!-- ═══ Interactive Graph ═══ -->
+		<div class="graph-section scroll-reveal-child">
+			<div class="graph-header">
+				<div class="graph-title-area">
+					<p class="graph-overline">Software Engineer</p>
+					<h3 class="graph-title">Tech Stack Graph</h3>
 				</div>
-			{/each}
+				<div class="graph-legend">
+					<span class="legend-item"><span class="dot" style="background:#eab308"></span>Languages</span>
+					<span class="legend-item"><span class="dot" style="background:#a855f7"></span>Backend</span>
+					<span class="legend-item"><span class="dot" style="background:#3b82f6"></span>Databases</span>
+					<span class="legend-item"><span class="dot" style="background:#06b6d4"></span>Frontend</span>
+					<span class="legend-item"><span class="dot" style="background:#f43f5e"></span>DevOps</span>
+				</div>
+			</div>
+
+			<div class="canvas-container" bind:this={graphContainer}>
+				<canvas bind:this={canvasElement}></canvas>
+			</div>
+
+			<div class="graph-details">
+				{#if !hoveredNode}
+					<p class="graph-msg">Hover a node to explore connections</p>
+				{:else}
+					<div class="details-panel">
+						<div class="details-main">
+							<div class="details-top">
+								<span class="node-name" style="color: {hoveredNode.c}">{hoveredNode.name}</span>
+								<span class="node-cat" style="color: {hoveredNode.c}; border-color: {hoveredNode.c}40; background: {hoveredNode.c}15">{hoveredNode.cat}</span>
+							</div>
+							<p class="node-desc">{hoveredNode.d}</p>
+							<p class="node-desc-2">{hoveredNode.d2}</p>
+						</div>
+						<div class="details-sidebar">
+							<div class="relations-group">
+								<span class="rel-title">Requires</span>
+								<div class="rel-tags">
+									{#if requiresNodes.length === 0}
+										<span class="rel-empty">—</span>
+									{:else}
+										{#each requiresNodes as rn}
+											<span class="rel-tag" style="color: {rn.c}; border-color: {rn.c}40; background: {rn.c}10">{rn.name}</span>
+										{/each}
+									{/if}
+								</div>
+							</div>
+							<div class="relations-group">
+								<span class="rel-title">Unlocks</span>
+								<div class="rel-tags">
+									{#if unlocksNodes.length === 0}
+										<span class="rel-empty">—</span>
+									{:else}
+										{#each unlocksNodes as un}
+											<span class="rel-tag" style="color: {un.c}; border-color: {un.c}40; background: {un.c}10">{un.name}</span>
+										{/each}
+									{/if}
+								</div>
+							</div>
+						</div>
+					</div>
+				{/if}
+			</div>
 		</div>
+
 	</div>
 </section>
 
@@ -184,6 +377,7 @@
 		background: var(--sec-bg-color);
 		position: relative;
 		overflow: hidden;
+		padding-bottom: 6rem;
 	}
 
 	.skills::before {
@@ -302,6 +496,7 @@
 		cursor: pointer;
 		position: relative;
 		overflow: hidden;
+		text-decoration: none;
 	}
 
 	.cp-card::before {
@@ -361,11 +556,11 @@
 		position: relative;
 		background: linear-gradient(
 			135deg,
-			rgba(255, 0, 85, 0.08) 0%,
-			rgba(112, 0, 255, 0.08) 50%,
-			rgba(168, 85, 247, 0.08) 100%
+			rgba(34, 211, 238, 0.08) 0%,
+			rgba(168, 85, 247, 0.08) 50%,
+			rgba(59, 130, 246, 0.08) 100%
 		);
-		border: 1px solid rgba(255, 0, 85, 0.2);
+		border: 1px solid rgba(168, 85, 247, 0.2);
 		border-radius: 2rem;
 		padding: 4rem;
 		margin-bottom: 4rem;
@@ -374,9 +569,9 @@
 	}
 
 	.api-card:hover {
-		border-color: rgba(255, 0, 85, 0.4);
-		box-shadow: 0 0 60px rgba(255, 0, 85, 0.1),
-			0 0 120px rgba(112, 0, 255, 0.05);
+		border-color: rgba(168, 85, 247, 0.4);
+		box-shadow: 0 0 60px rgba(34, 211, 238, 0.1),
+			0 0 120px rgba(168, 85, 247, 0.1);
 	}
 
 	.api-glow {
@@ -387,7 +582,7 @@
 		height: 40rem;
 		background: radial-gradient(
 			circle,
-			rgba(255, 0, 85, 0.12) 0%,
+			rgba(168, 85, 247, 0.15) 0%,
 			transparent 70%
 		);
 		pointer-events: none;
@@ -417,8 +612,8 @@
 		gap: 0.6rem;
 		font-size: 1.2rem;
 		font-weight: 700;
-		color: var(--primary-light);
-		background: rgba(255, 0, 85, 0.15);
+		color: #e879f9;
+		background: rgba(168, 85, 247, 0.15);
 		padding: 0.6rem 1.6rem;
 		border-radius: 5rem;
 		margin-bottom: 2rem;
@@ -464,146 +659,195 @@
 	}
 
 	.api-tech:hover {
-		background: rgba(255, 0, 85, 0.15);
-		border-color: var(--primary);
+		background: rgba(168, 85, 247, 0.15);
+		border-color: #e879f9;
 		transform: translateY(-2px);
 	}
 
-	/* ═══ Skills Grid ═══ */
-	.skills-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 2.5rem;
-	}
-
-	.skill-category {
-		background: rgba(255, 255, 255, 0.02);
+	/* ═══ Graph Section ═══ */
+	.graph-section {
+		background: rgba(15, 23, 42, 0.6);
 		border: 1px solid var(--border-color);
-		border-radius: 1.5rem;
-		padding: 2.5rem;
-		transition: all 0.4s ease;
-	}
-
-	.skill-category.highlighted {
-		border-color: rgba(255, 0, 85, 0.3);
-		background: rgba(255, 0, 85, 0.03);
-	}
-
-	.skill-category.secondary {
-		opacity: 0.7;
-	}
-
-	.skill-category:hover {
-		background: rgba(99, 102, 241, 0.03);
-		border-color: rgba(99, 102, 241, 0.2);
-		transform: translateY(-5px);
+		border-radius: 2rem;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
 		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-		opacity: 1;
 	}
 
-	.category-header {
+	.graph-header {
+		padding: 2rem 2.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+		flex-wrap: wrap;
+		gap: 1.5rem;
+	}
+
+	.graph-title-area {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.graph-overline {
+		font-size: 1.1rem;
+		letter-spacing: 0.2em;
+		color: var(--text-muted);
+		text-transform: uppercase;
+		margin: 0 0 0.4rem;
+	}
+
+	.graph-title {
+		color: var(--white);
+		font-size: 1.8rem;
+		font-weight: 600;
+		margin: 0;
+	}
+
+	.graph-legend {
+		display: flex;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+	}
+
+	.legend-item {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		font-size: 1.2rem;
+		color: var(--text-color);
+		letter-spacing: 0.05em;
+	}
+
+	.legend-item .dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		display: inline-block;
+	}
+
+	.canvas-container {
+		width: 100%;
+		position: relative;
+		background: radial-gradient(circle at center, rgba(30, 41, 59, 0.5) 0%, transparent 100%);
+	}
+
+	canvas {
+		display: block;
+		width: 100%;
+		outline: none;
+	}
+
+	.graph-details {
+		border-top: 1px solid rgba(255, 255, 255, 0.05);
+		padding: 2rem 2.5rem;
+		min-height: 12rem;
+		background: rgba(15, 23, 42, 0.8);
+	}
+
+	.graph-msg {
+		color: var(--text-muted);
+		font-size: 1.4rem;
+		text-align: center;
+		padding: 3rem 0;
+		margin: 0;
+	}
+
+	.details-panel {
+		display: flex;
+		gap: 3rem;
+		align-items: flex-start;
+		animation: fadeIn 0.3s ease;
+	}
+
+	@keyframes fadeIn {
+		from { opacity: 0; transform: translateY(5px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+
+	.details-main {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.details-top {
 		display: flex;
 		align-items: center;
 		gap: 1.2rem;
-		margin-bottom: 2rem;
-		padding-bottom: 1.5rem;
-		border-bottom: 1px solid var(--border-color);
+		margin-bottom: 1rem;
 	}
 
-	.category-header i {
-		font-size: 2.8rem;
-		color: var(--primary-light);
-		background: rgba(99, 102, 241, 0.1);
-		padding: 1rem;
-		border-radius: 1rem;
-	}
-
-	.category-header h3 {
-		font-size: 1.8rem;
+	.node-name {
+		font-size: 2rem;
 		font-weight: 600;
-		color: var(--white);
-		flex: 1;
 	}
 
-	.primary-badge {
-		font-size: 1rem;
-		font-weight: 700;
-		color: var(--primary-light);
-		background: rgba(255, 0, 85, 0.15);
-		padding: 0.3rem 1rem;
+	.node-cat {
+		font-size: 1.1rem;
+		padding: 0.3rem 1.2rem;
 		border-radius: 5rem;
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		border: 1px solid;
+	}
+
+	.node-desc {
+		font-size: 1.4rem;
+		color: var(--text-color);
+		margin: 0 0 0.6rem;
+		line-height: 1.6;
+	}
+
+	.node-desc-2 {
+		font-size: 1.3rem;
+		color: var(--text-muted);
+		margin: 0;
+		line-height: 1.6;
+		font-style: italic;
+	}
+
+	.details-sidebar {
+		width: 22rem;
+		flex-shrink: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.relations-group {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.rel-title {
+		font-size: 1.1rem;
+		color: var(--text-muted);
+		margin: 0 0 0.8rem;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 	}
 
-	.skills-icons {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
-		gap: 1.5rem;
-	}
-
-	.skill-item {
+	.rel-tags {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.8rem;
-		padding: 1.2rem;
-		border-radius: 1rem;
-		transition: all 0.3s ease;
-		cursor: default;
+		flex-wrap: wrap;
+		gap: 0.6rem;
 	}
 
-	.skill-item:hover {
-		background: rgba(99, 102, 241, 0.1);
+	.rel-tag {
+		font-size: 1.1rem;
+		padding: 0.3rem 1rem;
+		border-radius: 5rem;
+		border: 1px solid;
+		font-weight: 500;
 	}
 
-	.skill-item:hover .skill-icon {
-		transform: scale(1.1);
-		border-color: var(--primary);
-		background: rgba(99, 102, 241, 0.15);
-	}
-
-	.skill-item:hover .skill-icon i {
-		color: var(--primary-light);
-	}
-
-	.skill-icon {
-		width: 5rem;
-		height: 5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: rgba(255, 255, 255, 0.03);
-		border: 1px solid var(--border-color);
-		border-radius: 1rem;
-		transition: all 0.3s ease;
-	}
-
-	.skill-icon i {
-		font-size: 2.4rem;
-		color: var(--text-color);
-		transition: all 0.3s ease;
-	}
-
-	.skill-name {
+	.rel-empty {
 		font-size: 1.2rem;
 		color: var(--text-muted);
-		text-align: center;
-		font-weight: 500;
-		transition: color 0.3s ease;
-	}
-
-	.skill-item:hover .skill-name {
-		color: var(--white);
 	}
 
 	/* ═══ Responsive ═══ */
-	@media (max-width: 1200px) {
-		.skills-grid {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
 	@media (max-width: 991px) {
 		.skills {
 			padding: 8rem 4%;
@@ -617,11 +861,6 @@
 	@media (max-width: 768px) {
 		.heading {
 			font-size: 3.5rem;
-		}
-
-		.skills-grid {
-			grid-template-columns: 1fr;
-			gap: 2rem;
 		}
 
 		.cp-stats {
@@ -639,30 +878,20 @@
 		.api-card {
 			padding: 3rem 2rem;
 		}
-
-		.skill-category {
-			padding: 2rem;
+		
+		.details-panel {
+			flex-direction: column;
+			gap: 2rem;
 		}
-
-		.skills-icons {
-			grid-template-columns: repeat(
-				auto-fill,
-				minmax(6rem, 1fr)
-			);
-			gap: 1rem;
+		
+		.details-sidebar {
+			width: 100%;
+			flex-direction: row;
+			gap: 2rem;
 		}
-
-		.skill-icon {
-			width: 4.5rem;
-			height: 4.5rem;
-		}
-
-		.skill-icon i {
-			font-size: 2rem;
-		}
-
-		.skill-name {
-			font-size: 1.1rem;
+		
+		.relations-group {
+			flex: 1;
 		}
 	}
 
@@ -683,29 +912,17 @@
 			font-size: 3rem;
 		}
 
-		.category-header h3 {
-			font-size: 1.6rem;
+		.graph-header {
+			padding: 1.5rem;
+		}
+		
+		.graph-details {
+			padding: 1.5rem;
 		}
 
-		.skills-icons {
-			grid-template-columns: repeat(3, 1fr);
-		}
-
-		.skill-item {
-			padding: 0.8rem;
-		}
-
-		.skill-icon {
-			width: 4rem;
-			height: 4rem;
-		}
-
-		.skill-icon i {
-			font-size: 1.8rem;
-		}
-
-		.skill-name {
-			font-size: 1rem;
+		.details-sidebar {
+			flex-direction: column;
+			gap: 1.5rem;
 		}
 	}
 </style>

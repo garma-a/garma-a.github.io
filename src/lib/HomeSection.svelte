@@ -4,7 +4,7 @@
 	export let title = "Full Stack Web Developer";
 	export let motto = "THE ONLY WAY IS UP";
 	export let resumeUrl =
-		"https://drive.google.com/file/d/1Mz-Q39gGaI_WwB5oiTdP5hRElMGkfJgC/view?usp=sharing";
+		"https://drive.google.com/file/d/1hIZq9aV6i2IUEiFz1IBvanmuC_PNJzR8/view?usp=sharing";
 	export let linkedinUrl = "#";
 	export let githubUrl = "#";
 	export let instagramUrl = "#";

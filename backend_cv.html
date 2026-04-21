@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Girgis Emad Wefky - Backend Engineer CV</title>
+	<style>
+		:root {
+			--primary-color: #000000;
+			--text-color: #000000;
+			--bg-color: #ffffff;
+			--font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: var(--font-main);
+			color: var(--text-color);
+			background-color: #f5f5f5;
+			line-height: 1.35;
+			font-size: 11px;
+		}
+
+		.container {
+			width: 210mm;
+			max-width: 100%;
+			margin: 20px auto;
+			background: var(--bg-color);
+			padding: 25px 35px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			min-height: 297mm;
+		}
+
+		/* Header */
+		header {
+			text-align: center;
+			margin-bottom: 10px;
+			border-bottom: none;
+		}
+
+		h1 {
+			font-size: 22px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 2px;
+			font-weight: 700;
+			color: var(--primary-color);
+		}
+
+		.contact-info {
+			font-size: 11px;
+			margin-bottom: 2px;
+		}
+
+		.social-links {
+			font-size: 11px;
+		}
+
+		.social-links a,
+		.contact-info a {
+			color: var(--text-color);
+			text-decoration: none;
+			margin: 0 5px;
+		}
+
+		.social-links a:hover,
+		.contact-info a:hover,
+		a:hover {
+			text-decoration: underline;
+		}
+
+		/* Sections */
+		section {
+			margin-bottom: 10px;
+		}
+
+		h2 {
+			font-size: 13px;
+			text-transform: uppercase;
+			border-bottom: 1px solid #000;
+			margin-bottom: 4px;
+			padding-bottom: 1px;
+			font-weight: 700;
+		}
+
+		p {
+			margin-bottom: 4px;
+			text-align: justify;
+		}
+
+		/* Lists */
+		ul {
+			list-style-type: disc;
+			padding-left: 16px;
+			margin-bottom: 0;
+		}
+
+		li {
+			margin-bottom: 1px;
+		}
+
+		/* Entries (Experience/Projects/Education) */
+		.entry {
+			margin-bottom: 6px;
+			page-break-inside: avoid;
+		}
+
+		.entry-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			font-weight: bold;
+			margin-bottom: 0px;
+		}
+
+		.entry-title {
+			font-size: 12px;
+		}
+
+		.entry-date {
+			font-size: 11px;
+			font-style: italic;
+		}
+
+		.entry-subtitle {
+			font-style: italic;
+			font-size: 11px;
+			margin-bottom: 1px;
+		}
+
+		/* Links styling */
+		a {
+			color: #000;
+			font-weight: 600;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		/* Print Styles */
+		@media print {
+			@page {
+				margin: 0.8cm;
+				size: A4;
+			}
+
+			html,
+			body {
+				height: 100%;
+				margin: 0 !important;
+				padding: 0 !important;
+				overflow: hidden;
+			}
+
+			.container {
+				margin: 0 !important;
+				padding: 0 !important;
+				box-shadow: none;
+				width: 100%;
+				min-height: auto;
+				height: auto;
+				border: none;
+			}
+
+			section:last-of-type {
+				margin-bottom: 0 !important;
+			}
+
+			a[href]:after {
+				content: none !important;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<!-- Header -->
+		<header>
+			<h1>Girgis Emad Wefky</h1>
+			<div class="contact-info">
+				<span>Aswan, Egypt</span> |
+				<span>(+20) 1278203355</span> |
+				<a href="mailto:girgisemad74@gmail.com">girgisemad74@gmail.com</a>
+			</div>
+			<div class="social-links">
+				<a href="https://linkedin.com/in/girgis-emad-garma-96943a258"
+					target="_blank">LinkedIn</a> |
+				<a href="https://github.com/garma-a" target="_blank">GitHub</a> |
+				<a href="https://garmaa.me" target="_blank">garmaa.me</a>
+			</div>
+		</header>
+
+		<!-- Summary -->
+		<section>
+			<h2>Summary</h2>
+			<p>
+				Backend Engineer specializing in <strong>Node.js</strong>, <strong>Nest.js</strong>, <strong>Express.js</strong>, and <strong>Golang</strong>. Proven expertise in designing secure REST APIs, scalable database models, and authentication workflows. AWS EC2 deployment experience. Strong algorithmic foundation with <strong>700+</strong> problems solved on Codeforces and LeetCode.
+			</p>
+		</section>
+
+		<!-- Education -->
+		<section>
+			<h2>Education</h2>
+			<div class="entry">
+				<div class="entry-header">
+					<span class="entry-title">B.Sc. in Computer Science</span>
+					<span class="entry-date">2022 – 2026</span>
+				</div>
+				<div class="entry-subtitle">
+					Arab Academy for Science, Technology & Maritime Transport, Aswan — Expected Graduation: 2026
+				</div>
+			</div>
+		</section>
+
+		<!-- Skills -->
+		<section>
+			<h2>Technical Skills</h2>
+			<ul>
+				<li><strong>Languages:</strong> TypeScript, JavaScript, Golang, SQL.</li>
+				<li><strong>Backend:</strong> Node.js, Nest.js, Express.js, Prisma, Drizzle ORM, REST APIs, JWT, RBAC.</li>
+				<li><strong>Infrastructure:</strong> PostgreSQL, MongoDB, Redis, Supabase, AWS EC2, Docker.</li>
+				<li><strong>Frontend & Tools:</strong> React.js, Next.js, Tailwind CSS, Git/GitHub, Linux, System Design, OOP, DSA.</li>
+			</ul>
+		</section>
+
+		<!-- Experience -->
+		<section>
+			<h2>Professional Experience</h2>
+
+			<div class="entry">
+				<div class="entry-header">
+					<span class="entry-title">
+						MEAN Stack Web Developer Intern
+						<a href="https://docs.google.com/document/d/1UFKDcUgKgdAGvXF_iDyX_5ImvwMhxF0QYllSwsUHT8o/edit?tab=t.0" target="_blank"><i>(Certificate)</i></a>
+					</span>
+					<span class="entry-date">Aug 3, 2025 – Aug 28, 2025</span>
+				</div>
+				<div class="entry-subtitle">ITIDA & NTI Training</div>
+				<ul>
+					<li>Engineered RESTful APIs with Node.js, Express, and MongoDB, optimizing scalable data models.</li>
+					<li>Executed agile workflows, participating in Git version control and peer code reviews.</li>
+				</ul>
+			</div>
+
+			<div class="entry">
+				<div class="entry-header">
+					<span class="entry-title">
+						Full Stack Web Developer Intern
+						<a href="https://docs.google.com/document/d/1UFKDcUgKgdAGvXF_iDyX_5ImvwMhxF0QYllSwsUHT8o/edit?tab=t.0" target="_blank"><i>(Certificate)</i></a>
+					</span>
+					<span class="entry-date">Aug 1, 2024 – Nov 30, 2024</span>
+				</div>
+				<div class="entry-subtitle">Magdi Yacoub Heart Foundation</div>
+				<ul>
+					<li>Developed high-performance medical app features and seamless API integrations via Next.js, React.js, and TypeScript.</li>
+					<li>Collaborated via GitHub and Asana within a 10+ member cross-functional agile team.</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- Projects -->
+		<section>
+			<h2>Key Projects</h2>
+
+			<div class="entry">
+				<div class="entry-header">
+					<span class="entry-title">QC Project (Graduation Project)</span>
+					<span class="entry-date">2025 – 2026</span>
+				</div>
+				<div class="entry-subtitle">Laboratory Quality Control Platform (Nest.js, Next.js, AWS EC2)</div>
+				<ul>
+					<li>Engineered a <strong>Nest.js</strong> backend with Service-Controller-Repository patterns for QC monitoring and real-time alerts.</li>
+					<li>Enforced role-aware authorization and comprehensive unit testing for robust security and maintainability.</li>
+					<li>Migrated runtime from Node.js to Bun, boosting throughput by <strong>50%</strong> (~600 to ~900 req/sec) with zero regressions.</li>
+					<li>Architected PostgreSQL schemas via Drizzle ORM and deployed on <strong>AWS EC2</strong> with Docker Compose for 450 concurrent users.</li>
+					<li><strong>Links:</strong> <a href="https://github.com/garma-a/QC_project" target="_blank">Source Code</a></li>
+				</ul>
+			</div>
+
+			<div class="entry">
+				<div class="entry-header">
+					<span class="entry-title">RedisGo</span>
+					<span class="entry-date">2026</span>
+				</div>
+				<div class="entry-subtitle">In-Memory Database Server (Golang)</div>
+				<ul>
+					<li>Engineered a Redis-compatible in-memory data store in <strong>Golang</strong>, supporting native TCP connections on port 6379.</li>
+					<li>Implemented custom RESP parsers, concurrent key-value storage, and efficient command dispatchers.</li>
+					<li>Optimized performance with <code>sync.RWMutex</code> and lazy TTL eviction (EX/PX), achieving ~8,000 ops/sec.</li>
+					<li><strong>Links:</strong> <a href="https://github.com/garma-a/redisgo" target="_blank">Source Code</a></li>
+				</ul>
+			</div>
+
+			<div class="entry">
+				<div class="entry-header">
+					<span class="entry-title">Express Backend Suite & Node Guide</span>
+					<span class="entry-date">2023 – 2024</span>
+				</div>
+				<div class="entry-subtitle">Microservices & API Architecture (Node.js, Express, Prisma)</div>
+				<ul>
+					<li>Authored 10+ Node.js microservices featuring RESTful API design, WebSocket broadcasting, and CRUD operations.</li>
+					<li>Integrated secure JWT/cookie sessions and relational PostgreSQL modeling via Prisma.</li>
+					<li><strong>Links:</strong> <a href="https://github.com/garma-a/node" target="_blank">Source Code</a></li>
+				</ul>
+			</div>
+
+			<div class="entry">
+				<div class="entry-header">
+					<span class="entry-title">ECPC Attendance System</span>
+					<span class="entry-date">2025 – 2026</span>
+				</div>
+				<div class="entry-subtitle">Event Management Solution (React, Supabase)</div>
+				<ul>
+					<li>Architected cloud-native workflows and Row Level Security (RLS) on Supabase for sessions and dynamic QR tokens.</li>
+					<li>Engineered an idempotent QR attendance algorithm with anti-duplication and expiration safeguards for 250+ users.</li>
+					<li>Deployed serverless Edge Functions for secure authentication and RBAC lifecycles.</li>
+					<li><strong>Links:</strong> <a href="https://ecpc-attendance-system-inky.vercel.app/" target="_blank">Live Demo</a> | <a href="https://github.com/GARMA-A/ECPC_Attendance_System" target="_blank">Source Code</a></li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- Activities -->
+		<section>
+			<h2>Activities & Achievements</h2>
+
+			<div class="entry">
+				<div class="entry-header">
+					<span class="entry-title">Competitive Programming</span>
+					<span class="entry-date">2023 – Present</span>
+				</div>
+				<div class="entry-subtitle">Codeforces & LeetCode</div>
+				<ul>
+					<li><strong>Codeforces:</strong> Solved <strong>441+</strong> algorithmic problems (Handle: <a href="https://codeforces.com/profile/GIRGIS_EMAD_" target="_blank">GIRGIS EMAD</a>).</li>
+					<li><strong>LeetCode:</strong> Solved <strong>250+</strong> problems, including the NeetCode 150 (Handle: <a href="https://leetcode.com/u/Hard-Work/" target="_blank">Hard Work</a>).</li>
+				</ul>
+			</div>
+
+			<div class="entry">
+				<div class="entry-header">
+					<span class="entry-title">
+						Core Team Member
+						<a href="https://drive.google.com/file/d/10kkKH2YVfYbL9mb0u_KhEqIsM7Zn-3i3/view" target="_blank"><i>(Certificate)</i></a>
+					</span>
+					<span class="entry-date">2023 – 2024</span>
+				</div>
+				<div class="entry-subtitle">
+					<a href="https://www.facebook.com/GDSCAASTMTAswan?locale=ar_A" target="_blank">GDG-AAST (Google Developers Group)</a>
+				</div>
+				<ul>
+					<li>Mentored students in web development and problem-solving fundamentals via technical workshops.</li>
+				</ul>
+			</div>
+		</section>
+
+	</div>
+
+</body>
+
+</html>

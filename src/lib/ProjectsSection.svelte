@@ -3,37 +3,22 @@
 
 	export let projects = [
 		{
-			slug: "healthcare-management",
-			title: "Healthcare Management System",
+			slug: "qc-project",
+			title: "Quality Control (QC) System",
 			description:
-				"Full-stack healthcare platform built for Magdi Yacoub Heart Center. Features patient management, appointment scheduling, lab results tracking, and role-based access control.",
-			stack: ["NestJS", "PostgreSQL", "Docker", "Prisma"],
-			image: `${base}/imgs/projects/healthcare-demo.png`,
+				"A comprehensive Quality Control and Machine Monitoring system built to track industrial processes, manage quality alerts, and oversee user roles. Features real-time monitoring and detailed reporting.",
+			stack: ["Node.js", "PostgreSQL", "Express.js", "Svelte"],
+			image: `${base}/imgs/Qc_project_imges/002_admin_dashboard.png`,
 			featured: true,
 		},
 		{
-			slug: "restful-api-platform",
-			title: "RESTful API Platform",
+			slug: "redisgo",
+			title: "RedisGo — Redis from Scratch",
 			description:
-				"Production-ready REST API with comprehensive authentication, authorization middleware, rate limiting, and API versioning. Built with Express.js and MongoDB.",
-			stack: ["Express.js", "MongoDB", "JWT", "Prisma"],
-			image: `${base}/imgs/projects/api-platform-demo.png`,
-		},
-		{
-			slug: "realtime-chat-backend",
-			title: "Real-time Chat Backend",
-			description:
-				"High-performance chat server handling real-time messaging with WebSocket connections, message persistence, and Redis pub/sub for horizontal scaling.",
-			stack: ["Go", "WebSocket", "Redis", "Docker"],
-			image: `${base}/imgs/projects/chat-backend-demo.png`,
-		},
-		{
-			slug: "smart-safety",
-			title: "SmartSafety — UEA7 Winner",
-			description:
-				"Award-winning safety monitoring platform that secured 2nd place at Upper Egypt in Action 7 competition and ITIDA funding. IoT integration with real-time alerting.",
-			stack: ["Node.js", "PostgreSQL", "Express.js", "CI/CD"],
-			image: `${base}/imgs/projects/smart-safety-demo.png`,
+				"A Redis-compatible in-memory database server built from scratch in Go. Implements RESP protocol parsing, string/list/stream data types, and channel-based blocking operations.",
+			stack: ["Go", "TCP", "RESP", "Concurrency"],
+			image: `${base}/imgs/RedisGo/architecture.png`,
+			featured: true,
 		},
 	];
 

@@ -15,7 +15,7 @@
 	export let title = "Backend Software Engineer";
 	export let motto = "THE ONLY WAY IS UP";
 	export let resumeUrl =
-		"https://drive.google.com/file/d/1LCC_zAmOp0bQ9BzS1mdbP-4MHNGbBMSD/view?usp=sharing";
+		"https://drive.google.com/file/d/1hIZq9aV6i2IUEiFz1IBvanmuC_PNJzR8/view?usp=sharing";
 	export let linkedinUrl =
 		"https://www.linkedin.com/in/girgis-emad-garma-96943a258/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BxoJJYBM%2BTSuJAh3pxNX2AA%3D%3D";
 	export let githubUrl = "https://github.com/GARMA-A";
@@ -138,77 +138,6 @@
 		--shadow-glow: 0 0 40px rgba(255, 0, 85, 0.3);
 	}
 
-	:global([data-theme="light"]) {
-		--bg-color: #fafaf9;
-		--sec-bg-color: #f5f3ef;
-		--card-bg: rgba(255, 255, 255, 0.8);
-		--text-color: #334155;
-		--text-muted: #64748b;
-		--white: #1e293b;
-		--primary: #e60050;
-		--primary-light: #ff1a6c;
-		--primary-dark: #b8003f;
-		--accent: #5b00d4;
-		--accent-secondary: #8b5cf6;
-		--gradient-primary: linear-gradient(
-			135deg,
-			#e60050 0%,
-			#8b5cf6 50%,
-			#5b00d4 100%
-		);
-		--gradient-text: linear-gradient(
-			135deg,
-			#e60050 0%,
-			#5b00d4 100%
-		);
-		--gradient-card: linear-gradient(
-			135deg,
-			rgba(230, 0, 80, 0.06) 0%,
-			rgba(91, 0, 212, 0.03) 100%
-		);
-		--border-color: rgba(0, 0, 0, 0.08);
-		--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-		--shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-		--shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
-		--shadow-glow: 0 0 30px rgba(230, 0, 80, 0.12);
-	}
-
-	/* Light mode: body background overlay */
-	:global([data-theme="light"] body::before) {
-		background: radial-gradient(
-				ellipse 80% 50% at 50% -10%,
-				rgba(230, 0, 80, 0.04),
-				transparent
-			),
-			radial-gradient(
-				ellipse 60% 40% at 100% 50%,
-				rgba(91, 0, 212, 0.03),
-				transparent
-			),
-			radial-gradient(
-				ellipse 60% 40% at 0% 80%,
-				rgba(139, 92, 246, 0.02),
-				transparent
-			);
-	}
-
-	/* Light mode: sticky header glass */
-	:global([data-theme="light"] .header.sticky) {
-		background: rgba(250, 250, 249, 0.88) !important;
-		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-	}
-
-	/* Light mode: icons and buttons */
-	:global([data-theme="light"] .icon-btn:hover),
-	:global([data-theme="light"] .theme-toggle:hover),
-	:global([data-theme="light"] .nav-link:hover) {
-		background: rgba(0, 0, 0, 0.05);
-	}
-
-	/* Light mode: card backgrounds */
-	:global([data-theme="light"]) .scroll-reveal {
-		transition: background-color 0.3s ease;
-	}
 
 	:global(html) {
 		font-size: 62.5%;
@@ -219,7 +148,6 @@
 		background-color: var(--bg-color);
 		color: var(--white);
 		line-height: 1.6;
-		transition: background-color 0.3s ease, color 0.3s ease;
 	}
 
 	:global(body::before) {

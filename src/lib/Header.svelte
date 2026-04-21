@@ -3,7 +3,7 @@
 	import { onMount } from "svelte";
 
 	export let resumeUrl =
-		"https://drive.google.com/file/d/1LCC_zAmOp0bQ9BzS1mdbP-4MHNGbBMSD/view?usp=sharing";
+		"https://drive.google.com/file/d/1hIZq9aV6i2IUEiFz1IBvanmuC_PNJzR8/view?usp=sharing";
 	export let githubUrl = "https://github.com/GARMA-A";
 	export let linkedinUrl =
 		"https://www.linkedin.com/in/girgis-emad-garma-96943a258/";
@@ -11,7 +11,6 @@
 
 	let isSticky = false;
 	let menuOpen = false;
-	let isDark = true;
 
 	function toggleMenu() {
 		menuOpen = !menuOpen;
@@ -21,25 +20,7 @@
 		menuOpen = false;
 	}
 
-	function toggleTheme() {
-		isDark = !isDark;
-		document.documentElement.setAttribute(
-			"data-theme",
-			isDark ? "dark" : "light"
-		);
-		localStorage.setItem("theme", isDark ? "dark" : "light");
-	}
-
 	onMount(() => {
-		const saved = localStorage.getItem("theme");
-		if (saved === "light") {
-			isDark = false;
-			document.documentElement.setAttribute(
-				"data-theme",
-				"light"
-			);
-		}
-
 		const handleScroll = () => {
 			isSticky = window.scrollY > 80;
 		};
@@ -134,9 +115,7 @@
 				Resume
 			</a>
 
-			<button class="theme-toggle" on:click={toggleTheme} aria-label="Toggle theme">
-				<i class="bx {isDark ? 'bx-sun' : 'bx-moon'}"></i>
-			</button>
+
 
 			<button class="hamburger" on:click={toggleMenu} aria-label="Toggle menu" aria-expanded={menuOpen}>
 				<i class="bx {menuOpen ? 'bx-x' : 'bx-menu'}"></i>
@@ -383,29 +362,7 @@
 		font-size: 1.5rem;
 	}
 
-	.theme-toggle {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 3.6rem;
-		height: 3.6rem;
-		border-radius: 0.8rem;
-		background: none;
-		color: var(--text-muted);
-		cursor: pointer;
-		transition: all 0.3s ease;
-		font-family: inherit;
-		border: none;
-	}
 
-	.theme-toggle:hover {
-		color: var(--white);
-		background: rgba(255, 255, 255, 0.06);
-	}
-
-	.theme-toggle i {
-		font-size: 2rem;
-	}
 
 	/* ═══ Hamburger ═══ */
 	.hamburger {
