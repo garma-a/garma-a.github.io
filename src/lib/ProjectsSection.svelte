@@ -35,6 +35,22 @@
 			stack: ["Node.js", "PostgreSQL", "Express.js", "CI/CD"],
 			image: `${base}/imgs/projects/smart-safety-demo.png`,
 		},
+		{
+			slug: "redisgo",
+			title: "RedisGo",
+			description:
+				"A complete, production-ready Redis-compatible in-memory database built entirely from scratch using Go. Explores low-level TCP networking and the RESP wire protocol.",
+			stack: ["Go", "TCP", "RESP Protocol", "Goroutines"],
+			image: `${base}/imgs/RedisGo/architecture.png`,
+		},
+		{
+			slug: "qc",
+			title: "QC Monitor Dashboard",
+			description:
+				"A customized dashboard designed to monitor real-time machine stats and quality control test results visually. Built to streamline lab technicians' workflows.",
+			stack: ["React", "TypeScript", "TailwindCSS"],
+			image: `${base}/imgs/projects/qc-demo.png`,
+		},
 	];
 
 	function handleProjectClick(slug) {

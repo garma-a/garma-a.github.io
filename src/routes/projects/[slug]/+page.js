@@ -74,6 +74,40 @@ const projectsData = {
     githubUrl: "https://github.com/GARMA-A",
     year: "2025",
   },
+  "redisgo": {
+    title: "RedisGo",
+    subtitle: "Redis Database Server Built from Scratch in Go",
+    year: "2026",
+    githubUrl: "https://github.com/GARMA-A/redisgo",
+    stack: ["Go", "TCP/Networking", "RESP Protocol", "Goroutines", "Concurrency"],
+    description: "A complete, production-ready Redis-compatible in-memory database built entirely from scratch using Go. This project explores low-level TCP networking, the RESP wire protocol, custom parser implementation, and utilizing Go's advanced concurrency model (Goroutines and Channels) to manage state efficiently at scale.",
+    highlights: [
+      "Custom TCP server avoiding standard HTTP libraries",
+      "Fully compliant RESP (REdis Serialization Protocol) parser",
+      "Thread-safe in-memory key-value store using RWMutex",
+      "Support for advanced commands including Streams and Blocking operations",
+      "Sub-millisecond latency for in-memory reads and writes"
+    ],
+    architectureImages: [
+      `${base}/imgs/RedisGo/architecture.png`,
+      `${base}/imgs/RedisGo/dataflow.png`,
+      `${base}/imgs/RedisGo/concurrency.png`,
+      `${base}/imgs/RedisGo/resp_protocol.png`
+    ]
+  },
+  "qc": {
+    title: "QC Monitor Dashboard",
+    subtitle: "Quality Control Result Visualization",
+    year: "2026",
+    githubUrl: "https://github.com/GARMA-A",
+    stack: ["React", "TypeScript", "TailwindCSS"],
+    description: "A customized dashboard page designed to monitor real-time machine stats and quality control test results visually. Built to streamline lab technicians' workflows.",
+    highlights: [
+      "Real-time metric updates",
+      "Responsive data table visualization",
+      "Component-based architecture"
+    ]
+  }
 };
 
 /** @type {import('./$types').PageLoad} */

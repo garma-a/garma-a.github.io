@@ -131,6 +131,29 @@
 		</section>
 	{/if}
 
+	<!-- Architecture Gallery -->
+	{#if project.architectureImages && project.architectureImages.length > 0}
+		<section class="project-section">
+			<div class="section-inner">
+				<h2>
+					<i class="bx bx-network-chart"></i>
+					System Architecture & Data Flow
+				</h2>
+				<div class="gallery-grid">
+					{#each project.architectureImages as image}
+						<div class="gallery-item">
+							<img
+								src={image}
+								alt="{project.title} architecture"
+								loading="lazy"
+							/>
+						</div>
+					{/each}
+				</div>
+			</div>
+		</section>
+	{/if}
+
 	<!-- Video Placeholder -->
 	{#if project.videoUrl}
 		<section class="project-section">
@@ -162,13 +185,14 @@
 </div>
 
 <style>
-	:global(body) {
+	:global(html), :global(body) {
 		margin: 0;
 		padding: 0;
 		background-color: #0a0a0f;
 		color: #f8fafc;
 		font-family: "Poppins", sans-serif;
 		line-height: 1.6;
+		overflow-x: hidden;
 	}
 
 	:global(*) {
