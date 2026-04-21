@@ -971,7 +971,6 @@ func (lst *list) isSendToWaiter(value string) bool {
 			"Zero external dependencies — built entirely on Go standard library",
 		],
 	},
->>>>>>> complete_version1.0
 };
 
 /** @type {import('./$types').PageLoad} */
