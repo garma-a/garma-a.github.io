@@ -6,32 +6,8 @@
 	export let leetcodeUrl = "https://leetcode.com/u/Hard-Work/";
 	export let neetcodeUrl = "https://neetcode.io/practice";
 
-	let cpStats = [
-		{
-			platform: "Codeforces",
-			count: "443+",
-			label: "problems solved",
-			url: codeforcesUrl,
-			color: "#22d3ee",
-			icon: "bx-code",
-		},
-		{
-			platform: "LeetCode",
-			count: "250+",
-			label: "problems solved",
-			url: leetcodeUrl,
-			color: "#fbbf24",
-			icon: "bx-code-curly",
-		},
-		{
-			platform: "NeetCode 150",
-			count: "5×",
-			label: "completed all 150",
-			url: neetcodeUrl,
-			color: "#a855f7",
-			icon: "bx-brain",
-		},
-	];
+	let cpStats = []; // Replaced by static image cards
+	let expandedImage = null;
 
 	// Graph State
 	let canvasElement;
@@ -54,16 +30,13 @@
 		{id:'nest',     name:'NestJS',      ab:['NestJS'],     x:.30, y:.40, c:'#a855f7', cat:'Backend',    d:'Enterprise-grade APIs with modules, guards, interceptors, and Swagger docs.',         d2:'Used decorators and dependency injection for clean architecture.'},
 
 		// Databases & ORM
-		{id:'mongo',    name:'MongoDB',     ab:['MongoDB'],    x:.40, y:.60, c:'#3b82f6', cat:'Database',   d:'Used for flexible document storage in early projects and prototyping.',                d2:'Designed schemas with Mongoose for user profiles and sessions.'},
-		{id:'pg',       name:'PostgreSQL',  ab:['Postgres'],   x:.60, y:.60, c:'#3b82f6', cat:'Database',   d:'Primary database for QC System — complex joins, views, and constraints.',             d2:'Handled multi-table relations with foreign keys and indexes.'},
-		{id:'redis',    name:'Redis',       ab:['Redis'],      x:.45, y:.40, c:'#3b82f6', cat:'Database',   d:'Built RedisGo clone from scratch; used Redis for caching in production APIs.',        d2:'Implemented SET/GET with TTL, lists with BLPOP, and streams.'},
-		{id:'prisma',   name:'Prisma',      ab:['Prisma'],     x:.20, y:.20, c:'#3b82f6', cat:'ORM',        d:'Type-safe database access in NestJS and Express projects.',                           d2:'Used schema-first approach with migrations and generated types.'},
-		{id:'drizzle',  name:'Drizzle ORM', ab:['Drizzle'],    x:.35, y:.20, c:'#3b82f6', cat:'ORM',        d:'Lightweight ORM for Next.js full-stack apps with edge compatibility.',                 d2:'Preferred for serverless deployments due to small bundle size.'},
+		{id:'pg',       name:'PostgreSQL',  ab:['Postgres'],   x:.50, y:.60, c:'#3b82f6', cat:'Database',   d:'Primary database for QC System — complex joins, views, and constraints.',             d2:'Handled multi-table relations with foreign keys and indexes.'},
+		{id:'redis',    name:'Redis',       ab:['Redis'],      x:.40, y:.40, c:'#3b82f6', cat:'Database',   d:'Built RedisGo clone from scratch; used Redis for caching in production APIs.',        d2:'Implemented SET/GET with TTL, lists with BLPOP, and streams.'},
+		{id:'drizzle',  name:'Drizzle ORM', ab:['Drizzle'],    x:.30, y:.20, c:'#3b82f6', cat:'ORM',        d:'Lightweight ORM for Next.js full-stack apps with edge compatibility.',                 d2:'Preferred for serverless deployments due to small bundle size.'},
 
 		// Frontend
-		{id:'react',    name:'React.js',    ab:['React'],      x:.80, y:.60, c:'#06b6d4', cat:'Frontend',   d:'Built interactive dashboards and admin panels with component architecture.',          d2:'Used hooks, context, and state management for complex UIs.'},
 		{id:'nextjs',   name:'Next.js',     ab:['Next.js'],    x:.80, y:.40, c:'#06b6d4', cat:'Frontend',   d:'Full-stack React framework for SSR, API routes, and static generation.',              d2:'Built SprintSync AI dashboard with real-time Kanban boards.'},
-		{id:'tailwind', name:'Tailwind',    ab:['Tailwind'],   x:.92, y:.60, c:'#06b6d4', cat:'Frontend',   d:'Utility-first styling for rapid UI development across React projects.',               d2:'Used for responsive layouts and dark mode implementations.'},
+		{id:'tailwind', name:'Tailwind',    ab:['Tailwind'],   x:.92, y:.60, c:'#06b6d4', cat:'Frontend',   d:'Utility-first styling for frontend UI development.',               d2:'Used for responsive layouts and dark mode implementations.'},
 
 		// DevOps & Cloud
 		{id:'docker',   name:'Docker',      ab:['Docker'],     x:.55, y:.20, c:'#f43f5e', cat:'DevOps',     d:'Containerized Node.js and Go services with multi-stage builds.',                      d2:'Created docker-compose setups for local dev with Postgres + Redis.'},
@@ -72,12 +45,12 @@
 	];
 
 	const L = [
-		{f:'js', t:'node'}, {f:'js', t:'react'}, {f:'ts', t:'node'}, {f:'ts', t:'react'}, 
+		{f:'js', t:'node'}, {f:'ts', t:'node'}, {f:'ts', t:'nextjs'},
 		{f:'node', t:'express'}, {f:'node', t:'nest'}, {f:'ts', t:'nest'},
-		{f:'node', t:'mongo'}, {f:'node', t:'redis'}, {f:'go', t:'redis'},
-		{f:'sql', t:'pg'}, {f:'pg', t:'prisma'}, {f:'pg', t:'drizzle'},
-		{f:'express', t:'prisma'}, {f:'nest', t:'prisma'}, {f:'nest', t:'drizzle'},
-		{f:'react', t:'nextjs'}, {f:'tailwind', t:'nextjs'},
+		{f:'node', t:'redis'}, {f:'go', t:'redis'},
+		{f:'sql', t:'pg'}, {f:'pg', t:'drizzle'},
+		{f:'nest', t:'drizzle'},
+		{f:'tailwind', t:'nextjs'},
 		{f:'pg', t:'supabase'}, {f:'node', t:'docker'}, {f:'go', t:'docker'}, 
 		{f:'linux', t:'docker'}, {f:'docker', t:'aws'}, {f:'git', t:'aws'}
 	];
@@ -253,57 +226,72 @@
 				<div>
 					<h3>Algorithm & Data Structure Mastery</h3>
 					<p>
-						Completed the <strong>NeetCode 150</strong> more
-						than <strong>5 times</strong> to manually master
-						every algorithm and data structure pattern. Over <strong>700+</strong> problems solved.
+						Consistently solving complex algorithmic challenges. Over <strong>680+</strong> problems solved across multiple platforms to manually master every coding pattern.
 					</p>
 				</div>
 			</div>
 
-			<div class="cp-stats">
-				{#each cpStats as stat}
-					<a
-						href={stat.url}
-						target="_blank"
-						class="cp-card"
-						style="--accent: {stat.color}"
-					>
-						<div class="cp-card-top">
-							<i class="bx {stat.icon}"></i>
-							<span class="cp-platform"
-								>{stat.platform}</span
-							>
-						</div>
-						<div class="cp-count">{stat.count}</div>
-						<div class="cp-label">{stat.label}</div>
-					</a>
-				{/each}
+			<div class="cp-stats vertical-layout">
+				<!-- Codeforces -->
+				<div class="cp-card vertical-card" style="--accent: #22d3ee">
+                    <div class="cp-info-side">
+                        <div class="cp-card-top">
+                            <i class="bx bx-code"></i>
+                            <a href={codeforcesUrl} target="_blank" class="cp-platform">Codeforces</a>
+                        </div>
+                        <div class="cp-count">443</div>
+                        <div class="cp-label">Problems Solved</div>
+                        <div class="cp-user">@GIRGIS_EMAD_</div>
+                    </div>
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <!-- svelte-ignore a11y-no-static-element-interactions -->
+                    <div class="cp-image-side" on:click={() => expandedImage = `${base}/imgs/Problem_solving/codeForces_solved_443_proplem.png`}>
+                        <img src="{base}/imgs/Problem_solving/codeForces_solved_443_proplem.png" alt="Codeforces Stats" />
+                        <div class="expand-overlay"><i class="bx bx-expand-alt"></i></div>
+                    </div>
+				</div>
+				
+                <!-- LeetCode -->
+				<div class="cp-card vertical-card" style="--accent: #fbbf24">
+                    <div class="cp-info-side">
+                        <div class="cp-card-top">
+                            <i class="bx bx-code-curly" style="color: #fbbf24"></i>
+                            <a href={leetcodeUrl} target="_blank" class="cp-platform">LeetCode</a>
+                        </div>
+                        <div class="cp-count">131</div>
+                        <div class="cp-label">Problems Solved (Python, JS, C++)</div>
+                        <div class="cp-user">@Hard-Work</div>
+                    </div>
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <!-- svelte-ignore a11y-no-static-element-interactions -->
+                    <div class="cp-image-side" on:click={() => expandedImage = `${base}/imgs/Problem_solving/leetCode_Solved_131.png`}>
+                        <img src="{base}/imgs/Problem_solving/leetCode_Solved_131.png" alt="LeetCode Stats" />
+                        <div class="expand-overlay"><i class="bx bx-expand-alt"></i></div>
+                    </div>
+				</div>
+
+                <!-- NeetCode 150 -->
+				<div class="cp-card vertical-card" style="--accent: #a855f7">
+                    <div class="cp-info-side">
+                        <div class="cp-card-top">
+                            <i class="bx bx-brain" style="color: #a855f7"></i>
+                            <a href={neetcodeUrl} target="_blank" class="cp-platform">NeetCode 150</a>
+                        </div>
+                        <div class="cp-count">106</div>
+                        <div class="cp-label">Problems Solved (Multiple passes)</div>
+                        <div class="cp-user">Mastered core patterns</div>
+                    </div>
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <!-- svelte-ignore a11y-no-static-element-interactions -->
+                    <div class="cp-image-side" on:click={() => expandedImage = `${base}/imgs/Problem_solving/neetCode150.png`}>
+                        <img src="{base}/imgs/Problem_solving/neetCode150.png" alt="NeetCode Stats" />
+                        <div class="expand-overlay"><i class="bx bx-expand-alt"></i></div>
+                    </div>
+				</div>
 			</div>
 		</div>
 
-		<!-- ═══ Beautiful Mention - API Design ═══ -->
-		<div class="api-card scroll-reveal-child">
-			<div class="api-glow"></div>
-			<div class="api-content">
-				<div class="api-badge">
-					<i class="bx bx-star"></i>
-					Complete Backend Expertise
-				</div>
-				<h3>Full API Design & Backend Architecture</h3>
-				<p>
-					End-to-end experience building production-ready
-					APIs — from database schema design to
-					authentication flows, middleware architecture, and
-					deployment. Proficient in the complete backend
-					lifecycle.
-				</p>
-				<div class="api-tech-grid">
-					{#each ["Node.js", "Express.js", "NestJS", "Golang", "Prisma", "MongoDB", "PostgreSQL", "JWT/RBAC", "Docker", "AWS EC2"] as tech}
-						<span class="api-tech">{tech}</span>
-					{/each}
-				</div>
-			</div>
-		</div>
+		<!-- No API Mention Card in this section anymore -->
 
 		<!-- ═══ Interactive Graph ═══ -->
 		<div class="graph-section scroll-reveal-child">
@@ -371,6 +359,15 @@
 
 	</div>
 </section>
+
+{#if expandedImage}
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
+	<div class="lightbox" on:click={() => expandedImage = null}>
+		<span class="close-lightbox">&times;</span>
+		<img src={expandedImage} alt="Expanded view" on:click|stopPropagation />
+	</div>
+{/if}
 
 <style>
 	.skills {
@@ -479,189 +476,155 @@
 		color: var(--accent-secondary);
 	}
 
-	/* CP Stats Cards */
-	.cp-stats {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 2rem;
+	/* CP Stats Cards - Vertical Stacking */
+	.cp-stats.vertical-layout {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
 	}
 
-	.cp-card {
-		background: rgba(255, 255, 255, 0.03);
+	.cp-card.vertical-card {
+		display: flex;
+		align-items: stretch;
+		background: rgba(15, 23, 42, 0.6);
 		border: 1px solid var(--border-color);
 		border-radius: 1.5rem;
-		padding: 2.5rem;
-		text-align: center;
-		transition: all 0.4s ease;
-		cursor: pointer;
-		position: relative;
 		overflow: hidden;
-		text-decoration: none;
+		position: relative;
+		transition: all 0.4s ease;
+		min-height: 200px;
 	}
 
-	.cp-card::before {
+	.cp-card.vertical-card::before {
 		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 3px;
+		width: 4px;
+		height: 100%;
 		background: var(--accent);
-		opacity: 0.5;
+		opacity: 0.8;
+		z-index: 3;
 	}
 
-	.cp-card:hover {
+	.cp-card.vertical-card:hover {
 		border-color: var(--accent);
-		transform: translateY(-5px);
 		box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3),
 			0 0 30px color-mix(in srgb, var(--accent) 15%, transparent);
+		transform: translateY(-3px);
+	}
+
+	.cp-info-side {
+		width: 40%;
+		flex: none;
+		padding: 3.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		position: relative;
+		z-index: 2;
+	}
+
+	.cp-image-side {
+		width: 60%;
+		position: relative;
+		overflow: hidden;
+		cursor: pointer;
+		border-left: 1px solid rgba(255, 255, 255, 0.05);
+		background: rgba(0, 0, 0, 0.15); /* Soft background for contain mode letterboxing */
+	}
+
+	.cp-image-side img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: center;
+		transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+		opacity: 0.9;
+	}
+
+	.cp-image-side:hover img {
+		transform: scale(1.1);
+		opacity: 1;
+	}
+
+	.expand-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(15, 23, 42, 0.6);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: all 0.3s ease;
+	}
+
+	.expand-overlay i {
+		font-size: 4rem;
+		color: var(--white);
+		transform: scale(0.5);
+		transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+
+	.cp-image-side:hover .expand-overlay {
+		opacity: 1;
+	}
+
+	.cp-image-side:hover .expand-overlay i {
+		transform: scale(1);
 	}
 
 	.cp-card-top {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		gap: 0.8rem;
-		margin-bottom: 1.5rem;
+		justify-content: flex-start;
+		gap: 1.2rem;
+		margin-bottom: 2rem;
 	}
 
 	.cp-card-top i {
-		font-size: 2rem;
+		font-size: 2.8rem;
 		color: var(--accent);
 	}
 
 	.cp-platform {
-		font-size: 1.3rem;
-		font-weight: 600;
-		color: var(--text-color);
+		font-size: 1.8rem;
+		font-weight: 700;
+		color: var(--white);
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	.cp-platform:hover {
+		color: var(--accent);
 	}
 
 	.cp-count {
-		font-size: 4rem;
+		font-size: 5.5rem;
 		font-weight: 800;
 		color: var(--accent);
 		line-height: 1;
 		margin-bottom: 0.5rem;
+		text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 	}
 
 	.cp-label {
-		font-size: 1.3rem;
-		color: var(--text-muted);
-	}
-
-	/* ═══ API Design Beautiful Mention ═══ */
-	.api-card {
-		position: relative;
-		background: linear-gradient(
-			135deg,
-			rgba(34, 211, 238, 0.08) 0%,
-			rgba(168, 85, 247, 0.08) 50%,
-			rgba(59, 130, 246, 0.08) 100%
-		);
-		border: 1px solid rgba(168, 85, 247, 0.2);
-		border-radius: 2rem;
-		padding: 4rem;
-		margin-bottom: 4rem;
-		overflow: hidden;
-		transition: all 0.4s ease;
-	}
-
-	.api-card:hover {
-		border-color: rgba(168, 85, 247, 0.4);
-		box-shadow: 0 0 60px rgba(34, 211, 238, 0.1),
-			0 0 120px rgba(168, 85, 247, 0.1);
-	}
-
-	.api-glow {
-		position: absolute;
-		top: -50%;
-		right: -20%;
-		width: 40rem;
-		height: 40rem;
-		background: radial-gradient(
-			circle,
-			rgba(168, 85, 247, 0.15) 0%,
-			transparent 70%
-		);
-		pointer-events: none;
-		animation: glowPulse 6s ease-in-out infinite;
-	}
-
-	@keyframes glowPulse {
-		0%,
-		100% {
-			opacity: 0.5;
-			transform: scale(1);
-		}
-		50% {
-			opacity: 1;
-			transform: scale(1.1);
-		}
-	}
-
-	.api-content {
-		position: relative;
-		z-index: 2;
-	}
-
-	.api-badge {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.6rem;
-		font-size: 1.2rem;
-		font-weight: 700;
-		color: #e879f9;
-		background: rgba(168, 85, 247, 0.15);
-		padding: 0.6rem 1.6rem;
-		border-radius: 5rem;
-		margin-bottom: 2rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-	}
-
-	.api-badge i {
-		font-size: 1.4rem;
-	}
-
-	.api-content h3 {
-		font-size: 2.8rem;
-		font-weight: 700;
-		color: var(--white);
-		margin-bottom: 1.5rem;
-		line-height: 1.3;
-	}
-
-	.api-content p {
 		font-size: 1.6rem;
 		color: var(--text-color);
-		line-height: 1.8;
-		margin-bottom: 2.5rem;
-		max-width: 70rem;
+		opacity: 0.9;
 	}
-
-	.api-tech-grid {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-	}
-
-	.api-tech {
-		font-size: 1.3rem;
-		font-weight: 600;
-		color: var(--white);
-		background: rgba(255, 255, 255, 0.06);
-		border: 1px solid rgba(255, 255, 255, 0.12);
-		padding: 0.7rem 1.6rem;
-		border-radius: 5rem;
-		transition: all 0.3s ease;
-	}
-
-	.api-tech:hover {
-		background: rgba(168, 85, 247, 0.15);
-		border-color: #e879f9;
-		transform: translateY(-2px);
+	
+	.cp-user {
+		margin-top: 1.5rem;
+		font-size: 1.4rem;
+		font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+		color: var(--accent);
+		opacity: 0.8;
 	}
 
 	/* ═══ Graph Section ═══ */
@@ -847,14 +810,66 @@
 		color: var(--text-muted);
 	}
 
+	/* ═══ Lightbox ═══ */
+	.lightbox {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: rgba(15, 23, 42, 0.95);
+		z-index: 9999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		backdrop-filter: blur(10px);
+		cursor: zoom-out;
+		animation: lightboxFade 0.3s ease;
+	}
+
+	@keyframes lightboxFade {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+
+	.lightbox img {
+		max-width: 90%;
+		max-height: 90vh;
+		object-fit: contain;
+		border-radius: 1rem;
+		box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+		animation: lightboxZoom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		cursor: default;
+	}
+
+	@keyframes lightboxZoom {
+		from { transform: scale(0.9); opacity: 0; }
+		to { transform: scale(1); opacity: 1; }
+	}
+
+	.close-lightbox {
+		position: absolute;
+		top: 3rem;
+		right: 4rem;
+		font-size: 5rem;
+		color: var(--white);
+		cursor: pointer;
+		opacity: 0.7;
+		transition: opacity 0.3s ease;
+	}
+
+	.close-lightbox:hover {
+		opacity: 1;
+	}
+
 	/* ═══ Responsive ═══ */
 	@media (max-width: 991px) {
 		.skills {
 			padding: 8rem 4%;
 		}
 
-		.cp-stats {
-			grid-template-columns: repeat(3, 1fr);
+		.cp-stats.vertical-layout {
+			gap: 2rem;
 		}
 	}
 
@@ -863,8 +878,25 @@
 			font-size: 3.5rem;
 		}
 
-		.cp-stats {
-			grid-template-columns: 1fr;
+		.cp-card.vertical-card {
+			flex-direction: column;
+		}
+
+		.cp-card.vertical-card::before {
+			width: 100%;
+			height: 4px;
+		}
+
+		.cp-image-side {
+			width: 100%;
+			height: 250px;
+			border-left: none;
+			border-top: 1px solid rgba(255, 255, 255, 0.05);
+		}
+
+		.cp-info-side {
+			width: 100%;
+			padding: 2.5rem;
 		}
 
 		.dsa-header {

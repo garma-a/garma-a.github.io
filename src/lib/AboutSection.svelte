@@ -3,8 +3,12 @@
 
 	export let aboutImage = `${base}/imgs/myImage.jpg`;
 	export let title = "Full Stack Web Developer";
-	export let aboutText =
-		"I'm a Full Stack Web Developer 👨‍💻 with professional experience at Magdi Yacoub Heart Center and NTI/ITIDA in Egypt. I graduated from the Faculty of Computing & Information Technology at Arab Academy Aswan. I'm passionate about building robust web applications and always pushing myself to grow 🔥 My goal is to create impactful solutions that make a difference 🌟";
+		
+
+	export let backendTitle = "Full API Design & Backend Architecture";
+	export let backendExpertiseText =
+		"End-to-end experience building production-ready APIs — from database schema design to authentication flows, middleware architecture, and deployment. Proficient in the complete backend lifecycle with a strong focus on SQL and PostgreSQL.";
+	export let techStack = ["Node.js", "Express.js", "NestJS", "Golang", "Drizzle ORM", "PostgreSQL", "SQL", "JWT", "Docker", "AWS EC2"];
 </script>
 
 <section class="about scroll-reveal" id="about">
@@ -24,39 +28,135 @@
 					<i class="bx bx-code-alt"></i>
 					<span>{title}</span>
 				</div>
-				<p>{aboutText}</p>
-				<div class="about-stats">
-					<div class="stat-item">
-						<span class="stat-number"
-							>2+</span
-						>
-						<span class="stat-label"
-							>Years Experience</span
-						>
-					</div>
-					<div class="stat-item">
-						<span class="stat-number"
-							>10+</span
-						>
-						<span class="stat-label"
-							>Projects Completed</span
-						>
-					</div>
-					<div class="stat-item">
-						<span class="stat-number"
-							>2</span
-						>
-						<span class="stat-label"
-							>Companies Worked</span
-						>
+				
+
+				<div class="api-card">
+					<div class="api-glow"></div>
+					<div class="api-content">
+						<div class="api-badge">
+							<i class="bx bx-star"></i>
+							Complete Backend Expertise
+						</div>
+						<h3>{backendTitle}</h3>
+						<p>{backendExpertiseText}</p>
+						<div class="api-tech-grid">
+							{#each techStack as tech}
+								<span class="api-tech">{tech}</span>
+							{/each}
+						</div>
 					</div>
 				</div>
+
+
 			</div>
 		</div>
 	</div>
 </section>
 
 <style>
+	/* API Design Card inside About */
+	.api-card {
+		position: relative;
+		background: linear-gradient(
+			135deg,
+			rgba(34, 211, 238, 0.05) 0%,
+			rgba(168, 85, 247, 0.05) 50%,
+			rgba(59, 130, 246, 0.05) 100%
+		);
+		border: 1px solid rgba(168, 85, 247, 0.2);
+		border-radius: 2rem;
+		padding: 3rem;
+		margin-bottom: 4rem;
+		overflow: hidden;
+		transition: all 0.4s ease;
+	}
+
+	.api-card:hover {
+		border-color: rgba(168, 85, 247, 0.4);
+		box-shadow: 0 0 60px rgba(34, 211, 238, 0.05),
+			0 0 120px rgba(168, 85, 247, 0.05);
+	}
+
+	.api-glow {
+		position: absolute;
+		top: -50%;
+		right: -20%;
+		width: 40rem;
+		height: 40rem;
+		background: radial-gradient(
+			circle,
+			rgba(168, 85, 247, 0.15) 0%,
+			transparent 70%
+		);
+		pointer-events: none;
+		animation: glowPulse 6s ease-in-out infinite;
+	}
+
+	@keyframes glowPulse {
+		0%, 100% { opacity: 0.5; transform: scale(1); }
+		50% { opacity: 1; transform: scale(1.1); }
+	}
+
+	.api-content {
+		position: relative;
+		z-index: 2;
+	}
+
+	.api-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: #e879f9;
+		background: rgba(168, 85, 247, 0.15);
+		padding: 0.5rem 1.4rem;
+		border-radius: 5rem;
+		margin-bottom: 1.5rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+	}
+
+	.api-badge i { font-size: 1.4rem; }
+
+	.api-content h3 {
+		font-size: 2.2rem;
+		font-weight: 700;
+		color: var(--white);
+		margin-bottom: 1rem;
+		line-height: 1.3;
+	}
+
+	.api-content p {
+		font-size: 1.5rem !important;
+		color: var(--text-color);
+		line-height: 1.8;
+		margin-bottom: 2.5rem !important;
+	}
+
+	.api-tech-grid {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+	}
+
+	.api-tech {
+		font-size: 1.2rem;
+		font-weight: 600;
+		color: var(--white);
+		background: rgba(255, 255, 255, 0.06);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		padding: 0.6rem 1.4rem;
+		border-radius: 5rem;
+		transition: all 0.3s ease;
+	}
+
+	.api-tech:hover {
+		background: rgba(168, 85, 247, 0.15);
+		border-color: #e879f9;
+		transform: translateY(-2px);
+	}
+	
 	.about {
 		display: flex;
 		justify-content: center;
