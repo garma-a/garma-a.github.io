@@ -7,7 +7,14 @@
 			title: "Quality Control (QC) System",
 			description:
 				"A comprehensive Quality Control and Machine Monitoring system built to track industrial processes, manage quality alerts, and oversee user roles. Features real-time monitoring and detailed reporting.",
-			stack: ["Node.js", "PostgreSQL", "Express.js", "Svelte"],
+			stack: [
+				"Next.Js",
+				"NestJS",
+				"TypeScript",
+				"PostgreSQL",
+				"shadcn/ui",
+				"TAILWIND CSS",
+			],
 			image: `${base}/imgs/Qc_project_imges/002_admin_dashboard.png`,
 			featured: true,
 		},
@@ -41,7 +48,9 @@
 					class:featured={project.featured}
 					style="--delay: {index * 0.12}s"
 					on:click={() =>
-						handleProjectClick(project.slug)}
+						handleProjectClick(
+							project.slug,
+						)}
 					type="button"
 				>
 					<div class="card-image-area">
@@ -49,12 +58,19 @@
 							class="card-image-bg"
 							style="background-image: url('{project.image}');"
 						></div>
-						<div class="card-image-fallback">
-							<i class="bx bx-server"></i>
-							<span>{project.title}</span>
+						<div
+							class="card-image-fallback"
+						>
+							<i class="bx bx-server"
+							></i>
+							<span
+								>{project.title}</span
+							>
 						</div>
 						<div class="card-overlay">
-							<span class="view-project">
+							<span
+								class="view-project"
+							>
 								<i
 									class="bx bx-right-arrow-alt"
 								></i>
@@ -68,7 +84,8 @@
 						</h3>
 						<div class="stack-badges">
 							{#each project.stack as tech}
-								<span class="stack-badge"
+								<span
+									class="stack-badge"
 									>{tech}</span
 								>
 							{/each}
@@ -163,7 +180,8 @@
 	.project-card:hover {
 		border-color: rgba(255, 0, 85, 0.3);
 		transform: translateY(-8px);
-		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+		box-shadow:
+			0 20px 60px rgba(0, 0, 0, 0.3),
 			0 0 40px rgba(255, 0, 85, 0.08);
 	}
 
