@@ -20,7 +20,11 @@
 		<span class="greeting">Hello, I'm</span>
 		<h1><span class="name-gradient">{name}</span></h1>
 		<div class="text-animate">
-			<h3>{title}</h3>
+			<h3>
+				{title}
+				<br />
+				<span class="frontend-glow">Can Do Frontend</span>
+			</h3>
 		</div>
 		<p class="motto">{motto}</p>
 		<div class="btn-box">
@@ -284,6 +288,28 @@
 		color: var(--text-muted);
 		text-transform: uppercase;
 		letter-spacing: 0.2em;
+	}
+
+	.frontend-glow {
+		display: inline-block;
+		font-size: 2.4rem;
+		margin-top: 1rem;
+		color: var(--text-color);
+		font-weight: 700;
+		text-shadow: 0 0 5px rgba(168, 85, 247, 0.4);
+		opacity: 0;
+		animation: fadeUpGlow 1s ease-out 0.5s forwards, pulseGlow 2.5s ease-in-out infinite alternate 1.5s;
+		letter-spacing: 0.1em;
+	}
+
+	@keyframes fadeUpGlow {
+		0% { opacity: 0; transform: translateY(10px); }
+		100% { opacity: 1; transform: translateY(0); }
+	}
+
+	@keyframes pulseGlow {
+		0% { text-shadow: 0 0 5px rgba(168, 85, 247, 0.3); }
+		100% { text-shadow: 0 0 15px rgba(168, 85, 247, 0.8); }
 	}
 
 	@keyframes bounce {
