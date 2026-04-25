@@ -241,7 +241,7 @@
                         </div>
                         <div class="cp-count">443</div>
                         <div class="cp-label">Problems Solved</div>
-                        <div class="cp-user">@GIRGIS_EMAD_</div>
+                        <div class="cp-user"><a href={codeforcesUrl} target="_blank">@GIRGIS_EMAD_</a></div>
                     </div>
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -260,7 +260,7 @@
                         </div>
                         <div class="cp-count">131</div>
                         <div class="cp-label">Problems Solved (Python, JS, C++)</div>
-                        <div class="cp-user">@Hard-Work</div>
+                        <div class="cp-user"><a href={leetcodeUrl} target="_blank">@Hard-Work</a></div>
                     </div>
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -279,7 +279,7 @@
                         </div>
                         <div class="cp-count">106</div>
                         <div class="cp-label">Problems Solved (Multiple passes)</div>
-                        <div class="cp-user">Mastered core patterns</div>
+                        <div class="cp-user"><a href={neetcodeUrl} target="_blank">Mastered core patterns</a></div>
                     </div>
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -625,6 +625,18 @@
 		font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 		color: var(--accent);
 		opacity: 0.8;
+	}
+
+	.cp-user a {
+		text-decoration: none;
+		color: inherit;
+		transition: all 0.3s ease;
+	}
+
+	.cp-user a:hover {
+		opacity: 1;
+		color: var(--white);
+		text-decoration: underline;
 	}
 
 	/* ═══ Graph Section ═══ */

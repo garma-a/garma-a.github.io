@@ -7,6 +7,7 @@
 	import SkillsSection from "./SkillsSection.svelte";
 	import ProjectsSection from "./ProjectsSection.svelte";
 	import AchievementsSection from "./AchievementsSection.svelte";
+	import OpenSourceSection from "./OpenSourceSection.svelte";
 	import BooksSection from "./BooksSection.svelte";
 	import Footer from "./Footer.svelte";
 
@@ -86,6 +87,8 @@
 <ProjectsSection />
 
 <AchievementsSection />
+
+<OpenSourceSection />
 
 <BooksSection />
 

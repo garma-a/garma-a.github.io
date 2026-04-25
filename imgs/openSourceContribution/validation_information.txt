@@ -1,0 +1,21 @@
+github issue link for the contribuiion
+https://github.com/ThePrimeagen/99/issues/59
+
+github the merged pull request link for the contribution
+https://github.com/ThePrimeagen/99/pull/81
+
+
+
+
+this section is for information about the contribution 
+
+
+this repository is called 99 and it is neovim IDE plugin written in lua and the idea is to enable AI in the code editor but with high restriction so that you can run multiple ai prompts at once but each prompt will be focused on a specific function or class that the AI models cannot edit any thing outside this area that you selected for it and you can do that multiple times in different files and the Ai models will collect the current project context and perform the requested edits with in this specific range it is grat tool if you need to make full controll over the  AI model and you need from it to do specific edits in specific areas of your codebase and you want to run multiple prompts at once without the risk of the AI model making unwanted changes to your codebase.
+
+
+
+number of start on github 4.5K at the current time
+
+the link for the repo 
+https://github.com/ThePrimeagen/99
+

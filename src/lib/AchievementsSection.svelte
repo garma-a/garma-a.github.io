@@ -144,7 +144,7 @@
 	.journey-timeline {
 		display: flex;
 		flex-direction: column;
-		gap: 3rem;
+		gap: 3.5rem;
 		position: relative;
 		padding-left: 4rem;
 	}
