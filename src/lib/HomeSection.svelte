@@ -360,6 +360,10 @@
 		}
 
 		.home-content .text-animate h3 {
+			font-size: 2.4rem;
+		}
+
+		.frontend-glow {
 			font-size: 2.2rem;
 		}
 
@@ -404,6 +408,10 @@
 		}
 
 		.home-content .text-animate h3 {
+			font-size: 2.4rem;
+		}
+
+		.frontend-glow {
 			font-size: 1.8rem;
 		}
 
