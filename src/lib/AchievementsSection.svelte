@@ -3,6 +3,15 @@
 
 	export let journeyItems = [
 		{
+			image: `${base}/imgs/8thPlaceAICompetion.png`,
+			title: "8th Place — Build with AI Hackathon (Google Developer Group)",
+			description:
+				"Placed 8th university-wide in a 6-hour Build with AI hackathon by Google Developer Group, competing against Engineering, Computing, and other colleges. Teamed up with Youssef Hesham using an AI-native workflow — Antigravity Pro, Gemini CLI, Copilot, and Claude/GPT — with MCP servers giving the AI live access to Supabase and GitHub. Split the app into parallel tasks using session management and Caveman/Brainstorm skills, enabling both teammates to ship independently with zero conflicts. Stack: Next.js, Supabase, Tailwind CSS.",
+			year: "2026",
+			tags: ["8th Place", "AI Hackathon", "Google GDG", "Next.js", "Supabase", "MCP"],
+			link: "https://github.com/garma-a/vibe_code",
+		},
+		{
 			image: `${base}/imgs/ITIDA_NTI_certificate.png`,
 			title: "Full Stack Web Development — NTI & ITIDA",
 			description:
@@ -67,12 +76,13 @@
 							/>
 							<div class="image-hover">
 								<a
-									href={item.image}
+									href={item.link ?? item.image}
 									target="_blank"
+									rel="noopener noreferrer"
 									class="view-link"
 								>
-									<i class="bx bx-expand"></i>
-									View
+									<i class="bx {item.link ? 'bx-link-external' : 'bx-expand'}"></i>
+									{item.link ? 'View Repo' : 'View'}
 								</a>
 							</div>
 						</div>

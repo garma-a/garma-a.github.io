@@ -275,13 +275,13 @@
 		transform: scale(1.05);
 	}
 
-	/* Info area - 20% */
+	/* Info area */
 	.card-info-area {
 		padding: 2rem 2.5rem;
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1.5rem;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
 		border-top: 1px solid var(--border-color);
 	}
 
@@ -289,9 +289,7 @@
 		font-size: 1.6rem;
 		font-weight: 600;
 		color: var(--white);
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		line-height: 1.4;
 	}
 
 	.stack-badges {
@@ -327,11 +325,6 @@
 	@media (max-width: 768px) {
 		.heading {
 			font-size: 3.5rem;
-		}
-
-		.card-info-area {
-			flex-direction: column;
-			align-items: flex-start;
 		}
 	}
 
